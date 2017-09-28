@@ -10,15 +10,14 @@ function romanTime(time) {
     var arrayOfRom = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var result = ['', ''];
     var timeSplit = time.split(':');
-    if (timeSplit.length > 2) { 
+    if (timeSplit.length > 2) {
         throw new TypeError('Слишком много разрядов');
     }
     for (i = 0; i < timeSplit.length; i++) {
         timeSplit[i] = parseInt(timeSplit[i], 10);
         if (isNaN(timeSplit[i])) {
-            throw new TypeError("Введите числа");
-        }
-        else if (timeSplit[i] > (i === 0 ? 23 : 59) || timeSplit[i] < 0) {
+            throw new TypeError('Введите числа');
+        } else if (timeSplit[i] > (i === 0 ? 23 : 59) || timeSplit[i] < 0) {
             throw new TypeError('Неправильные числа');
         }
         var n = arrayOfArab.length - 1;
@@ -26,8 +25,7 @@ function romanTime(time) {
             if (timeSplit[i] >= arrayOfArab[n]) {
                 result[i] += arrayOfRom[n];
                 timeSplit[i] -= arrayOfArab[n];
-            }
-            else {
+            } else { 
                 n--;
             }
         }
@@ -37,6 +35,7 @@ function romanTime(time) {
             result[i] = 'N';
         }
     }
+    
     return result.join(':');
 }
 module.exports = romanTime;

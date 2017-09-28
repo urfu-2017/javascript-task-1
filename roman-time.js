@@ -8,7 +8,7 @@ let romanMumbers = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX',
     'LIV', 'LV', 'LVI', 'LVII', 'LVIII', 'LIX'];
 
 function checkTime(time) {
-    if (time === undefined || time === null || time.length > 5) {
+    if (time === undefined || time === null || time.length !== 5) {
         throw new TypeError('Ooops');
     }
 }

@@ -25,7 +25,7 @@ function romanTime(time) {
             if (timeSplit[i] >= arrayOfArab[n]) {
                 result[i] += arrayOfRom[n];
                 timeSplit[i] -= arrayOfArab[n];
-            } else { 
+            } else {
                 n--;
             }
         }
@@ -35,7 +35,9 @@ function romanTime(time) {
             result[i] = 'N';
         }
     }
-    
+
     return result.join(':');
 }
+
+
 module.exports = romanTime;

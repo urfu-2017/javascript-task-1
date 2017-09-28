@@ -1,5 +1,6 @@
 'use strict';
 
+
 function error() {
     throw new TypeError('Неверный формат времени.');
 }

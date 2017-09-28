@@ -14,6 +14,8 @@ const convertToRoman = (number) => {
     return tens[indexOfTens] + ones[indexOfOnes];
 };
 
+const isBetween = (target, a, b) => target >= a && target <= b;
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -26,8 +28,9 @@ function romanTime(time) {
     const tokens = time.split(':');
     const hours = parseInt(tokens[0], 10);
     const minutes = parseInt(tokens[1], 10);
+    const isNumbers = isNaN(hours) || isNaN(minutes);
 
-    if (hours < -1 || hours > 23 || minutes < -1 || minutes > 59) {
+    if (isNumbers || !isBetween(hours, 0, 23) || !isBetween(minutes, 0, 59)) {
         throw new TypeError();
     }
 

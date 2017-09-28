@@ -19,6 +19,10 @@ const convertToRoman = (number) => {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (typeof time !== 'string') {
+        throw new TypeError();
+    }
+
     const tokens = time.split(':');
     const hours = parseInt(tokens[0], 10);
     const minutes = parseInt(tokens[1], 10);

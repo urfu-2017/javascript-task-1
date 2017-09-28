@@ -2,6 +2,8 @@
 
 var romanTime = require('./roman-time');
 
+console.info(romanTime(undefined));
+
 // Выведет 'IX:X'
 console.info(romanTime('09:10'));
 

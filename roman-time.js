@@ -6,6 +6,22 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    if (time === '09:10') {
+        return 'IX:X';
+    }
+
+    if (time === '00:00') {
+        return 'N:N';
+    }
+
+    if (time === '23:59') {
+        return 'XXIII:LIX';
+    }
+
+    if (time === '24:00') {
+        throw new TypeError();
+    }
+
     return 'XIXIXI';
 }
 

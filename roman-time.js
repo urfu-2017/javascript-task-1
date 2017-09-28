@@ -1,8 +1,8 @@
 'use strict';
-  
+
 function arabtoroman(arab) {
     if ((arab === '0') || (arab === '00')) {
-        
+
         return 'N';
     }
     var smallDig = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];

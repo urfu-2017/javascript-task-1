@@ -23,14 +23,14 @@ function romanTime(time) {
 }
 
 function isValitedString(time) {
-    var reg = '/^/d{2}:/d{2}$/';
+    var reg = /^\d{2}:\d{2}$/;
 
     return time.test(reg);
 }
 
 function convertNumber(number, maxValue) {
     number = parseInt(number, 10);
-    if (isNaN(number) || (number > maxValue) || (number < 0)) {
+    if (isNaN(number) || (number > maxValue)) {
         throw new TypeError();
     }
     if (!number) {

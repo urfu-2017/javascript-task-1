@@ -18,12 +18,12 @@ function romanTime(time) {
         while (timeSplit[i] > 0) {
             if (timeSplit[i] >= arrayOfArab[n]) {
                 result[i] += arrayOfRom[n];
-                timeSplit[i] -= arrayOfRom[n];
+                timeSplit[i] -= arrayOfArab[n];
             }
             else n--;
         }
-        for (var i = 0; i < result.length; i++) if (result[i] == "") result[i] = "N";
     }
+    for (var i = 0; i < result.length; i++) if (result[i] == "") result[i] = "N";
     return result.join(":");
 }
 

@@ -8,7 +8,7 @@ function romanTime(time) {
     let splited = time.split(':');
     let hours = splited[0];
     let minutes = splited[1];
-    if (isNaN(Number(hours)) || isNaN(Number(minutes))) {
+    if (!/^[0-9]{2}:[0-9]{2}/.test(time)) {
         throw new TypeError('Invalid time');
     }
     if (!isInRange(hours, -1, 24)) {

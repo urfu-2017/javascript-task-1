@@ -9,7 +9,7 @@ var ROMAN_NUMERALS = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
 var ARABIC_NUMERALS = ['1', '4', '5', '9', '10', '40', '50'];
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (!isValitedString) {
+    if (typeof time !== 'string' || !isValitedString) {
         throw new TypeError();
     }
 

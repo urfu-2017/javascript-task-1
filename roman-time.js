@@ -6,7 +6,8 @@ const romanDigitsCompressed = 'eJw1i8kJADEMA//qTGDyDO6/ktWRJdIY4vEBQUe90KOS' +
 
 var romanDigits = zlib
     .inflateSync(new Buffer(romanDigitsCompressed, 'base64'))
-    .toString().split('\n');
+    .toString()
+    .split('\n');
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)

@@ -5,12 +5,12 @@
  * @returns {String} – время a цифрами (IX:V)
  */
 function romanTime(time) {
-    let splited = time.split(':');
-    let hours = splited[0];
-    let minutes = splited[1];
     if (!/^[0-9]{2}:[0-9]{2}/.test(time)) {
         throw new TypeError('Invalid time');
     }
+    let splited = time.split(':');
+    let hours = splited[0];
+    let minutes = splited[1];
     if (!isInRange(hours, -1, 24)) {
         throw new TypeError('Hours should be less than 24 and non negative');
     }
@@ -51,7 +51,7 @@ function convertToRomanDigit(digit, letters, index) {
         return letters[index].repeat(5 - numberDigit) + letters[index + 1];
     }
     if (numberDigit <= 8) {
-        return letters[index + 1] + letters[index + 0].repeat(8 - numberDigit);
+        return letters[index + 1] + letters[index + 0].repeat(numberDigit - 5);
     }
 
     return letters[index] + letters[index + 2];

@@ -7,9 +7,10 @@
 
 var ROMAN_NUMERALS = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
 var ARABIC_NUMERALS = ['1', '4', '5', '9', '10', '40', '50'];
+
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (typeof time !== 'string' || !isValitedString) {
+    if (!isValitedString) {
         throw new TypeError();
     }
 
@@ -29,7 +30,7 @@ function isValitedString(time) {
 
 function convertNumber(number, maxValue) {
     number = parseInt(number, 10);
-    if (number > maxValue || number < 0) {
+    if (isNaN(number) || number > maxValue) {
         throw new TypeError();
     }
     if (!number) {

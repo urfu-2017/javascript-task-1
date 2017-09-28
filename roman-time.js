@@ -30,12 +30,17 @@ function isValitedString(time) {
 
 function convertNumber(number, maxValue) {
     number = parseInt(number, 10);
-    if (isNaN(number) || number > maxValue) {
+    if (isNaN(number) || (number > maxValue) || (number < 0)) {
         throw new TypeError();
     }
     if (!number) {
         return 'N';
     }
+
+    return getRomanNumber(number);
+}
+
+function getRomanNumber(number) {
     var romanNumber = '';
     var currentPosition = ARABIC_NUMERALS.length - 1;
     while (number > 0) {

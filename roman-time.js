@@ -3,7 +3,7 @@
 const isValidNumber = (value, a, b) => isFinite(value) && value >= a && value <= b;
 
 const parseTime = (time) => {
-    if (typeof time !== 'string' || time.length > 5) {
+    if (typeof time !== 'string' || !time.match(/^\d{2}:\d{2}$/)) {
         throw new TypeError();
     }
 

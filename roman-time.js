@@ -2,6 +2,7 @@
   
 function arabtoroman(arab) {
     if ((arab === '0') || (arab === '00')) {
+        
         return 'N';
     }
     var smallDig = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -29,6 +30,7 @@ function romanTime(time) {
     if ((hours >= 0) && (time.length <= 5) && (hours < 24) && (minutes >= 0) && (minutes < 60) &&
         (splitTime[0].length === 2) && splitTime[1].length === 2) {
         time = arabtoroman(hours) + ':' + arabtoroman(minutes);
+
         return time;
     }
     throw new TypeError();

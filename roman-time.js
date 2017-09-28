@@ -25,15 +25,15 @@ function romanTime(time) {
 function isValitedString(time) {
     var reg = /^\d{2}:\d{2}$/;
 
-    return time.test(reg);
+    return reg.test(time);
 }
 
 function convertNumber(number, maxValue) {
     number = parseInt(number, 10);
-    if (number > maxValue) {
+    if (isNaN(number) || (number > maxValue)) {
         throw new TypeError();
     }
-    if (number === 0) {
+    if (!number) {
         return 'N';
     }
 

@@ -14,28 +14,33 @@ const convertToRoman = (number) => {
     return tens[indexOfTens] + ones[indexOfOnes];
 };
 
-const isBetween = (target, a, b) => target >= a && target <= b;
+const isValidNumber = (value, a, b) => isFinite(value) && value >= a && value <= b;
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
-function romanTime(time) {
-    if (typeof time !== 'string') {
+const getNumbers = (time) => {
+    if (typeof time !== 'string' || time.length > 5) {
         throw new TypeError();
     }
 
     const tokens = time.split(':');
     const hours = parseInt(tokens[0], 10);
     const minutes = parseInt(tokens[1], 10);
-    const isNumbers = isNaN(hours) || isNaN(minutes);
 
-    if (isNumbers || !isBetween(hours, 0, 23) || !isBetween(minutes, 0, 59)) {
+    if (!isValidNumber(hours, 0, 23) || !isValidNumber(minutes, 0, 59)) {
         throw new TypeError();
     }
 
-    const romanHours = convertToRoman(hours);
-    const romanMinutes = convertToRoman(minutes);
+    return { hours, minutes };
+};
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function romanTime(time) {
+    const date = getNumbers(time);
+
+    const romanHours = convertToRoman(date.hours);
+    const romanMinutes = convertToRoman(date.minutes);
 
     return `${romanHours}:${romanMinutes}`;
 }

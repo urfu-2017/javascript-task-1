@@ -5,7 +5,7 @@
  * @returns {String} – время a цифрами (IX:V)
  */
 function romanTime(time) {
-    if (!/^[0-9]{2}:[0-9]{2}/.test(time)) {
+    if (!/^[0-9]{2}:[0-9]{2}$/.test(time)) {
         throw new TypeError('Invalid time');
     }
     let splited = time.split(':');

@@ -23,7 +23,7 @@ function romanTime(time) {
             else n--;
         }
     }
-    return timeSplit.join(":");
+    return result.join(":");
 }
 
 

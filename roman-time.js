@@ -24,7 +24,7 @@ function toRoman(inn) {
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined || isNaN(time)) {
+    if (time === null || time === undefined || typeof(time) !== 'string') {
         throw new TypeError('Неверное время: ' + time);
     }
     var regular = /\d\d[:]\d\d/;

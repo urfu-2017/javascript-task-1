@@ -1,96 +1,32 @@
 'use strict';
-
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time==='24:00'){
-        try {
-            throw new TypeError('24:00');
-        } catch (e) {
-            console.log(e instanceof TypeError); // true
-            console.log(e.message);
-            console.log(e.name);                 // "TypeError"
+    
+    if (!/^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)){ // Регулярное выражение под HH:MM
+            throw new TypeError('Некорректное время');
+    }
+    var romanDigit='';
+    var arabicHours=time.split(':')[0];
+    var arabicMinutes=time.split(':')[1];
+    romanDigit = arabicToRoman(arabicHours)+':'+arabicToRoman(arabicMinutes);
+    function arabicToRoman(d){
+        dozenDigit=d[0];
+        dozenDigit={
+            '0': '','1': 'X','2': 'XX','3': 'XXX','4': 'XL','5': 'L'
         }
-    }
-    if (time==='00:00'){
-        time='N : N';
-    }
-    // Функция перевода арабских десятков в римские десятки
-    function arabicDozenToRoman(d){
-        switch (String(d)){// Приводим к явному строчному типу
-            case '0':
-                d='';
-                break;
-            case '1':
-                d='X';
-                break;
-            case '2':
-                d='XX';
-                break;
-            case '3':
-                d='XXX';
-                break;
-            case '4':
-                d='XXXX';
-                break;
-            case '5':
-                d='L';
-                break; 
+        unitDigit=d[1];
+        unitDigit={
+            '0': '','1': 'I','2': 'II','3': 'III','4': 'IV','5': 'V','6': 'VI','7': 'VII','8': 'VIII','9': 'IX'
         }
-        romanDozen=d;
-        return romanDozen;
-    }
-    // Функция перевода арабских единиц в римские единицы
-    function arabicUnitToRoman(u){
-        switch (String(u)){
-            case '0':
-                u='';
-                break;
-            case '1':
-                u='I';
-                break;
-            case '2':
-                u='II';
-                break;
-            case '3':
-                u='III';
-                break;
-            case '4':
-                u='IV';
-                break;
-            case '5':
-                u='V';
-                break;
-            case '6':
-                u='VI';
-                break;
-            case '7':
-                u='VII';
-                break;
-            case '8':
-                u='VIII';
-                break;
-            case '9':
-                u='IX';
-                break
-        
+        if (d==='00'){
+            return 'N';
         }
-        romanUnit=u;
-        return romanUnit;
+        return (dozenDigit[d[0]]+unitDigit[d[1]]);
     }
-    arabicDozenToRoman(time[0]);
-    romanDozenHours=romanDozen;
-    arabicDozenToRoman(time[3]);
-    romanDozenMinutes=romanDozen;
-    arabicUnitToRoman(time[1]);
-    romanUnitHours=romanUnit;
-    arabicUnitToRoman(time[4]);
-    romanUnitMinutes=romanUnit;
-    time=String(romanDozenHours)+String(romanUnitHours)+':'+String(romanDozenMinutes)+String(romanUnitMinutes);
-    return time;
+    return romanDigit;
 }
 module.exports = romanTime;

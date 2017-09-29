@@ -9,7 +9,7 @@ function romanTime(time) {
     let partOfTime = time.split(':');
     let hour = getRoman(partOfTime[0]);
     let minute = getRoman(partOfTime[1]);
-    time = hour + ":" + minute;
+    time = hour + ':' + minute;
 
     return time;
 }

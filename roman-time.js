@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    let regexp = /[0-2][0-9]:[0-6][0-9]/;
+    let regexp = /^[0-2][0-9]:[0-6][0-9]$/;
 
     if (time.match(regexp) === null) {
         throw new TypeError();

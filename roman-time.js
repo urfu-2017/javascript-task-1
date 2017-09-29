@@ -24,7 +24,7 @@ function romanTime(time) {
 
 function toRoman(num) {
 
-    let Romans = ['', 'X', 'XX', 'XXX', 'XXXX', 'L'];
+    let Romans = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     let smallRomans = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     if (num === '00') {
 

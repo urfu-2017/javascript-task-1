@@ -2,13 +2,13 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     // Регулярное выражение под HH:MM
-    if (!/^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) { 
+    if (!/^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) {
         throw new TypeError('Некорректное время');
     }
     var romanDigit = '';
     var arabicHours = time.split(':')[0];
     var arabicMinutes = time.split(':')[1];
-    romanDigit = arabicToRoman(arabicHours)+':'+arabicToRoman(arabicMinutes);
+    romanDigit = arabicToRoman(arabicHours) + ':' + arabicToRoman(arabicMinutes);
     function arabicToRoman(d) {
         var dozenDigit = d[0];
         dozenDigit = {

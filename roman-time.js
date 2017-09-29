@@ -12,32 +12,35 @@ function romanTime(time) {
     function arabicToRoman(d) {
         var dozenDigit=d[0];
         dozenDigit = {
-            '0': '', 
-            '1': 'X', 
-            '2': 'XX', 
-            '3': 'XXX', 
-            '4': 'XL', 
+            '0': '',
+            '1': 'X',
+            '2': 'XX',
+            '3': 'XXX',
+            '4': 'XL',
             '5': 'L'
-        }
+        };
         var unitDigit=d[1];
         unitDigit = {
-            '0': '', 
-            '1': 'I', 
-            '2': 'II', 
-            '3': 'III', 
-            '4': 'IV', 
-            '5': 'V', 
-            '6': 'VI', 
-            '7': 'VII', 
-            '8': 'VIII', 
+            '0': '',
+            '1': 'I',
+            '2': 'II',
+            '3': 'III',
+            '4': 'IV',
+            '5': 'V',
+            '6': 'VI',
+            '7': 'VII',
+            '8': 'VIII',
             '9': 'IX'
-        }
+        
         if (d === '00') {
+            
             return 'N';
         }
+
         return (dozenDigit[d[0]] + unitDigit[d[1]]);
     }
+
     return romanDigit;
 }
-module.exports = romanTime;
 
+module.exports = romanTime;

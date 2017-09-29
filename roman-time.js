@@ -31,7 +31,7 @@ function romanTime(time) {
     var List = time.split(':');
     var Hour = Number(List[0]);
     var Minuets = Number(List[1]);
-    if (time.match(regular) && Hour >= 0 && Hour <= 23 && Minuets >= 0 && Minuets < 60) {
+    if (regular.test(time) && Hour >= 0 && Hour <= 23 && Minuets >= 0 && Minuets < 60) {
 
         return (toRoman(Hour) + ':' + toRoman(Minuets));
     }

@@ -6,7 +6,7 @@ function error() {
 }
 
 function parseNumber(text, limit) {
-    if (text.length !== 2) {
+    if (''.match(/^\d\d$/)) {
         error();
     }
     let number = parseInt(text, 10);

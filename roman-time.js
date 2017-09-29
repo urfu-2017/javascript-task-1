@@ -12,32 +12,6 @@ function romanTime(time) {
     conversionUnits(result, time);
     conversionZeros(result);
     result[2] = ':';
-    //result = Dima(time);
-
-    return result.join("");
-}
-
-function Dima(time) {
-    var result = [];
-    var dozens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-    var units = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    var timeStr = time.split(':');
-    var hours = parseInt(timeStr[0]);
-    var minutes = parseInt(timeStr[1]);
-
-    result[0] = dozens[hours/10 | 0];
-    result[1] = units[hours % 10];
-    result[3] = dozens[minutes / 10 | 0];
-    result[4] = units[minutes % 10];
-
-    if (parseInt(timeStr[0][0]) === 0 && parseInt(timeStr[0][1]) === 0) {
-        result[0] = 'N';
-    }
-    if (parseInt(timeStr[1][0]) === 0 && parseInt(timeStr[1][1]) === 0) {
-        result[3] = 'N';
-    }
-
-    result[2] = ':';
 
     return result.join("");
 }

@@ -11,7 +11,8 @@ function romanTime(time) {
 
     let ourTime = time.split(':');
 
-    if (checkTime(ourTime) || checkTimeOnStrange(ourTime)) {
+    if (checkTime(ourTime) || checkTimeOnStrange(ourTime) ||
+     ourTime[0].length !== 2 || ourTime[1].length !== 2) {
         throw new TypeError('Неверное время');
     }
 

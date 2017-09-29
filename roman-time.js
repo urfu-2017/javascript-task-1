@@ -65,5 +65,3 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
-
-romanTime("002:35");

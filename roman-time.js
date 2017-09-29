@@ -10,7 +10,7 @@ var ARABIC_NUMERALS = [50, 40, 10, 9, 5, 4, 1];
  */
 function romanTime(time) {
     checkType(time, 'string', new TypeError('Неверное время'));
-    
+
     var hoursAndMinutes = time.split(':');
 
     if (hoursAndMinutes.length !== 2) {
@@ -32,7 +32,7 @@ function romanTime(time) {
     return romanHours + ':' + romanMinutes;
 }
 
-function checkType(obj, typeName, exception){
+function checkType(obj, typeName, exception) {
     if (obj === null || obj === undefined || typeof(obj) !== typeName) {
         throw exception;
     }

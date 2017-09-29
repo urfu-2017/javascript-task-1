@@ -35,7 +35,7 @@ function makeRoman(numString, ind) {
 }
 
 function checkFormat(time) {
-    if (/[^0-9:]/i.test(time) || time.length != 2) {
+    if (/[^0-9:]/i.test(time) || time.length !== 2) {
         throw new TypeError('Используются недопустимые символы или их слишком много');
     }
 }

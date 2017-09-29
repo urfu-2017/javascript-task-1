@@ -9,10 +9,8 @@ var ARABIC_NUMERALS = [50, 40, 10, 9, 5, 4, 1];
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === null || time === undefined) {
-        throw new TypeError('Неверное время');
-    }
-
+    checkType(time, 'string', new TypeError('Неверное время'));
+    
     var hoursAndMinutes = time.split(':');
 
     if (hoursAndMinutes.length !== 2) {
@@ -32,6 +30,12 @@ function romanTime(time) {
     var romanMinutes = convertToRoman(minutes);
 
     return romanHours + ':' + romanMinutes;
+}
+
+function checkType(obj, typeName, exception){
+    if (obj === null || obj === undefined || typeof(obj) !== typeName) {
+        throw exception;
+    }
 }
 
 function checkTimeRange(hours, minutes) {

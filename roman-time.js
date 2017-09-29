@@ -5,9 +5,16 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (/[^0-9:]/i.test(time)) throw new TypeError('Используются недопустимые символы');
     var i = 0;
-    var arrayOfArab = [1, 4, 5, 9, 10, 40, 50];
-    var arrayOfRom = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
+    var arrayOfRom = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
+                     'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX',
+                     'XX', 'XXI', 'XXII', 'XXIII', 'XXIV', 'XXV', 'XXVI', 'XXVII',
+                     'XXVIII', 'XXIX', 'XXX', 'XXXI', 'XXXII', 'XXXIII', 'XXXIV',
+                     'XXXV', 'XXXVI', 'XXXVII', 'XXXVIII', 'XXXIX', 'XL', 'XLI', 
+                     'XLII', 'XLIII', 'XLIV', 'XLV', 'XLVI', 'XLVII', 'XLVIII', 
+                     'XLIX', 'L', 'LI', 'LII', 'LIII', 'LIV', 'LV', 'LVI', 
+                     'LVII', 'LVIII', 'LIX'];
     var result = ['', ''];
     var timeSplit = time.split(':');
     if (timeSplit.length > 2) {
@@ -15,29 +22,14 @@ function romanTime(time) {
     }
     for (i = 0; i < timeSplit.length; i++) {
         timeSplit[i] = parseInt(timeSplit[i], 10);
-        if (isNaN(timeSplit[i])) {
-            throw new TypeError('Введите числа');
-        } else if (timeSplit[i] > (i === 0 ? 23 : 59) || timeSplit[i] < 0) {
+        var currentNum = timeSplit[i];
+        if (currentNum > (i === 0 ? 23 : 59) || currentNum < 0) {
             throw new TypeError('Неправильные числа');
         }
-        var n = arrayOfArab.length - 1;
-        while (timeSplit[i] > 0) {
-            if (timeSplit[i] >= arrayOfArab[n]) {
-                result[i] += arrayOfRom[n];
-                timeSplit[i] -= arrayOfArab[n];
-            } else {
-                n--;
-            }
-        }
-    }
-    for (i = 0; i < result.length; i++) {
-        if (result[i] === '') {
-            result[i] = 'N';
-        }
+        timeSplit[i] = arrayOfRom[currentNum];
     }
 
-    return result.join(':');
+    return timeSplit.join(':');
 }
-
 
 module.exports = romanTime;

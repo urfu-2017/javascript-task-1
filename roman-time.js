@@ -32,8 +32,8 @@ function checkMinutes(minutes) {
 function romanTime(time) {
     checkTime(time);
     let splitedTime = time.split(':');
-    const hours = parseInt(splitedTime[0]);
-    const minutes = parseInt(splitedTime[1]);
+    const hours = Number(splitedTime[0]);
+    const minutes = Number(splitedTime[1]);
     checkHours(hours);
     checkMinutes(minutes);
     splitedTime[0] = romanMumbers[hours];

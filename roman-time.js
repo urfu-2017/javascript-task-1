@@ -28,6 +28,6 @@ function toRoman(num) {
 return num;
 }
 
-
+romanTime('24:00');
 
 module.exports = romanTime;

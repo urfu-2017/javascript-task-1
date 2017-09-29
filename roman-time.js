@@ -9,7 +9,7 @@ var ARABIC_NUMERALS = [50, 40, 10, 9, 5, 4, 1];
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time == null) {
+    if (time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
 

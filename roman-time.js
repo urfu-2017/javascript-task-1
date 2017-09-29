@@ -1,6 +1,6 @@
 'use strict';
 
-var mapToRoman = {
+const MAP_TO_ROMAN = {
     0: 'N',
     1: 'I',
     4: 'IV',
@@ -11,45 +11,43 @@ var mapToRoman = {
     50: 'L'
 };
 
-var numbersToMap = [50, 40, 10, 9, 5, 4, 1];
+const NUMBERS_TO_MAP = [50, 40, 10, 9, 5, 4, 1];
+const TIME_REG_EXP = /^([01][0-9]|2[0-3]):([0-5][0-9])$/;
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    const splittedTime = time.split(':');
-    const hours = parseInt(splittedTime[0], 10);
-    const minutes = parseInt(splittedTime[1], 10);
-    if (isNaN(hours) || isNaN(minutes) || !inRange(hours, 0, 23) || !inRange(minutes, 0, 59)) {
+    if (typeof time !== 'string' && !TIME_REG_EXP.test(time)) {
         throw new TypeError('Ошибка при парсинге времени');
     }
+
+    const splittedTime = time.match(TIME_REG_EXP);
+    const hours = parseInt(splittedTime[1], 10);
+    const minutes = parseInt(splittedTime[2], 10);
 
     return getRomanNumber(hours) + ':' + getRomanNumber(minutes);
 }
 
 function getRomanNumber(n) {
     if (n === 0) {
-        return mapToRoman[n];
+        return MAP_TO_ROMAN[n];
     }
 
     var res = '';
     var i = 0;
     while (n > 0) {
-        const arabicValue = numbersToMap[i];
+        const arabicValue = NUMBERS_TO_MAP[i];
         if (arabicValue > n) {
             i++;
         } else {
             n -= arabicValue;
-            res += mapToRoman[arabicValue];
+            res += MAP_TO_ROMAN[arabicValue];
         }
     }
 
     return res;
-}
-
-function inRange(x, start, end) {
-    return start <= x && x <= end;
 }
 
 module.exports = romanTime;

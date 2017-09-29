@@ -6,15 +6,18 @@ function error() {
 }
 
 function parseNumber(text, limit) {
+    if (text.length !== 2) {
+        error();
+    }
     let number = parseInt(text, 10);
     if (Number.isNaN(number)) {
         error();
     }
     if (number < 0 || number > limit) {
         error();
-    } else {
-        return number;
     }
+
+    return number;
 }
 
 function parseTime(time) {

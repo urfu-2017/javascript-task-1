@@ -13,7 +13,7 @@ function romanTime(time) {
     conversionZeros(result);
     result[2] = ':';
 
-    return result.join("");
+    return result.join('');
 }
 
 function validateData(time) {

@@ -11,16 +11,16 @@ var mapToRoman = {
     50: 'L'
 };
 
-var numbersToMap = [1, 4, 5, 9, 10, 40, 50];
+var numbersToMap = [50, 40, 10, 9, 5, 4, 1];
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var splittedTime = time.split(':');
-    var hours = parseInt(splittedTime[0], 10);
-    var minutes = parseInt(splittedTime[1], 10);
+    const splittedTime = time.split(':');
+    const hours = parseInt(splittedTime[0], 10);
+    const minutes = parseInt(splittedTime[1], 10);
     if (isNaN(hours) || isNaN(minutes) || !inRange(hours, 0, 23) || !inRange(minutes, 0, 59)) {
         throw new TypeError('Ошибка при парсинге времени');
     }
@@ -35,9 +35,9 @@ function getRomanNumber(n) {
 
     var res = '';
 
-    for (var i = numbersToMap.length - 1; i >= 0; i--) {
+    for (var i = 0; i < numbersToMap.length; i++) {
         var decimalValue = numbersToMap[i];
-        while (n - decimalValue >= 0) {
+        while (n >= decimalValue) {
             res += mapToRoman[decimalValue];
             n -= decimalValue;
         }
@@ -49,4 +49,5 @@ function getRomanNumber(n) {
 function inRange(x, start, end) {
     return start <= x && x <= end;
 }
+
 module.exports = romanTime;

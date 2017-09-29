@@ -1,14 +1,15 @@
-/* eslint-disable complexity,max-statements */
 'use strict';
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+const Roman1to9 = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XL', 'L'];
+const Roman10 = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+
+
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    const Roman1to9 = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XL', 'L'];
-    const Roman10 = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     let t = time.split(':', 2);
     let min = parseInt(t[1], 10);
     let hour = parseInt(t[0], 10);

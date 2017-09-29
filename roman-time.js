@@ -5,15 +5,12 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (/[^0-9:]/i.test(time)) {
-        throw new TypeError('Используются недопустимые символы');
-    }
-    var i = 0;
     var timeSplit = time.split(':');
     if (timeSplit.length > 2) {
         throw new TypeError('Слишком много разрядов');
     }
-    for (i = 0; i < timeSplit.length; i++) {
+    for (var i = 0; i < timeSplit.length; i++) {
+        checkFormat(timeSplit[i]);
         timeSplit[i] = makeRoman(timeSplit[i], i);
     }
 
@@ -35,6 +32,12 @@ function makeRoman(numString, ind) {
     }
 
     return arrayOfRom[currentNum];
+}
+
+function checkFormat(time) {
+    if (/[^0-9:]/i.test(time) || time.length != 2) {
+        throw new TypeError('Используются недопустимые символы или их слишком много');
+    }
 }
 
 module.exports = makeRoman;

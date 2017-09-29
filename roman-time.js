@@ -10,7 +10,7 @@ function romanTime(time) {
     var arabicMinutes = time.split(':')[1];
     romanDigit = arabicToRoman(arabicHours)+':'+arabicToRoman(arabicMinutes);
     function arabicToRoman(d) {
-        var dozenDigit=d[0];
+        var dozenDigit = d[0];
         dozenDigit = {
             '0': '',
             '1': 'X',
@@ -19,7 +19,7 @@ function romanTime(time) {
             '4': 'XL',
             '5': 'L'
         };
-        var unitDigit=d[1];
+        var unitDigit = d[1];
         unitDigit = {
             '0': '',
             '1': 'I',
@@ -33,7 +33,7 @@ function romanTime(time) {
             '9': 'IX'
         };
         if (d === '00') {
-            
+
             return 'N';
         }
 
@@ -44,4 +44,3 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
-

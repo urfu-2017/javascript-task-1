@@ -31,7 +31,7 @@ function romanTime(time) {
             '7': 'VII',
             '8': 'VIII',
             '9': 'IX'
-        
+        };
         if (d === '00') {
             
             return 'N';
@@ -44,3 +44,4 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
+

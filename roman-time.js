@@ -34,12 +34,14 @@ function getRomanNumber(n) {
     }
 
     var res = '';
-
-    for (var i = 0; i < numbersToMap.length; i++) {
-        var decimalValue = numbersToMap[i];
-        while (n >= decimalValue) {
-            res += mapToRoman[decimalValue];
-            n -= decimalValue;
+    var i = 0;
+    while (n > 0) {
+        const arabicValue = numbersToMap[i];
+        if (arabicValue > n) {
+            i++;
+        } else {
+            n -= arabicValue;
+            res += mapToRoman[arabicValue];
         }
     }
 

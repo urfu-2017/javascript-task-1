@@ -3,7 +3,7 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
     // Регулярное выражение под HH:MM
     if (!/^(2[0-3]|[0-1][0-9]):[0-5][0-9]$/.test(time)) { 
-            throw new TypeError('Некорректное время');
+        throw new TypeError('Некорректное время');
     }
     var romanDigit = '';
     var arabicHours = time.split(':')[0];

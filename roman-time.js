@@ -10,6 +10,7 @@ var NUMBERS_MATCHING = {
     'I': 1
 }
 
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -35,6 +36,7 @@ function romanTime(time) {
     return romanHours + ':' + romanMinutes;
 }
 
+
 function convertToRoman(number) {
     if (number === 0)
         return 'N';
@@ -49,5 +51,6 @@ function convertToRoman(number) {
 
     return romanNumber;
 }
+
 
 module.exports = romanTime;

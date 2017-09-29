@@ -9,6 +9,18 @@ function romanTime(time) {
         throw new TypeError('Используются недопустимые символы');
     }
     var i = 0;
+    var timeSplit = time.split(':');
+    if (timeSplit.length > 2) {
+        throw new TypeError('Слишком много разрядов');
+    }
+    for (i = 0; i < timeSplit.length; i++) {
+        timeSplit[i] = makeRoman(timeSplit[i], i);
+    }
+
+    return timeSplit.join(':');
+}
+
+function makeRoman(numString, ind) {
     var arrayOfRom = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
                      'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX',
                      'XX', 'XXI', 'XXII', 'XXIII', 'XXIV', 'XXV', 'XXVI', 'XXVII',
@@ -17,20 +29,13 @@ function romanTime(time) {
                      'XLII', 'XLIII', 'XLIV', 'XLV', 'XLVI', 'XLVII', 'XLVIII',
                      'XLIX', 'L', 'LI', 'LII', 'LIII', 'LIV', 'LV', 'LVI',
                      'LVII', 'LVIII', 'LIX'];
-    var timeSplit = time.split(':');
-    if (timeSplit.length > 2) {
-        throw new TypeError('Слишком много разрядов');
-    }
-    for (i = 0; i < timeSplit.length; i++) {
-        timeSplit[i] = parseInt(timeSplit[i], 10);
-        var currentNum = timeSplit[i];
-        if (currentNum > (i === 0 ? 23 : 59) || currentNum < 0) {
-            throw new TypeError('Неправильные числа');
-        }
-        timeSplit[i] = arrayOfRom[currentNum];
+    var currentNum = parseInt(numString, 10);
+    if (currentNum > (ind === 0 ? 23 : 59) || currentNum < 0) {
+        throw new TypeError('Неправильные числа');
     }
 
-    return timeSplit.join(':');
+    return arrayOfRom[currentNum];
 }
 
+module.exports = makeRoman;
 module.exports = romanTime;

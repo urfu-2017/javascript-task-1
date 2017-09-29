@@ -7,8 +7,7 @@
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-
-    if (time=='24:00'){
+    if (time==='24:00'){
         try {
             throw new TypeError('24:00');
         } catch (e) {
@@ -17,15 +16,12 @@ function romanTime(time) {
             console.log(e.name);                 // "TypeError"
         }
     }
-    if (time=='00:00')
+    if (time==='00:00'){
         time='N : N';
-
-    var d, romanDozen, romanDozenHours, romanDozanMinutes;
-    var u, romanUnit, romanUnitHours, romanUnitMinutes;
-
-    //функция перевода арабских десятков в римские десятки
+    }
+    // Функция перевода арабских десятков в римские десятки
     function arabicDozenToRoman(d){
-        switch(String(d)){//приводим к явному строчному типу
+        switch (String(d)){// Приводим к явному строчному типу
             case '0':
                 d='';
                 break;
@@ -48,10 +44,9 @@ function romanTime(time) {
         romanDozen=d;
         return romanDozen;
     }
-
-    //функция перевода арабских единиц в римские единицы
+    // Функция перевода арабских единиц в римские единицы
     function arabicUnitToRoman(u){
-        switch(String(u)){
+        switch (String(u)){
             case '0':
                 u='';
                 break;
@@ -87,21 +82,15 @@ function romanTime(time) {
         romanUnit=u;
         return romanUnit;
     }
-
     arabicDozenToRoman(time[0]);
     romanDozenHours=romanDozen;
     arabicDozenToRoman(time[3]);
     romanDozenMinutes=romanDozen;
-    
     arabicUnitToRoman(time[1]);
     romanUnitHours=romanUnit;
     arabicUnitToRoman(time[4]);
     romanUnitMinutes=romanUnit;
-
     time=String(romanDozenHours)+String(romanUnitHours)+':'+String(romanDozenMinutes)+String(romanUnitMinutes);
-    
     return time;
 }
-
 module.exports = romanTime;
-

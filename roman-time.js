@@ -1,4 +1,4 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable complexity,max-statements */
 'use strict';
 
 /**
@@ -12,23 +12,25 @@ function romanTime(time) {
     let t = time.split(':', 2);
     let min = parseInt(t[1], 10);
     let hour = parseInt(t[0], 10);
-    if (min > 59 || min < 0 || hour > 23 || hour < 0 || min === NaN || hour === NaN) {
-        console.log('TypeError: Неверное время');  
+    if (min > 59 || min < 0 || hour > 23 || hour < 0 || isNaN(min)) {
+        throw new TypeError('Неверное время: ' + time);
+    } else if (isNaN(hour)) {
+        throw new TypeError('Неверное время: ' + time);
     } else {
         let romanMin = Roman10[Math.floor(min / 10)] + Roman1to9[min % 10];
         let romanHour = Roman10[Math.floor(hour / 10)] + Roman1to9[hour % 10];
-        
-        if (min === 0 && hour !==0){
+
+        if (min === 0 && hour !== 0) {
             romanMin = 'N';
-        } else if (hour === 0 && min !==0 ) {
+        } else if (hour === 0 && min !== 0) {
             romanHour = 'N';
         } else if (min === 0 && hour === 0) {
             romanHour = 'N';
             romanMin = 'N';
         }
-        console.log(`${romanHour}:${romanMin}`);
+
+        return (`${romanHour}:${romanMin}`);
     }
-    
 }
 
 module.exports = romanTime;

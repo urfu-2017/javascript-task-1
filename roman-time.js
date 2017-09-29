@@ -6,7 +6,8 @@ function error() {
 }
 
 function parseNumber(text, limit) {
-    if (''.match(/^\d\d$/)) {
+    let regexp = /^[0-9][0-9]$/;
+    if (text.match(regexp) === null) {
         error();
     }
     let number = parseInt(text, 10);
@@ -64,3 +65,5 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
+
+romanTime("002:35");

@@ -9,11 +9,15 @@ var ARABIC_NUMERALS = [50, 40, 10, 9, 5, 4, 1];
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === null) {
+    if (time == null) {
         throw new TypeError('Неверное время');
     }
 
-    var hoursAndMinutes = time.split(':', 2);
+    var hoursAndMinutes = time.split(':');
+
+    if (hoursAndMinutes.length !== 2) {
+        throw new TypeError('Неверное время');
+    }
 
     var hours = parseInt(hoursAndMinutes[0]);
     var minutes = parseInt(hoursAndMinutes[1]);

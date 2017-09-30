@@ -1,6 +1,6 @@
 'use strict';
 
-// for (var i = 0; i < 13; i++) {
+// for (var i = 0; i < 24; i++) {
 //     for (var j = 0; j < 60; j++) {
 //         console.info(romanTime(i + ':' + j));
 //     }

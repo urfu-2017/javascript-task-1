@@ -11,8 +11,7 @@ function romanTime(time) {
 
     let ourTime = time.split(':');
 
-    if (checkTime(ourTime) || checkTimeOnStrange(ourTime) ||
-     ourTime[0].length !== 2 || ourTime[1].length !== 2) {
+    if (checkTime(ourTime) || checkTimeOnStrange(ourTime)) {
         throw new TypeError('Неверное время');
     }
 
@@ -26,7 +25,7 @@ function toRoman(num) {
 
     let Romans = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     let smallRomans = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-    if (num === '00') {
+    if (num === '00' || num === '0') {
 
         return 'N';
     }

@@ -12,9 +12,9 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // if (time === null || time === undefined) {
-    //     return new TypeError('Неверные входные данные');
-    // }
+    if (time === undefined) {
+        return new TypeError('Неверные входные данные');
+    }
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
         throw new TypeError('Bad input');

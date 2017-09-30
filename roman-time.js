@@ -41,7 +41,7 @@ function sanityCheck(hours, mins, vars0, vars1) {
 }
 function isInt(value) {
     return !isNaN(value) &&
-        parseInt(Number(value)) === value &&
+        parseInt(Number(value)) == value &&
         !isNaN(parseInt(value, 10));
 }
 function romanTime(time) {

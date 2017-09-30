@@ -5,7 +5,7 @@
 //         console.info(romanTime(i + ':' + j));
 //     }
 // }
-console.info(romanTime('-5:2'));
+// console.info(romanTime('-5:2'));
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)

@@ -12,23 +12,26 @@ function isValidTime(time) {
     return TIME_REGEXP.test(time);
 }
 
-function pushDigits(digitsStack, romanDigit, count) {
-    for (var i = 0; i < count; i++) {
-        digitsStack.push(romanDigit);
+function numberPartToResult(number, result, romanDigit, digitsCount) {
+    switch (number) {
+        case 4:
+            result += 'IV';
+            number -= 4;
+            break;
+        case 9:
+            result += 'IX';
+            number -= 9;
+            break;
+        case 40:
+            result += 'XL';
+            number -= 40;
+            break;
+        default:
+            result += romanDigit.letter.repeat(digitsCount);
+            number -= romanDigit.value * digitsCount;
     }
-}
 
-function handleFourDigits(digitsStack, romanDigit, i) {
-    var index = ROMAN_DIGITS.indexOf(digitsStack[digitsStack.length - 1]);
-
-    if (index % 2 === 0) {
-        digitsStack.pop();
-        digitsStack.push(romanDigit);
-        digitsStack.push(ROMAN_DIGITS[i - 2]);
-    } else {
-        digitsStack.push(romanDigit);
-        digitsStack.push(ROMAN_DIGITS[i - 1]);
-    }
+    return [number, result];
 }
 
 function toRoman(number) {
@@ -36,29 +39,17 @@ function toRoman(number) {
         return 'N';
     }
 
-    var digitsStack = [];
+    var result = '';
 
     for (var i = 0; i < ROMAN_DIGITS.length; i++) {
         var romanDigit = ROMAN_DIGITS[i];
         var digitsCount = Math.floor(number / romanDigit.value);
 
-        switch (digitsCount) {
-            case 0:
-                continue;
-            case 4:
-                handleFourDigits(digitsStack, romanDigit, i);
-                break;
-            default:
-                pushDigits(digitsStack, romanDigit, digitsCount);
+        if (digitsCount === 0) {
+            continue;
         }
 
-        number -= romanDigit.value * digitsCount;
-    }
-
-    var result = '';
-
-    for (var j = 0; j < digitsStack.length; j++) {
-        result += digitsStack[j].letter;
+        [number, result] = numberPartToResult(number, result, romanDigit, digitsCount);
     }
 
     return result;

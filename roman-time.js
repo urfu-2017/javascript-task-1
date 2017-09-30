@@ -13,7 +13,7 @@ function toRoman(num) {
         return 'N';
     }
     for (i in dict) {
-        if (true) {
+        if (dictionary.hasOwnProperty(key)) {
             while (num >= dict[i]) {
                 ans += i;
                 num -= dict[i];
@@ -24,8 +24,8 @@ function toRoman(num) {
     return ans;
 }
 function sanityCheck(hours, mins) {
-    return (isNaN(hours) || isNaN(mins) || hours >23 || mins > 59 ||
-    hours < 0 || mins < 0)
+    return (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 ||
+    hours < 0 || mins < 0);
 
 }
 function romanTime(time) {

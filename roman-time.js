@@ -15,20 +15,10 @@ function romanTime(time) {
     throw new TypeError('Неверное время');
 }
 
-/**
- * @param {String} time
- * @param {Integer} limit
- * @returns {Boolean}
- */
 function isValidFormat(time, limit) {
     return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit;
 }
 
-/**
- * @param {Integer} time
- * @param {String[]} keyToRoman
- * @returns {String}
- */
 function moveToRoman(time, keyToRoman) {
     var newRomanTime = '';
     console.info('i have ' + time);

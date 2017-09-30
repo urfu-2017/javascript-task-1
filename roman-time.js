@@ -15,7 +15,7 @@ function romanTime(time) {
 
 function getRoman(number) {
     var romanString = '';
-    if (number < 1) {
+    if (number === '00') {
         return 'N';
     }
     var rules = [
@@ -52,21 +52,13 @@ function getNumber(number, value, symbol) {
 }
 
 function checkInput(input) {
-    var hours = parseInt(input.split(':')[0]);
-    var minutes = parseInt(input.split(':')[1]);
-    if (hours > 23 || minutes > 59 || !isInt(hours, minutes)) {
+    var hours = input.split(':')[0];
+    var minutes = input.split(':')[1];
+    if (!/(^([01]\d|2[0-3]):?([0-5]\d)$)/.test(input)) {
         throw new TypeError('TypeError: Неверное время');
     }
 
     return hours + ':' + minutes;
-}
-
-function isInt(hours, minutes) {
-    if (isNaN(hours) || isNaN(minutes) || minutes === null || hours === null) {
-        return false;
-    }
-
-    return true;
 }
 
 module.exports = romanTime;

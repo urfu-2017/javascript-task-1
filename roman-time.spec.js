@@ -13,11 +13,11 @@ describe('Модуль roman-time', function () {
         assert.strictEqual(romanTime('00:00'), 'N:N');
     });
 
-    it('должен возвращать для 23:59 значение XXIII:LIX', function () {
-        assert.strictEqual(romanTime('23:59'), 'XXIII:LIX');
+    it('должен возвращать для 12:30 значение XII:XXX', function () {
+        assert.strictEqual(romanTime('12:30'), 'XII:XXX');
     });
 
-    it('должен выбрасывать исключение TypeError для 24:00', function () {
-        assert.throws(romanTime.bind(null, '24:00'), TypeError);
+    it('должен выбрасывать исключение TypeError для 0:29', function () {
+        assert.throws(romanTime.bind(null, '0:29'), TypeError);
     });
 });

@@ -16,7 +16,7 @@ var NUMBERS_ARRAY = [
     },
     {
         roman: 'IX',
-        arabic: '9'
+        arabic: 9
     },
     {
         roman: 'X',

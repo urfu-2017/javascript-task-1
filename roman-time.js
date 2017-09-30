@@ -7,33 +7,38 @@
 
 function toRoman(num) {
     var ans = '';
-    var dict = { L:50, XL:40, X:10, IX:9, V:5, IV:4, I:1 };
+    var dict = { L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
     var i;
     if (num === 0) {
         return 'N';
     }
     for (i in dict) {
-        while (num >= dict[i]) {
-            ans += i;
-            num -= dict[i];
+        if (true) {
+            while (num >= dict[i]) {
+                ans += i;
+                num -= dict[i];
+            }
         }
     }
-    
+
     return ans;
 }
+function sanityCheck(hours, mins) {
+    return (isNaN(hours) || isNaN(mins) || hours >23 || mins > 59 ||
+    hours < 0 || mins < 0)
 
+}
 function romanTime(time) {
     var vars = time.split(':');
     var hours = parseInt(vars[0]);
     var mins = parseInt(vars[1]);
-    var ans; 
-    if (isNaN(hours)||isNaN(mins)|| hours >23 || mins > 59 ||
-        hours < 0 || mins < 0) {
+    var ans;
+    if (sanityCheck(hours, mins)) {
         throw new TypeError('Incorrect input!');
-    }else{
-        ans = toRoman(hours)+':'+toRoman(mins);
+    } else {
+        ans = toRoman(hours) + ':' + toRoman(mins);
     }
-    
+
     return ans;
 }
 

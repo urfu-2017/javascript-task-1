@@ -36,7 +36,7 @@ function toRoman1(num) {
 }
 function sanityCheck(hours, mins, vars) {
     return (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 ||
-    hours < 0 || vars.length > 2);
+    hours < 0 || mins < 0 );
 
 }
 function romanTime(time) {
@@ -44,7 +44,7 @@ function romanTime(time) {
     var hours = parseInt(vars[0]);
     var mins = parseInt(vars[1]);
     var ans;
-    if (sanityCheck(hours, mins, vars)) {
+    if (sanityCheck(hours, mins, vars) || vars.length > 2) {
         throw new TypeError('Incorrect input!');
     } else {
         ans = toRoman(hours) + ':' + toRoman(mins);

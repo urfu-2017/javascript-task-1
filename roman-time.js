@@ -4,10 +4,14 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+
 function toRoman(num) {
     var ans = '';
     var dict = {L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1};
     var i;
+    if(num == 0){
+        return 'N';
+    }
     for ( i in dict ) {
         while ( num >= dict[i] ) {
             ans += i;

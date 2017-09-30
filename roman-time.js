@@ -5,13 +5,13 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time[2] !== ':') {
-        throw new TypeError('Неверный разделитель');
-    }
 
     let ourTime = time.split(':');
+    if (time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
 
-    if (checkTime(ourTime) || checkTimeOnStrange(ourTime)) {
+    if (checkTime(ourTime)) {
         throw new TypeError('Неверное время');
     }
 
@@ -38,15 +38,6 @@ function checkTime(ourTime) {
 
     if (ourTime[0] > 23 || ourTime[0] < 0 || ourTime[1] > 59 || ourTime[1] < 0) {
 
-        return true;
-    }
-
-    return false;
-}
-
-function checkTimeOnStrange(ourTime) {
-
-    if (isNaN(ourTime[0]) || isNaN(ourTime[1]) || ourTime[0] === null || ourTime[1] === null) {
         return true;
     }
 

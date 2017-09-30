@@ -12,31 +12,13 @@ function isValidTime(time) {
     return TIME_REGEXP.test(time);
 }
 
-function pushDigits(digitsStack, romanDigit, count) {
-    for (var i = 0; i < count; i++) {
-        digitsStack.push(romanDigit);
-    }
-}
-
-function handleFourDigits(digitsStack, romanDigit, i) {
-    var index = ROMAN_DIGITS.indexOf(digitsStack[digitsStack.length - 1]);
-
-    if (index % 2 === 0) {
-        digitsStack.pop();
-        digitsStack.push(romanDigit);
-        digitsStack.push(ROMAN_DIGITS[i - 2]);
-    } else {
-        digitsStack.push(romanDigit);
-        digitsStack.push(ROMAN_DIGITS[i - 1]);
-    }
-}
-
 function toRoman(number) {
     if (number === 0) {
         return 'N';
     }
 
-    var digitsStack = [];
+    var result = '';
+    var isPrevNumberStartWithNine = false;
 
     for (var i = 0; i < ROMAN_DIGITS.length; i++) {
         var romanDigit = ROMAN_DIGITS[i];
@@ -46,19 +28,16 @@ function toRoman(number) {
             case 0:
                 continue;
             case 4:
-                handleFourDigits(digitsStack, romanDigit, i);
+                result = isPrevNumberStartWithNine
+                ? result.slice(0, -1) + romanDigit.letter + ROMAN_DIGITS[i - 2].letter
+                : result + romanDigit.letter + ROMAN_DIGITS[i - 1].letter;
                 break;
             default:
-                pushDigits(digitsStack, romanDigit, digitsCount);
+                result += romanDigit.letter.repeat(digitsCount);
         }
 
+        isPrevNumberStartWithNine = number.toString()[0] === '9';
         number -= romanDigit.value * digitsCount;
-    }
-
-    var result = '';
-
-    for (var j = 0; j < digitsStack.length; j++) {
-        result += digitsStack[j].letter;
     }
 
     return result;

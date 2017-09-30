@@ -7,11 +7,8 @@
 function romanTime(time) {
 
     let ourTime = time.split(':');
-    if (time.length !== 5) {
-        throw new TypeError('Неверное время');
-    }
 
-    if (checkTime(ourTime)) {
+    if (checkTime(ourTime) || checkTimeOnStrange(ourTime) || time.length !== 5) {
         throw new TypeError('Неверное время');
     }
 
@@ -38,6 +35,15 @@ function checkTime(ourTime) {
 
     if (ourTime[0] > 23 || ourTime[0] < 0 || ourTime[1] > 59 || ourTime[1] < 0) {
 
+        return true;
+    }
+
+    return false;
+}
+
+function checkTimeOnStrange(ourTime) {
+
+    if (isNaN(ourTime[0]) || isNaN(ourTime[1]) || ourTime[0] === null || ourTime[1] === null) {
         return true;
     }
 

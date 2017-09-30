@@ -5,6 +5,7 @@
 //         console.info(romanTime(i + ':' + j));
 //     }
 // }
+//  console.info(romanTime('5:2:5'));
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -15,6 +16,9 @@ function romanTime(time) {
     //     return new TypeError('Неверные входные данные');
     // }
     var splittedTime = time.split(':');
+    if (splittedTime.length !== 2) {
+        throw new TypeError('Bad input');
+    }
     var keyToRoman = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     var newHour = parseInt(splittedTime[0], 10);
     var newMinute = parseInt(splittedTime[1], 10);
@@ -25,7 +29,7 @@ function romanTime(time) {
 }
 
 function isValidFormat(time, limit) {
-    return (!isNaN(parseInt(time, 10)) || time >= 0) && time < limit;
+    return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit;
 }
 
 function moveToRoman(time, keyToRoman) {

@@ -85,7 +85,7 @@ function checkHours(hoursInStr) {
     if (hoursInStr.length > 2) {
         throw new TypeError('Часы должны быть заданы не более, чем 2-мя цифрами');
     }
-    var hours = parseInt(hoursInStr, 10);
+    var hours = Number(hoursInStr);
     if (!Number.isInteger(hours)) {
         throw new TypeError('Часы должны быть целым числом');
     }
@@ -99,7 +99,7 @@ function checkMinutes(minutesInStr) {
     if (minutesInStr.length > 2) {
         throw new TypeError('Минуты должны быть заданы не более, чем 2-мя цифрами');
     }
-    var minutes = parseInt(minutesInStr, 10);
+    var minutes = Number(minutesInStr);
     if (!Number.isInteger(minutes)) {
         throw new TypeError('Минуты должны быть целым числом');
     }

@@ -34,9 +34,9 @@ function toRoman1(num) {
         }
     }
 }
-function sanityCheck(hours, mins, vars) {
+function sanityCheck(hours, mins) {
     return (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 ||
-    hours < 0 || mins < 0 );
+    hours < 0 || mins < 0);
 
 }
 function romanTime(time) {

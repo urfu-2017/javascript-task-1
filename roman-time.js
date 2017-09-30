@@ -1,13 +1,19 @@
 'use strict';
 
+// for (var i = 0; i < 13; i++) {
+//     for (var j = 0; j < 60; j++) {
+//         console.info(romanTime(i + ':' + j));
+//     }
+// }
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === null || time === undefined) {
-        return new TypeError('Неверные входные данные');
-    }
+    // if (time === null || time === undefined) {
+    //     return new TypeError('Неверные входные данные');
+    // }
     var splittedTime = time.split(':');
     var keyToRoman = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     var newHour = parseInt(splittedTime[0], 10);
@@ -36,7 +42,11 @@ function moveToRoman(time, keyToRoman) {
         newRomanTime += 'X';
         time -= 10;
     }
+    if (time === 0) {
+        return newRomanTime;
+    }
 
     return newRomanTime + keyToRoman[time];
+
 }
 module.exports = romanTime;

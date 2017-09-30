@@ -52,6 +52,9 @@ function getNumber(number, value, symbol) {
 }
 
 function checkInput(input) {
+    if (typeof input !== 'string') {
+        throw new TypeError('TypeError: Неверное время');
+    }
     var hours = input.split(':')[0];
     var minutes = input.split(':')[1];
     if (!/(^([01]\d|2[0-3]):?([0-5]\d)$)/.test(input)) {

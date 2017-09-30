@@ -34,17 +34,22 @@ function toRoman1(num) {
         }
     }
 }
-function sanityCheck(hours, mins) {
-    return (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 ||
+function sanityCheck(hours, mins, vars0, vars1) {
+    return (!isInt(vars0) || !isInt(vars1) || hours > 23 || mins > 59 ||
     hours < 0 || mins < 0);
 
+}
+function isInt(value) {
+    return !isNaN(value) &&
+        parseInt(Number(value)) == value &&
+        !isNaN(parseInt(value, 10));
 }
 function romanTime(time) {
     var vars = time.split(':');
     var hours = parseInt(vars[0]);
     var mins = parseInt(vars[1]);
     var ans;
-    if (sanityCheck(hours, mins, vars) || vars.length > 2) {
+    if (sanityCheck(hours, mins, vars[0], vars[1]) || vars.length > 2) {
         throw new TypeError('Incorrect input!');
     } else {
         ans = toRoman(hours) + ':' + toRoman(mins);
@@ -52,4 +57,10 @@ function romanTime(time) {
 
     return ans;
 }
+function myJsFunction(){
+    var text=document.getElementById('input1').value;
+    var time = romanTime(text);
+    document.write(time);
+}
+
 module.exports = romanTime;

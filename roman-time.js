@@ -12,26 +12,23 @@ function isValidTime(time) {
     return TIME_REGEXP.test(time);
 }
 
-function numberPartToResult(number, result, romanDigit, digitsCount) {
-    switch (number) {
-        case 4:
-            result += 'IV';
-            number -= 4;
-            break;
-        case 9:
-            result += 'IX';
-            number -= 9;
-            break;
-        case 40:
-            result += 'XL';
-            number -= 40;
-            break;
-        default:
-            result += romanDigit.letter.repeat(digitsCount);
-            number -= romanDigit.value * digitsCount;
+function pushDigits(digitsStack, romanDigit, count) {
+    for (var i = 0; i < count; i++) {
+        digitsStack.push(romanDigit);
     }
+}
 
-    return [number, result];
+function handleFourDigits(digitsStack, romanDigit, i) {
+    var index = ROMAN_DIGITS.indexOf(digitsStack[digitsStack.length - 1]);
+
+    if (index % 2 === 0) {
+        digitsStack.pop();
+        digitsStack.push(romanDigit);
+        digitsStack.push(ROMAN_DIGITS[i - 2]);
+    } else {
+        digitsStack.push(romanDigit);
+        digitsStack.push(ROMAN_DIGITS[i - 1]);
+    }
 }
 
 function toRoman(number) {
@@ -39,20 +36,42 @@ function toRoman(number) {
         return 'N';
     }
 
-    var result = '';
+    var digitsStack = [];
 
     for (var i = 0; i < ROMAN_DIGITS.length; i++) {
         var romanDigit = ROMAN_DIGITS[i];
         var digitsCount = Math.floor(number / romanDigit.value);
 
-        if (digitsCount === 0) {
-            continue;
+        switch (digitsCount) {
+            case 0:
+                continue;
+            case 4:
+                handleFourDigits(digitsStack, romanDigit, i);
+                break;
+            default:
+                pushDigits(digitsStack, romanDigit, digitsCount);
         }
 
-        [number, result] = numberPartToResult(number, result, romanDigit, digitsCount);
+        number -= romanDigit.value * digitsCount;
+    }
+
+    var result = '';
+
+    for (var j = 0; j < digitsStack.length; j++) {
+        result += digitsStack[j].letter;
     }
 
     return result;
+}
+
+function parseTime(time) {
+    if (typeof(time) === 'string' && isValidTime(time)) {
+        var parsedTime = time.split(':');
+
+        return [parseInt(parsedTime[0], 10), parseInt(parsedTime[1], 10)];
+    }
+
+    throw new TypeError('Неверное время');
 }
 
 /**
@@ -60,15 +79,9 @@ function toRoman(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (isValidTime(time)) {
-        var hoursAndMinutes = time.split(':');
-        var hours = parseInt(hoursAndMinutes[0], 10);
-        var minutes = parseInt(hoursAndMinutes[1], 10);
+    var [hours, minutes] = parseTime(time);
 
-        return toRoman(hours) + ':' + toRoman(minutes);
-    }
-
-    throw new TypeError('Неверное время');
+    return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 module.exports = romanTime;

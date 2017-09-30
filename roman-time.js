@@ -37,7 +37,6 @@ function getRoman(number) {
     }
 
     return romanString;
-
 }
 
 

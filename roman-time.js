@@ -5,16 +5,21 @@
 //         console.info(romanTime(i + ':' + j));
 //     }
 // }
-//  console.info(romanTime('5:2:5'));
+console.info(romanTime('-5:2'));
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time === undefined) {
-        return new TypeError('Неверные входные данные');
+    // if (time === null || time === undefined) {
+    //     return new TypeError('Неверные входные данные');
+    // }
+    if (typeof time !== 'string') {
+        throw new TypeError('Bad input');
     }
+
+
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
         throw new TypeError('Bad input');

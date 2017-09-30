@@ -17,8 +17,13 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
 
-    var hours = parseInt(hoursAndMinutes[0]);
-    var minutes = parseInt(hoursAndMinutes[1]);
+    var pattern = /\D/;
+    if (pattern.test(hoursAndMinutes[0]) || pattern.test(hoursAndMinutes[1])) {
+        throw new TypeError('Неверное время');
+    }
+
+    var hours = parseInt(hoursAndMinutes[0], 10);
+    var minutes = parseInt(hoursAndMinutes[1], 10);
 
     if (isNaN(hours) || isNaN(minutes)) {
         throw new TypeError('Неверное время');

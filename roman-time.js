@@ -40,9 +40,9 @@ function sanityCheck(hours, mins, vars0, vars1) {
 
 }
 function isInt(value) {
-    return !isNaN(value) &&
-        parseInt(Number(value)) == value &&
-        !isNaN(parseInt(value, 10));
+    var er = /^-?[0-9]+$/;
+
+    return er.test(value);
 }
 function romanTime(time) {
     var vars = time.split(':');

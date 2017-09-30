@@ -1,10 +1,10 @@
 'use strict';
 
-for (var i = 0; i < 13; i++) {
-    for (var j = 0; j < 60; j++) {
-        console.info(romanTime(i + ':' + j));
-    }
-}
+// for (var i = 0; i < 13; i++) {
+//     for (var j = 0; j < 60; j++) {
+//         console.info(romanTime(i + ':' + j));
+//     }
+// }
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -25,7 +25,7 @@ function romanTime(time) {
 }
 
 function isValidFormat(time, limit) {
-    return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit;
+    return (!isNaN(parseInt(time, 10)) || time >= 0) && time < limit;
 }
 
 function moveToRoman(time, keyToRoman) {

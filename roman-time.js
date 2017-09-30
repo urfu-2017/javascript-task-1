@@ -5,6 +5,9 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    if (time === null || time === undefined) {
+        return new TypeError('Неверные входные данные');
+    }
     var splittedTime = time.split(':');
     var keyToRoman = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     var newHour = parseInt(splittedTime[0], 10);
@@ -15,24 +18,12 @@ function romanTime(time) {
     throw new TypeError('Неверное время');
 }
 
-/**
- * @param {String} time
- * @param {Integer} limit
- * @returns {Boolean}
- */
 function isValidFormat(time, limit) {
     return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit;
 }
 
-/**
- * @param {Integer} time
- * @param {String[]} keyToRoman
- * @returns {String}
- */
 function moveToRoman(time, keyToRoman) {
     var newRomanTime = '';
-    console.info('i have ' + time);
-    console.info('my key is ' + keyToRoman);
 
     if (time <= 10) {
         return keyToRoman[time];

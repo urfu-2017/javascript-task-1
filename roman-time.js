@@ -5,23 +5,34 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
+var romanMatrix = [
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I']
+];
 function toRoman(num) {
-    var ans = '';
-    var dict = { L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
-    var i;
     if (num === 0) {
         return 'N';
     }
-    for (i in dict) {
-        if (dictionary.hasOwnProperty(key)) {
-            while (num >= dict[i]) {
-                ans += i;
-                num -= dict[i];
-            }
+    for (var i = 0; i < romanMatrix.length; i++) {
+        if (num >= romanMatrix[i][0]) {
+            return romanMatrix[i][1] + toRoman1(num - romanMatrix[i][0]);
         }
     }
-
-    return ans;
+}
+function toRoman1(num) {
+    if (num === 0) {
+        return '';
+    }
+    for (var i = 0; i < romanMatrix.length; i++) {
+        if (num >= romanMatrix[i][0]) {
+            return romanMatrix[i][1] + toRoman1(num - romanMatrix[i][0]);
+        }
+    }
 }
 function sanityCheck(hours, mins) {
     return (isNaN(hours) || isNaN(mins) || hours > 23 || mins > 59 ||
@@ -41,5 +52,4 @@ function romanTime(time) {
 
     return ans;
 }
-
 module.exports = romanTime;

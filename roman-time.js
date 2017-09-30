@@ -15,7 +15,7 @@ function romanTime(time) {
 
 function getRoman(number) {
     var romanString = '';
-    if (number === '00') {
+    if (number === '00' || number === '0') {
         return 'N';
     }
     var rules = [
@@ -57,7 +57,7 @@ function checkInput(input) {
     }
     var hours = input.split(':')[0];
     var minutes = input.split(':')[1];
-    if (!/(^([01]\d|2[0-3]):?([0-5]\d)$)/.test(input)) {
+    if (!/(^([0-1]?\d|2[0-3]):([0-5]\d)(:[0-5]\d)?$)/.test(input)) {
         throw new TypeError('TypeError: Неверное время');
     }
 

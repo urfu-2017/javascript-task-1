@@ -7,6 +7,7 @@
 // }
 //console.info(romanTime('23:40'));
 
+
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
@@ -18,8 +19,6 @@ function romanTime(time) {
     if (typeof time !== 'string') {
         throw new TypeError('Bad input');
     }
-
-
     var splittedTime = time.split(':');
     if (splittedTime.length !== 2) {
         throw new TypeError('Bad input');

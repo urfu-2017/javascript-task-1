@@ -5,17 +5,20 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
+    validateInput(time);
+    const [hours, minutes] = time.split(':').map(s => parseInt(s, 10));
+
+    if (hours >= 0 && minutes >= 0 && hours < 24 && minutes < 60) {
+        return toRoman(hours) + ':' + toRoman(minutes);
+    }
+
+    throw new TypeError('Неверное время');
+}
+
+function validateInput(time) {
     if (time === undefined || time === null || time.length !== 5) {
         throw new TypeError('Неверное время');
     }
-
-    const [hours, minutes] = time.split(':').map(s => parseInt(s, 10));
-    if (hours < 0 || minutes < 0 || hours > 23 || minutes > 59 ||
-        isNaN(hours) || isNaN(minutes)) {
-        throw new TypeError('Неверное время');
-    }
-
-    return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 function toRoman(num) {

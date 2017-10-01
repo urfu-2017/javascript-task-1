@@ -40,7 +40,7 @@ function isValidFormat(time) {
     if (typeof (time) !== 'string' && !(time instanceof String)) {
         return false;
     }
-    if (!time.match(/\d\d:\d\d/)) {
+    if (!time.match(/^\d\d:\d\d$/)) {
         return false;
     }
     var [hours, minutes] = parseTime(time);

@@ -25,14 +25,14 @@ function romanTime(time) {
 }
 
 function firstChanger(numFirst) {
-    let romanFirst = ['','X','XX','XXX','XL','L']
+    let romanFirst = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 
     return romanFirst[numFirst];
 }
 
 function secondChanger(numSecond) {
-    let romanSecond = ['','I','II','III','IV','V','VI','VII','VIII','IX']
-    
+    let romanSecond = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+
     return romanSecond[numSecond];
 }
 

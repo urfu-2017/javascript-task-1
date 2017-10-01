@@ -8,21 +8,27 @@ function romanTime(time) {
     if (time) {
         const hour = Number(time.split(':')[0]);
         const minute = Number(time.split(':')[1]);
-        if (time.split(':')[0] == '0' || time.split(':')[1] == '0') throw new TypeError('Error!');
-        if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60) {
-            let answer = '';
-            answer += hour === 0 ? 'N' : firstChanger(parseInt(hour / 10)) +
-                                            secondChanger(hour % 10);
-            answer += ':';
-            answer += minute === 0 ? 'N' : firstChanger(parseInt(minute / 10)) +
-                                            secondChanger(minute % 10);
-
-            return answer;
+        if (time.split(':')[0] === '0' || time.split(':')[1] === '0') {
+            throw new TypeError('Error!');
         }
-        throw new TypeError('Error!');
+        return changer(hour, minute);
     } else {
         throw new TypeError('Error!');
     }
+}
+
+function changer(hour, minute) {
+    if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60) {
+        let answer = '';
+        answer += hour === 0 ? 'N' : firstChanger(parseInt(hour / 10)) +
+                                        secondChanger(hour % 10);
+        answer += ':';
+        answer += minute === 0 ? 'N' : firstChanger(parseInt(minute / 10)) +
+                                        secondChanger(minute % 10);
+
+        return answer;
+    }
+    throw new TypeError('Error!');
 }
 
 function firstChanger(numFirst) {

@@ -52,6 +52,9 @@ function changeTime(hours, minutes) {
 }
 
 function romanTime(time) {
+    if (time === null || time === undefined) {
+        throw new TypeError();
+    }
     time = time.split(':');
     let hours = parseTime(time, 0);
     let minutes = parseTime(time, 1);

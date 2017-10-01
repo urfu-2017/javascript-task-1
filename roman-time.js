@@ -11,10 +11,10 @@ function romanTime(time) {
         if (time.split(':')[0] === '0' || time.split(':')[1] === '0') {
             throw new TypeError('Error!');
         }
+        
         return changer(hour, minute);
-    } else {
-        throw new TypeError('Error!');
     }
+    throw new TypeError('Error!');
 }
 
 function changer(hour, minute) {

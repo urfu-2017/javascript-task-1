@@ -16,7 +16,8 @@ function romanTime(time) {
 }
 
 function validateInput(time) {
-    if (time === undefined || time === null || time.length !== 5) {
+    var timeFormat = /^[0-9]{2}:[0-9]{2}$/;
+    if (time === undefined || time === null || !timeFormat.test(time)) {
         throw new TypeError('Неверное время');
     }
 }

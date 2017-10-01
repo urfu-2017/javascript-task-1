@@ -30,21 +30,24 @@ function validateTime(time) {
 
 function romanize(digit) {
 
-    var lookup = { L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1, N: 0 };
-    var roman = '';
-    var i;
+    if (digit === '00') {
 
-    for (i in lookup) {
-        while (digit >= lookup[i]) {
-            if (digit === 0) {
-                break;
-            }
-            roman += i;
-            digit -= lookup[i];
+        return ('N');
+    }
+    var roman = '';
+    var romanDigits = [50, 40, 10, 9, 5, 4, 1];
+    var arabicDigits = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+
+    for (var i = 0; i < romanDigits.length; i++) {
+        while (digit >= romanDigits[i]) {
+            roman += arabicDigits[i];
+            digit -= romanDigits[i];
         }
     }
 
     return roman;
+
 }
+
 
 module.exports = romanTime;

@@ -12,7 +12,7 @@ function romanTime(time) {
     const [hours, minutes] = time.split(':').map(s => parseInt(s, 10));
     if (hours < 0 || minutes < 0 || hours > 23 || minutes > 59 ||
         isNaN(hours) || isNaN(minutes)) {
-            throw new TypeError('Неверное время');
+        throw new TypeError('Неверное время');
     }
 
     return toRoman(hours) + ':' + toRoman(minutes);

@@ -15,7 +15,7 @@ function parseTime(time, iter) {
     let parsedNum = parseInt(time[iter], 10);
 
     if (isNaN(parsedNum)) {
-        throw TypeError;
+        throw new TypeError();
     }
 
     return parsedNum;
@@ -41,7 +41,7 @@ function arabToRoman(tens, units) {
 
 function changeTime(hours, minutes) {
     if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-        throw TypeError;
+        throw new TypeError();
     }
     let tensHour = div(hours, 10);
     let unitsHour = hours % 10;
@@ -58,8 +58,8 @@ function romanTime(time) {
         let minutes = parseTime(time, 1);
 
         return changeTime(hours, minutes);
-    } catch (err) {
-        return 'TypeError: Неверное время';
+    } catch (TypeError) {
+        return 'TypeError: Неверное время.'
     }
 }
 

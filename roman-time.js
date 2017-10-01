@@ -17,7 +17,7 @@ function parseTime(time, iter) {
     if (isNaN(parsedNum)) {
         throw TypeError;
     }
-    
+
     return parsedNum;
 }
 
@@ -47,7 +47,7 @@ function changeTime(hours, minutes) {
     let unitsHour = hours % 10;
     let tensMinutes = div(minutes, 10);
     let unitsMinutes = minutes % 10;
-    
+
     return arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
 }
 
@@ -56,7 +56,7 @@ function romanTime(time) {
         time = time.split(':');
         let hours = parseTime(time, 0);
         let minutes = parseTime(time, 1);
-        
+
         return changeTime(hours, minutes);
     } catch (err) {
         return 'TypeError: Неверное время';

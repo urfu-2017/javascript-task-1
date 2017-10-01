@@ -36,4 +36,8 @@ describe('Модуль roman-time', function () {
     it('должен выбрасывать исключение TypeError для undefined', function () {
         assert.throws(romanTime.bind(null, undefined), TypeError);
     });
+
+    it('должен выбрасывать исключение TypeError для 14:001', function () {
+        assert.throws(romanTime.bind(null, '14:001'), TypeError);
+    });
 });

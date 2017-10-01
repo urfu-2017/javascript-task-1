@@ -24,15 +24,13 @@ function initDictionary() {
 }
 
 function parseInput(time) {
-    if (time === null || time === undefined) {
+    let pattern = /^(\d+):(\d+)$/;
+    let match = pattern.exec(time);
+    if (match === null) {
         throw new TypeError('Time format is invalid');
     }
-    let splitted = time.split(':');
-    if (splitted.length < 2) {
-        throw new TypeError('Time format is invalid');
-    }
-    let hours = parseInt(splitted[0]);
-    let minutes = parseInt(splitted[1]);
+    let hours = parseInt(match[1]);
+    let minutes = parseInt(match[2]);
     if (!hoursAreValid(hours) || !minutesAreValid(minutes)) {
         throw new TypeError('Time format is invalid');
     }

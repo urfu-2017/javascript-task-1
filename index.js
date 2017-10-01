@@ -15,4 +15,4 @@ console.info(romanTime('23:59'));
 console.info(romanTime('24:00'));
 
 console.info(romanTime('12:125'));
-
+console.info(romanTime(':'));

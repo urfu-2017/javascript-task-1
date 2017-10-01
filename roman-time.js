@@ -7,6 +7,9 @@
 function romanTime(time) {
     checkInput(time);
     var numbers = time.split(':');
+    if (numbers[0].length !== 2 || numbers[1].length !== 2) {
+        throw new TypeError('Invalid time format');
+    }
     var firstNumber = parseInt(numbers[0]);
     var secondNumber = parseInt(numbers[1]);
     if (isNaN(firstNumber) || isNaN(secondNumber)) {

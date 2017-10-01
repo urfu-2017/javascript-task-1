@@ -23,12 +23,16 @@ function toRomanNumbers(arabic) {
 
 
 function romanTime(time) {
-    var hours = time.split(':')[0];
-    var minutes = time.split(':')[1];
-    if (isNaN (hours) && isNaN (minutes) && hours.lengs !== 2 && hours.lengs !== 2) {
-        throw new TypeError();
-    } else if ((hours < 24 && hours >= 0) && (minutes < 60 && minutes >= 0)) {
-        time = toRomanNumbers(hours) + ':' + toRomanNumbers(minutes);
+    if (time.split(':').length === 2) {
+        var hours = time.split(':')[0];
+        var minutes = time.split(':')[1];
+        if (isNaN (hours) && isNaN (minutes) && hours.lengs !== 2 && hours.lengs !== 2) {
+            throw new TypeError();
+        } else if ((hours < 24 && hours >= 0) && (minutes < 60 && minutes >= 0)) {
+            time = toRomanNumbers(hours) + ':' + toRomanNumbers(minutes);
+        } else {
+            throw new TypeError();
+        }
     } else {
         throw new TypeError();
     }

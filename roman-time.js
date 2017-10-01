@@ -5,7 +5,7 @@
 //         console.info(romanTime(i + ':' + j));
 //     }
 // }
-// console.info(romanTime('23:40'));
+console.info(romanTime('23:23'));
 
 
 /**
@@ -24,8 +24,10 @@ function romanTime(time) {
         throw new TypeError('Bad input');
     }
     var keyToRoman = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-    var newHour = parseInt(splittedTime[0], 10);
-    var newMinute = parseInt(splittedTime[1], 10);
+    var newHour = Number(splittedTime[0]);
+    var newMinute = Number(splittedTime[1]);
+    // var newHour = parseInt(splittedTime[0], 10);
+    // var newMinute = parseInt(splittedTime[1], 10);
     if (isValidFormat(newHour, 24) && isValidFormat(newMinute, 60)) {
         return moveToRoman(newHour, keyToRoman) + ':' + moveToRoman(newMinute, keyToRoman);
     }
@@ -33,7 +35,7 @@ function romanTime(time) {
 }
 
 function isValidFormat(time, limit) {
-    return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit;
+    return !isNaN(parseInt(time, 10)) && time >= 0 && time < limit && Number.isInteger(time);
 }
 
 function moveToRoman(time, keyToRoman) {

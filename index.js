@@ -13,3 +13,7 @@ console.info(romanTime('23:59'));
 
 // Выбросится ошибка [TypeError: Неверное время]
 console.info(romanTime('24:00'));
+
+console.info(romanTime('12:125'));
+console.info(romanTime(':'));
+console.info(romanTime('true:true'));

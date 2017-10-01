@@ -25,8 +25,7 @@ function toRomanNumbers(arabic) {
 function romanTime(time) {
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];
-    if (isNaN (hours) && isNaN (minutes) &&
-            parseInt (hours) !== hours && parseInt (minutes) !== minutes) {
+    if (isNaN (hours) && isNaN (minutes) && hours.lengs !== 2 && hours.lengs !== 2) {
         throw new TypeError();
     } else if ((hours < 24 && hours >= 0) && (minutes < 60 && minutes >= 0)) {
         time = toRomanNumbers(hours) + ':' + toRomanNumbers(minutes);

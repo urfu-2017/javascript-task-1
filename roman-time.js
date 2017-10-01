@@ -45,11 +45,10 @@ function changeTime(hours, minutes) {
         let unitsHour = hours % 10;
         let tensMinutes = div(minutes, 10);
         let unitsMinutes = minutes % 10;
-        
+    
         return arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
-    } else {
-        throw new TypeError();
     }
+    throw new TypeError();
 }
 
 function romanTime(time) {

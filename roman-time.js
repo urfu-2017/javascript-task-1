@@ -4,7 +4,7 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  */
 function checkCorrectTime(time) {
-    if (typeof time !== 'string' || time.length !== 5) {
+    if (typeof time !== 'string' || !(/^\d\d:\d\d$/.test(time))) {
         throw new TypeError('Некорректно задано время!');
     }
 }

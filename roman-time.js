@@ -12,17 +12,17 @@ function isValidation(hour, minute) {
 }
 
 function numberToriman(hour, minut) {
-    var result = '';
+    var res = '';
     var romanUnits = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var romanDozens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 
-    result = (hour === 0) ? 'N' : (romanDozens[(hour - hour % 10) / 10] + romanUnits[hour % 10]);
+    res = (hour === 0) ? 'N' : (romanDozens[(hour - hour % 10) / 10] + romanUnits[hour % 10]);
 
-    result += ':';
+    res += ':';
 
-    result += (minut === 0) ? 'N' : (romanDozens[(minut - minut % 10) / 10] + romanUnits[minut % 10]);
+    res += (minut === 0) ? 'N' : (romanDozens[(minut - minut % 10) / 10] + romanUnits[minut % 10]);
 
-    return result;
+    return res;
 }
 
 function romanTime(time) {
@@ -37,7 +37,7 @@ function romanTime(time) {
     } else {
         throw new TypeError('Неверное время');
     }
-    
+
     return time;
 }
 

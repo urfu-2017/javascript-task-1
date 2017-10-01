@@ -32,7 +32,7 @@ function returnRomanTime(number) {
         return 'XXX' + getSecondPart(secondPart);
     }
     if (firstPart === '4') {
-        return 'LX' + getSecondPart(secondPart);
+        return 'XL' + getSecondPart(secondPart);
     }
     if (firstPart === '5') {
         return 'L' + getSecondPart(secondPart);

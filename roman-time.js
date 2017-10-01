@@ -5,15 +5,15 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-function div(num, by) { 
-    // Целочисленное деление
+function div(num, by) {
+
     return (num - num % by) / by;
 }
 
-function parseTime(time, iter) {   
-    // Разделение времени на часы и минуты 
+function parseTime(time, iter) {
+
     let parsedNum = parseInt(time[iter], 10);
-    
+
     if (isNaN(parsedNum)) {
         throw TypeError;
     } 
@@ -23,33 +23,19 @@ function parseTime(time, iter) {
 
 function arabToRoman(tens, units) {
     let romanNums = {
-        0:"",
-        1:"I",
-        2:"II",
-        3:"III",
-        4:"IV",
-        5:"V",
-        6:"VI",
-        7:"VII",
-        8:"VIII",
-        9:"IX",
-        10:"X",
-        20:"XX",
-        30:"XXX",
-        40:"XL",
-        50:"L"
+        0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII', 8: 'VIII', 9: 'IX', 10: 'X', 20: 'XX', 30: 'XXX', 40: 'XL', 50: 'L'
     }
 
-    let romanTime = '';
+    let string = '';
 
     if (tens === 0 && units === 0) {
-        romanTime += 'N';
+        string += 'N';
     } else {
-        romanTime += romanNums[tens * 10];
-        romanTime += romanNums[units];
+        string += romanNums[tens * 10];
+        string += romanNums[units];
     }
 
-    return romanTime;
+    return string;
 }
 
 function changeTime(hours, minutes) {
@@ -76,7 +62,7 @@ function romanTime(time) {
     
         return changeTime(hours, minutes);
 
-    } catch (TypeError) {
+    } catch (err) {
         return 'TypeError: Неверное время';
     }
 }

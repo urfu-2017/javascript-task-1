@@ -14,7 +14,10 @@ function romanTime(time) {
             let hourSecond = hour[1];
             let minuteFirst = minute[0];
             let minuteSecond = minute[1];
-            answerRoman = answerRoman + romanChanger(hourFirst,hourSecond) + ':' + romanChanger(minuteFirst,minuteSecond);
+            answerRoman = answerRoman + romanChanger(hourFirst, hourSecond) 
+                                        + ':' 
+                                        + romanChanger(minuteFirst, minuteSecond);
+
             return answerRoman;
         } else {
             throw new TypeError('Error!');
@@ -24,8 +27,8 @@ function romanTime(time) {
     }
 }
 
-function romanChanger(numFirst,numSecond) {
-    if (numFirst == '0' && numSecond == '0') {
+function romanChanger(numFirst, numSecond) {
+    if (numFirst === '0' && numSecond === '0') {
         return 'N';
     }
     let returnAns = '';
@@ -46,6 +49,8 @@ function romanChanger(numFirst,numSecond) {
             break;
         case '5':
             returnAns = returnAns + 'L';
+            break;
+        default:
             break;
     }
     switch (numSecond) {
@@ -78,7 +83,10 @@ function romanChanger(numFirst,numSecond) {
         case '9':
             returnAns = returnAns + 'IX';
             break;
+        default:
+            break;
     }
+    
     return returnAns;
 }
 

@@ -7,7 +7,7 @@
 function toRoman(inn) {
     if (inn === 0) {
 
-        return ('N');
+        return 'N';
     }
     var answ = '';
     var a1 = [50, 40, 10, 9, 5, 4, 1];
@@ -20,12 +20,12 @@ function toRoman(inn) {
         }
     }
 
-    return (answ);
+    return answ;
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined || typeof(time) !== 'string') {
-        throw new TypeError('Неверное время: ' + time);
+    if (time === null || time === undefined || typeof(time) !== 'string' || time.length !== 5) {
+        throw new TypeError();
     }
     var regular = /\d\d[:]\d\d/;
     var List = time.split(':');
@@ -33,9 +33,9 @@ function romanTime(time) {
     var Minuets = Number(List[1]);
     if (regular.test(time) && Hour >= 0 && Hour <= 23 && Minuets >= 0 && Minuets < 60) {
 
-        return (toRoman(Hour) + ':' + toRoman(Minuets));
+        return toRoman(Hour) + ':' + toRoman(Minuets);
     }
-    throw new TypeError('Неверное время: ' + time);
+    throw new TypeError();
     // Немного авторского кода и замечательной магии
 }
 module.exports = romanTime;

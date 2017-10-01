@@ -8,7 +8,7 @@ function romanTime(time) {
     if (time) {
         const hour = Number(time.split(':')[0]);
         const minute = Number(time.split(':')[1]);
-        if (time.split(':')[0].length != 2 || time.split(':')[1].length != 2) {
+        if (time.split(':')[0].length !== 2 || time.split(':')[1].length !== 2) {
             throw new TypeError('Error!');
         }
 

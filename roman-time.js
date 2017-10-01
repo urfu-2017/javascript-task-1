@@ -52,7 +52,7 @@ function changeTime(hours, minutes) {
 }
 
 function romanTime(time) {
-    if (time === null || time === undefined) {
+    if (!/^([0-2][0-9]):([0-5][0-9])$/.test(time)) {
         throw new TypeError();
     }
     time = time.split(':');

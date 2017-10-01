@@ -52,15 +52,11 @@ function changeTime(hours, minutes) {
 }
 
 function romanTime(time) {
-    try {
-        time = time.split(':');
-        let hours = parseTime(time, 0);
-        let minutes = parseTime(time, 1);
+    time = time.split(':');
+    let hours = parseTime(time, 0);
+    let minutes = parseTime(time, 1);
 
-        return changeTime(hours, minutes);
-    } catch (TypeError) {
-        return 'TypeError: Неверное время.'
-    }
+    return changeTime(hours, minutes);
 }
 
 module.exports = romanTime;

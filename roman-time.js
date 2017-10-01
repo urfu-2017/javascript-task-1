@@ -5,16 +5,13 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    if (time) {
-        const hour = Number(time.split(':')[0]);
-        const minute = Number(time.split(':')[1]);
-        if (time.split(':')[0].length !== 2 || time.split(':')[1].length !== 2) {
-            throw new TypeError('Error!');
-        }
-
-        return changer(hour, minute);
+    if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(time)) {
+        throw new TypeError('Error!');
     }
-    throw new TypeError('Error!');
+    const hour = Number(time.split(':')[0]);
+    const minute = Number(time.split(':')[1]);
+
+    return changer(hour, minute);
 }
 
 function changer(hour, minute) {

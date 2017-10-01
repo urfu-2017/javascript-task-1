@@ -44,6 +44,10 @@ function checkInput(data) {
     if (data === null || data === undefined) {
         throw new TypeError('Invalid time format.');
     }
+    var regExp = new RegExp('^.*[A-zА-яЁё]+.*$');
+    if (regExp.test(data)) {
+        throw new TypeError('Invalid time format.');
+    }
 }
 
 function checkValidityOfTime(firstNumber, secondNumber) {

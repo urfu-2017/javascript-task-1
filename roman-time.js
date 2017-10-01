@@ -56,33 +56,25 @@ function changeTime(hours, minutes) {
     if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
         throw TypeError;
     }
-
-    let romanTime = '';
-
+    
     let tensHour = div(hours, 10);    
     let unitsHour = hours % 10;
     
     let tensMinutes = div(minutes, 10);
     let unitsMinutes = minutes % 10;
 
-    romanTime += arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
-
-    return romanTime
+    return arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
 }
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    try {
-        let romanTime = '';
-        
+    try {        
         time = time.split(':');
 
         let hours = parseTime(time, 0);
         let minutes = parseTime(time, 1);
-
-        romanTime = changeTime(hours, minutes);
-
-        return romanTime;
+    
+        return changeTime(hours, minutes);
 
     } catch (TypeError) {
         return 'TypeError: Неверное время';

@@ -5,7 +5,7 @@
 //         console.info(romanTime(i + ':' + j));
 //     }
 // }
-// console.info(romanTime('-5:2'));
+//console.info(romanTime('23:40'));
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -46,6 +46,10 @@ function moveToRoman(time, keyToRoman) {
     if (time >= 50) {
         newRomanTime += 'L';
         time -= 50;
+    }
+    if (time >= 40) {
+        newRomanTime += 'XL';
+        time -= 40;
     }
     while (time >= 10) {
         newRomanTime += 'X';

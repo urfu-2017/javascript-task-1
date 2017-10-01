@@ -20,4 +20,24 @@ describe('Модуль roman-time', function () {
     it('должен выбрасывать исключение TypeError для 24:00', function () {
         assert.throws(romanTime.bind(null, '24:00'), TypeError);
     });
+
+    it('должен возвращать для 19:48 значение XIX:XLVIII', function () {
+        assert.strictEqual(romanTime('19:48'), 'XIX:XLVIII');
+    });
+
+    it('должен выбрасывать исключение TypeError для 14:67', function () {
+        assert.throws(romanTime.bind(null, '14:67'), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для NaN', function () {
+        assert.throws(romanTime.bind(null, NaN), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для undefined', function () {
+        assert.throws(romanTime.bind(null, undefined), TypeError);
+    });
+
+    it('должен выбрасывать исключение TypeError для 14:001', function () {
+        assert.throws(romanTime.bind(null, '14:001'), TypeError);
+    });
 });

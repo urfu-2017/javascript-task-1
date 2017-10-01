@@ -40,15 +40,16 @@ function arabToRoman(tens, units) {
 }
 
 function changeTime(hours, minutes) {
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    if (hours >= 0 && hours < 24 && minutes >= 0 && minutes < 60) {
+        let tensHour = div(hours, 10);
+        let unitsHour = hours % 10;
+        let tensMinutes = div(minutes, 10);
+        let unitsMinutes = minutes % 10;
+        
+        return arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
+    } else {
         throw new TypeError();
     }
-    let tensHour = div(hours, 10);
-    let unitsHour = hours % 10;
-    let tensMinutes = div(minutes, 10);
-    let unitsMinutes = minutes % 10;
-
-    return arabToRoman(tensHour, unitsHour) + ':' + arabToRoman(tensMinutes, unitsMinutes);
 }
 
 function romanTime(time) {

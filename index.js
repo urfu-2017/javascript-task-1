@@ -12,3 +12,7 @@ console.info(romanTime('23:59'));
 
 // Выбросится ошибка [TypeError: Неверное время]
 console.info(romanTime('24:00'));
+
+var er = /^-?[0-9]+$/;
+
+console.info(er.test('09'));

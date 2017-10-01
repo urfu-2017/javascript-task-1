@@ -5,9 +5,9 @@ var assert = require('assert');
 var romanTime = require('./roman-time');
 
 describe('Модуль roman-time', function () {
-    // it('должен возвращать для 09:10 значение IX:X', function () {
-    //     assert.strictEqual(romanTime('09:10'), 'IX:X');
-    // });
+    it('должен возвращать для 09:10 значение IX:X', function () {
+        assert.strictEqual(romanTime('09:10'), 'IX:X');
+    });
 
     it('должен возвращать для 00:00 значение N:N', function () {
         assert.strictEqual(romanTime('00:00'), 'N:N');

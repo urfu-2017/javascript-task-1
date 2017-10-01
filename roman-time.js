@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var template = new RegExp(/\d\d:\d\d/);
+    var template = new RegExp(/^\d\d:\d\d$/);
     if (template.test(time) === false) {
         throw new TypeError();
     }

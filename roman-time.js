@@ -8,6 +8,7 @@ function romanTime(time) {
     if (time) {
         const hour = Number(time.split(':')[0]);
         const minute = Number(time.split(':')[1]);
+        if (time.split(':')[0] == '0' || time.split(':')[1] == '0') throw new TypeError('Error!');
         if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60) {
             let answer = '';
             answer += hour === 0 ? 'N' : firstChanger(parseInt(hour / 10)) +

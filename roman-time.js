@@ -5,31 +5,20 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    let answerRoman = '';
     if (time) {
-        const hour = time.split(':')[0];
-        const minute = time.split(':')[1];
-        if (Number(hour) >= 0 && Number(hour) < 24 && Number(minute) >= 0 && Number(minute) < 60) {
-            let hourFirst = hour[0];
-            let hourSecond = hour[1];
-            let minuteFirst = minute[0];
-            let minuteSecond = minute[1];
+        const hour = Number(time.split(':')[0]);
+        const minute = Number(time.split(':')[1]);
+        if (hour >= 0 && hour < 24 && minute >= 0 && minute < 60) {
+            let answer = '';
+            hour === 0 ? answer += 'N' : answer = answer +
+                                                firstChanger(parseInt(hour / 10)) +
+                                                secondChanger(hour % 10);
+            answer += ':';
+            minute === 0 ? answer += 'N' : answer = answer +
+                                                    firstChanger(parseInt(minute / 10)) +
+                                                    secondChanger(minute % 10);
 
-            if (hourFirst === '0' && hourSecond === '0') {
-                answerRoman = answerRoman + 'N';
-            } else {
-                answerRoman = answerRoman + romanFirstChanger(hourFirst);
-                answerRoman = answerRoman + romanSecondChanger(hourSecond);
-            }
-            answerRoman = answerRoman + ':';
-            if (minuteFirst === '0' && minuteSecond === '0') {
-                answerRoman = answerRoman + 'N';
-            } else {
-                answerRoman = answerRoman + romanFirstChanger(minuteFirst);
-                answerRoman = answerRoman + romanSecondChanger(minuteSecond);
-            }
-
-            return answerRoman;
+            return answer;
         }
         throw new TypeError('Error!');
     } else {
@@ -37,70 +26,68 @@ function romanTime(time) {
     }
 }
 
-function romanFirstChanger(numFirst) {
-    let returnAns = '';
+function firstChanger(numFirst) {
     switch (numFirst) {
-        case '0':
+        case 0:
+            return '';
             break;
-        case '1':
-            returnAns = returnAns + 'X';
+        case 1:
+            return 'X';
             break;
-        case '2':
-            returnAns = returnAns + 'XX';
+        case 2:
+            return 'XX';
             break;
-        case '3':
-            returnAns = returnAns + 'XXX';
+        case 3:
+            return 'XXX';
             break;
-        case '4':
-            returnAns = returnAns + 'XL';
+        case 4:
+            return 'XL';
             break;
-        case '5':
-            returnAns = returnAns + 'L';
+        case 5:
+            return 'L';
             break;
         default:
+            return '';
             break;
     }
-
-    return returnAns;
 }
 
-function romanSecondChanger(numSecond) {
-    let returnAns = '';
+function secondChanger(numSecond) {
     switch (numSecond) {
-        case '0':
+        case 0:
+            return '';
             break;
-        case '1':
-            returnAns = returnAns + 'I';
+        case 1:
+            return 'I';
             break;
-        case '2':
-            returnAns = returnAns + 'II';
+        case 2:
+            return 'II';
             break;
-        case '3':
-            returnAns = returnAns + 'III';
+        case 3:
+            return 'III';
             break;
-        case '4':
-            returnAns = returnAns + 'IV';
+        case 4:
+            return 'IV';
             break;
-        case '5':
-            returnAns = returnAns + 'V';
+        case 5:
+            return 'V';
             break;
-        case '6':
-            returnAns = returnAns + 'VI';
+        case 6:
+            return 'VI';
             break;
-        case '7':
-            returnAns = returnAns + 'VII';
+        case 7:
+            return 'VII';
             break;
-        case '8':
-            returnAns = returnAns + 'VIII';
+        case 8:
+            return 'VIII';
             break;
-        case '9':
-            returnAns = returnAns + 'IX';
+        case 9:
+            return 'IX';
             break;
         default:
+            return '';
             break;
     }
-
-    return returnAns;
 }
 
 module.exports = romanTime;

@@ -9,7 +9,7 @@ var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
 
 function arabToRoman(number) {
     if (isNaN(number)) {
-        return TypeError('Неверное время');
+        throw new TypeError('Неверное время');
     }
     if (number === 0) {
         return 'N';
@@ -25,6 +25,7 @@ function arabToRoman(number) {
             i--;
         }
     }
+
     return ret;
 
 }
@@ -33,14 +34,15 @@ function arabToRoman(number) {
 function romanTime(time) {
     time = time.split([':']);
     if (time.length > 2) {
-        return TypeError('Неверное время');
+        throw new TypeError('Неверное время');
     }
     if ((time[0] < 24) && (time[1] < 60)) {
         time[0] = arabToRoman(time[0]);
         time[1] = arabToRoman(time[1]);
     } else {
-        return TypeError('Неверное время');
+        throw new TypeError('Неверное время');
     }
+
     return time.join(':');
 
 }

@@ -1,8 +1,10 @@
+/* eslint-disable linebreak-style */
 /* eslint-env mocha */
+
 'use strict';
 
-var assert = require('assert');
-var romanTime = require('./roman-time');
+let assert = require('assert');
+let romanTime = require('./roman-time');
 
 describe('Модуль roman-time', function () {
     it('должен возвращать для 09:10 значение IX:X', function () {

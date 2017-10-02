@@ -40,9 +40,13 @@ function romanTime(time) {
         delete timeRome[timeRome.length - 1];
         time = timeRome.join('');
     }
+
     else {
+
         time = 'TypeError: Неверное время';
+
     }
+
 // Немного авторского кода и замечательной магии
 
     return time;

@@ -26,8 +26,8 @@ function romanTime(time) {
     if (!time || time.length < 5) {
         throw new TypeError();
     } else {
-        var hours = Number(time.split(':')[0]);
-        var minutes = Number(time.split(':')[1]);
+        var hours = parseInt(time.split(':')[0]);
+        var minutes = parseInt(time.split(':')[1]);
 
         if (checkValid(hours, minutes)) {
             throw new TypeError();

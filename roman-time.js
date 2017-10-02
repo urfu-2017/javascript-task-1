@@ -47,18 +47,18 @@ function replaceSymbol(symbol, isFirst) {
 }
 
 function replacePartTime(str) {
-    return replaceSymbol(str.charAt(0), true) + replaceSymbol(str.charAt(1), false);
+    var newForm = replaceSymbol(str.charAt(0), true) + replaceSymbol(str.charAt(1), false);
+    if (newForm.length !== 1 && /N/.test(newForm)) {
+        newForm = newForm.replace('N', '');
+    }
+
+    return newForm;
 }
 
 function romanTime(time) {
     if (isCorrectTime(time)) {
         var hour = replacePartTime(time.substr(0, 2));
         var min = replacePartTime(time.substr(3));
-        // для минут типа 00, 10, ... 50
-        // min будет иметь неверный формат
-        if (min.length !== 1 && /N/.test(min)) {
-            min = min.replace('N', '');
-        }
 
         return hour + ':' + min;
     }

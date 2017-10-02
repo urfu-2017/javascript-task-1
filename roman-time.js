@@ -34,7 +34,7 @@ function romanTime(time) {
                     timeRome.push(numbersDecadeR[j]);
                 }           
             }    
-
+            
             for(var j = 0; j < numbersNorm.length; j++)
             {
                 
@@ -49,7 +49,7 @@ function romanTime(time) {
             }
             timeRome.push(":");
         }
-        
+
         delete timeRome[timeRome.length -1];
 
         time = timeRome.join('');
@@ -64,6 +64,5 @@ function romanTime(time) {
 
     return time;
 }
-
 
 module.exports = romanTime;

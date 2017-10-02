@@ -1,37 +1,36 @@
 'use strict';
-function romanTime(time) 
+function Roman(time) 
 {
     var arab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50];
     var roman = ['I', 'II', 'III',  'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XX', 'XL', 'XXX', 'XL'];
+    var i = arab.length - 1;
+    var result = '';
+    if (time == 0) 
+    {
+        result = 'N';
+    }
+    do
+    {
+        if (time >= arab[i]) 
+        {
+            result += roman[i];
+            time -= arab[i];
+        } 
+        i--;
+        
+    }
+    while (time > 0 && i > 0) 
+    return result;
+}
+
+function romanTime(time) 
+{
     var time12 = time.split(':');
-    var c1c2 = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (c1c2[0].isNaN || c1c2[1].isNaN || c1c2[0] > 23 || c1c2[1] > 59 || c1c2 [0] < 0 || c1c2 [1] < 0) 
+    if (parseInt(time12[0], 10).isNaN || parseInt(time12[1], 10).isNaN || parseInt(time12[0], 10) > 23 || parseInt(time12[1], 10) > 59 ||parseInt(time12[0], 10) < 0 || parseInt(time12[1], 10) < 0 || time.length > 5 )
     {
         throw new TypeError('Неверное время');
     }
-    var m = [];
-    var sum = '';
-    for (var i = 0; i < 2; i++)
-    {
-        m[i] = '';
-        var j = arab.length;
-        if (c1c2[i] == 0) 
-        {
-            m[i] = 'N';
-        }
-        while (c1c2[i] > 0)
-        {
-            if (c1c2[i] >= arab[j])
-            {
-                m[i] += roman[j];
-                c1c2[i] -= arab[j];
-                
-            }
-            j--; 
-        
-        }
-        sum += m[i] + ':'
-    }
-return(sum.substring(0, sum.length - 1));
+    return(Roman(parseInt(time12[0], 10)) + ':' + Roman(parseInt(time12[1], 10)))
 }
+
 module.exports = romanTime;

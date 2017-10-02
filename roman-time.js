@@ -23,14 +23,18 @@ function getRomeTime(a) {
 }
 
 function romanTime(time) {
-    var hours = Number(time.split(':')[0]);
-    var minutes = Number(time.split(':')[1]);
-
-    if (checkValid(hours, minutes) || time.length < 5) {
+    if (time.length < 5 || !time) {
         throw new TypeError('Неверное время');
-    }
+    } else {
+        var hours = Number(time.split(':')[0]);
+        var minutes = Number(time.split(':')[1]);
 
-    return getRomeTime(hours) + ':' + getRomeTime(minutes);
+        if (checkValid(hours, minutes)) {
+            throw new TypeError('Неверное время');
+        }
+
+        return getRomeTime(hours) + ':' + getRomeTime(minutes);
+    }
 }
 
 module.exports = romanTime;

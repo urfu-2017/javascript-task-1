@@ -23,8 +23,8 @@ function getRomeTime(a) {
 }
 
 function romanTime(time) {
-    var hours = parseInt(time.split(':')[0], 10);
-    var minutes = parseInt(time.split(':')[1], 10);
+    var hours = Number(time.split(':')[0]);
+    var minutes = Number(time.split(':')[1]);
 
     if (checkValid(hours, minutes)) {
         throw new TypeError('Неверное время');

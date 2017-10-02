@@ -3,7 +3,7 @@
 var romanTime = require('./roman-time');
 
 // Выведет 'IX:X'
-// console.info(romanTime('09:10'));
+console.info(romanTime('09:10'));
 
 // Выведет 'N:N'
 // console.info(romanTime('00:00'));

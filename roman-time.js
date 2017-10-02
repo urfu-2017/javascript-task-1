@@ -31,7 +31,7 @@ function romanTime(time) {
     let hoursAndMinuts = time.split(':');
 
     // Варианты неправильного ввода
-    if (hoursAndMinuts.length === 2 ||
+    if (hoursAndMinuts.length !== 2 ||
         hoursAndMinuts.forEach((string) => (string.isNaN)) ||
         hoursAndMinuts[0] > 23 || hoursAndMinuts > 59) {
         throw new TypeError('Такого времени не может быть');

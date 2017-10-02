@@ -8,10 +8,10 @@ function romanTime(time) {
     var hour = '';
     var minutes = '';
     var hoursMinutes = time.split(':');
-    if (hoursMinutes[0][0] === '0') {
+    if (hoursMinutes[0][0] === '0' && hoursMinutes[0].length < 3) {
         hoursMinutes[0] = hoursMinutes[0][1];
     }
-    if (hoursMinutes[1][0] === '0') {
+    if (hoursMinutes[1][0] === '0' && hoursMinutes[1].length < 3) {
         hoursMinutes[1] = hoursMinutes[1][1];
     }
     if (isTimeCorrect(Number(hoursMinutes[0]), Number(hoursMinutes[1]))) {

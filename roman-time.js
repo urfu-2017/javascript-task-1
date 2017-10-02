@@ -4,7 +4,7 @@ function roman(time) {
     var roma = [
         'I', 'II', 'III', 'IV',
         'V', 'VI', 'VII', 'VIII', 'IX', 'X',
-        'XX', 'XXX','XL', 'L'];
+        'XX', 'XXX', 'XL', 'L'];
     var i = arab.length - 1;
 
     var result = '';

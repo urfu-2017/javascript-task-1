@@ -33,8 +33,10 @@ function romanTime(time) {
             throw new TypeError();
         }
 
-        return getRomeTime(hours) + ':' + getRomeTime(minutes);
+        time = getRomeTime(hours) + ':' + getRomeTime(minutes);
     }
+
+    return time;
 }
 
 module.exports = romanTime;

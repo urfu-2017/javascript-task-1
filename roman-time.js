@@ -26,7 +26,7 @@ function romanTime(time) {
     var hours = Number(time.split(':')[0]);
     var minutes = Number(time.split(':')[1]);
 
-    if (checkValid(hours, minutes)) {
+    if (checkValid(hours, minutes) || time.length < 5) {
         throw new TypeError('Неверное время');
     }
 

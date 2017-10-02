@@ -54,6 +54,7 @@ function checkTimeCorrect(hours, minutes) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    time = time.replace(/\s+/g, '');
     if (checkInputCorrect(time)) {
         time = time.split(':');
         var hours = Number(time[0]);

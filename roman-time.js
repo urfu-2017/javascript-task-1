@@ -23,7 +23,7 @@ function getRomeTime(a) {
 }
 
 function romanTime(time) {
-    if (time.length < 5 || !time) {
+    if (!time || time.length < 5) {
         throw new TypeError('Неверное время');
     } else {
         var hours = Number(time.split(':')[0]);

@@ -11,7 +11,7 @@ function romanTime(time) {
         var min;
         Hour = Number(time[0]);
         min = Number(time[1]);
-        if (Hour !== Number(time[0]) || min !== Number(time[1]) || min >= 60 || Hour >= 24 ) {
+        if (Hour !== Number(time[0]) || min !== Number(time[1]) || min >= 60 || Hour >= 24) {
             throw new TypeError('Неверные данные');
         }
         else {
@@ -24,6 +24,7 @@ function romanTime(time) {
             Hour = Rim[Hour];
             min = Rim[min];
             time = Hour + ':' + min;
+            
             return time;
         }
     }

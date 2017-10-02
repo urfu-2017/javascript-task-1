@@ -40,13 +40,21 @@ function findLeftBorder(number) {
     }
 }
 
-function checkInputCorrect(time) {
-    return /\d\d:\d\d/.test(time);
+function checkInputValueCorrect(time) {
+    return /\d+:\d+/.test(time);
+}
+
+function checkInputLengthCorrect(time) {
+    if (time.length >= 3 && time.length <= 5) {
+        return true;
+    }
+
+    return false;
 }
 
 function checkTimeCorrect(hours, minutes) {
     if (!(hours < 24 && minutes < 60)) {
-        throw new TypeError('Ошибка ввода');
+        throw new TypeError('Неверное время');
     }
 
     return hours < 24 && minutes < 60;
@@ -55,7 +63,7 @@ function checkTimeCorrect(hours, minutes) {
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     time = time.replace(/\s+/g, '');
-    if (checkInputCorrect(time)) {
+    if (checkInputValueCorrect(time) && checkInputLengthCorrect(time)) {
         time = time.split(':');
         var hours = Number(time[0]);
         var minutes = Number(time[1]);
@@ -68,7 +76,7 @@ function romanTime(time) {
             return romanHour + ':' + romanMinute;
         }
     } else {
-        throw new TypeError('Ошибка ввода');
+        throw new TypeError('Неверное время');
     }
 }
 module.exports = romanTime;

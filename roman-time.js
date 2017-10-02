@@ -7,9 +7,6 @@
 function romanTime(time) {
     checkInput(time);
     var numbers = time.split(':');
-    if (numbers[0].length !== 2 || numbers[1].length !== 2) {
-        throw new TypeError('Invalid time format');
-    }
     var firstNumber = parseInt(numbers[0]);
     var secondNumber = parseInt(numbers[1]);
     if (isNaN(firstNumber) || isNaN(secondNumber)) {
@@ -44,8 +41,8 @@ function checkInput(data) {
     if (data === null || data === undefined) {
         throw new TypeError('Invalid time format.');
     }
-    var regExp = new RegExp('^.*[A-zА-яЁё]+.*$');
-    if (regExp.test(data)) {
+    var regExp = new RegExp('\\d{2}:\\d{2}');
+    if (!(regExp.test(data)) || data.length !== 5) {
         throw new TypeError('Invalid time format.');
     }
 }

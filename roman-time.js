@@ -5,29 +5,27 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 var arab = [1, 4, 5, 9, 10, 40, 50];
-var roman = ['I','IV','V','IX','X','XL','L'];
+var roman = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
 
-function arabToRoman(number)
-{
+function arabToRoman(number) {
     if(isNaN(number)) return TypeError('Неверное время');
-    if (number == 0) return 'N';
+    if(number === 0) return 'N';
 
-	var ret = '';
-	var i = arab.length - 1;
-	while(number > 0)
-	{
-		if(number >= arab[i])
-		{
-			ret += roman[i];
-			number -= arab[i];
-		}
-		else
-		{
-			i--;
-		}
-	
-	}
-	return ret;
+    var ret = '';
+    var i = arab.length - 1;
+    while(number > 0)
+    {
+        if(number >= arab[i])
+        {
+            ret += roman[i];
+            number -= arab[i];
+        }
+        else
+        {
+	        i--;
+        }
+    }
+    return ret;
 }
 
 
@@ -45,6 +43,7 @@ function romanTime(time) {
 
     }
     return time.join(':');
+    
 }
 
 module.exports = romanTime;

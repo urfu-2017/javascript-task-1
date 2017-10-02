@@ -51,8 +51,11 @@ function arabicToRoman(number) {
 
 function romanTime(time) {
     isCorrectTime(time);
-    time = time.split(':').map(Number)
-        .map(arabicToRoman);
+    time = time.split(':');
+    if (time.length > 2) {
+        throw new TypeError();
+    }
+    time = time.map(Number).map(arabicToRoman);
 
     return time.join(':');
 }

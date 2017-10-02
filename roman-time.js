@@ -26,7 +26,7 @@ function romanTime(time) {
 
             return time;
         }
-    }else {
+    } else {
         throw new TypeError('Неверные данные');
     }
 }

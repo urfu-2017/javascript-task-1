@@ -6,14 +6,14 @@
  */
 function romanTime(time)
    {
-    if (time.length===5 && time.indexOf(':')===2)
+    if (time.length === 5 && time.indexOf(':') === 2)
     {
         time = time.split(":", 2);
         var Hour;
         var min;
         Hour = Number(time[0]);
         min = Number(time[1]);
-        if (Hour!==Number(time[0]) || min!==Number(time[1]) || min>=60 || Hour>=24 )
+        if (Hour !== Number(time[0]) || min !== Number(time[1]) || min >= 60 || Hour >= 24 )
             {
                 throw new TypeError('Неверные данные');
             }

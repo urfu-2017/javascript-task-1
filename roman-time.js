@@ -9,13 +9,13 @@ const DOZENS = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 const UNITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
 function romanTime(time) {
-    var correctTime = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
+    let correctTime = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
     if (!correctTime.test(time)) {
         throw new TypeError('Invalid time');
     }
-    var parseTime = time.match(correctTime);
-    var hours = parseInt(parseTime[1], 10);
-    var minuts = parseInt(parseTime[2], 10);
+    let parseTime = time.match(correctTime);
+    let hours = parseInt(parseTime[1], 10);
+    let minuts = parseInt(parseTime[2], 10);
 
     return toRoman(hours) + ':' + toRoman(minuts);
 }

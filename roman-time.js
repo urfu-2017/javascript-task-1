@@ -13,7 +13,7 @@ function romanTime(time)
         var Hour, min;
         Hour = Number(time[0]);
         min = Number(time[1]);
-        if (Hour!==Number(time[0]); || min!==Number(time[1]); || min>=60 || Hour>=24 )
+        if (Hour!==Number(time[0]) || min!==Number(time[1]) || min>=60 || Hour>=24 )
             { throw new TypeError('Неверные данные'); }
         else {
             var Rim = new Array( 'N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI',

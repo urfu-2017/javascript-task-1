@@ -42,9 +42,7 @@ function romanTime(time) {
     }
 
     else {
-
         time = 'TypeError: Неверное время';
-
     }
 
 // Немного авторского кода и замечательной магии
@@ -70,9 +68,7 @@ function isTimeCorrect(time) {
     }
 
     catch (err) {
-
         timeCorrect = false;
-
     }
 
     return timeCorrect;

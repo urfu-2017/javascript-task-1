@@ -4,7 +4,7 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-unction romanTime(time) { 
+function romanTime(time) { 
 var p; 
 p=time.length; 
 if (p==5 && time.indexOf(':')==2) 

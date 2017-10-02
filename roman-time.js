@@ -24,13 +24,13 @@ function getRomeTime(a) {
 
 function romanTime(time) {
     if (!time || time.length < 5) {
-        throw new TypeError('Неверное время');
+        throw new TypeError();
     } else {
         var hours = Number(time.split(':')[0]);
         var minutes = Number(time.split(':')[1]);
 
         if (checkValid(hours, minutes)) {
-            throw new TypeError('Неверное время');
+            throw new TypeError();
         }
 
         return getRomeTime(hours) + ':' + getRomeTime(minutes);

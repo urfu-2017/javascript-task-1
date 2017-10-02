@@ -24,7 +24,7 @@ function romanTime(time) {
             Hour = Rim[Hour];
             min = Rim[min];
             time = Hour + ':' + min;
-            
+
             return time;
         }
     }

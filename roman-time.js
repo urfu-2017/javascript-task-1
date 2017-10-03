@@ -6,12 +6,12 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var arrayOfStrings = time.split(':');
-    if (Number(arrayOfStrings[0]) > 23 || Number(arrayOfStrings[1]) > 59) {
+    var elemOfTypes = time.split(':');
+    if (Number(elemOfTypes[0]) > 23 || Number(elemOfTypes[1]) > 59 || elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2 || elemOfTypes[0] === null || elemOfTypes[1] === null || elemOfTypes[0] === 'undefined' || elemOfTypes[1] === 'undefined') {
 
         throw new TypeError('Задан не верный формат времени", "index.js');
     }
-    time = translation(arrayOfStrings[0]) + ':' + translation(arrayOfStrings[1]);
+    time = translation(elemOfTypes[0]) + ':' + translation(elemOfTypes[1]);
 
     return time;
 }

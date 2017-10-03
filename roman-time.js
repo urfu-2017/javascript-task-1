@@ -15,8 +15,8 @@ function romanTime(time) {
     if (t.length > 2) {
         throw new TypeError('Неверное время: ' + time);
     }
-    let min = parseInt(t[1], 10);
-    let hour = parseInt(t[0], 10);
+    let min = Number(t[1]);
+    let hour = Number(t[0]);
     if (min > 59 || min < 0 || hour > 23 || hour < 0 || isNaN(min) || isNaN(hour)) {
         throw new TypeError('Неверное время: ' + time);
     } else {

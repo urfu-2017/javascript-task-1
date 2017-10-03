@@ -4,6 +4,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
+
 function checkFormat(hoursInInt, minutesInInt){
 	
 	if (hoursInInt === undefined || hoursInInt === null || minutesInInt === undefined || minutesInInt === null ){
@@ -15,50 +16,9 @@ function checkFormat(hoursInInt, minutesInInt){
 	if (isNaN(hoursInInt) || isNaN(minutesInInt)){
 		throw new TypeError("неверный формат");
 	}
-	if (time.charAt(3) === ":"){
-		throw new TypeError("неверный формат; введите в формате hh:mm");
-	}
-}
+	//if (time.charAt(2) != ":"){
+	//}		throw new TypeError("неверный формат, введите в формате hh:mm");
 
-//----часы----------------------
-function getHours(hoursInInt){
-if (hoursInInt < 10) {
-	if (hoursInInt == 0) {
-		romanHours = "N";
-	}
-	else { 
-		romanHours = dictionarySmallNumbers.get(hours.charAt(1));
-	}
-}
-else if (hoursInInt % 10 == 0) {
-	romanHours = dictionaryBigNumbers.get(hours.charAt(0));
-	}
-	else {
-		let BigHour = dictionaryBigNumbers.get(hours.charAt(0));
-		let SmallHour = dictionarySmallNumbers.get(hours.charAt(1));
-		romanHours = BigHour + SmallHour;
-	}
-	return romanHours;
-}
-//----минуты----------------------
-function getMinutes(minutesInInt){
-if (minutesInInt < 10) {	
-	if (minutesInInt == 0) {
-		romanMinutes = "N";
-	}
-	else { 
-		romanMinutes = dictionarySmallNumbers.get(minutes.charAt(1));
-	}
-}
-else if (minutesInInt % 10 == 0) {
-	romanMinutes = dictionaryBigNumbers.get(minutes.charAt(0));
-	}
-else {
-	let BigMinute = dictionaryBigNumbers.get(minutes.charAt(0));
-	let SmallMinute = dictionarySmallNumbers.get(minutes.charAt(1));
-	romanMinutes = BigMinute + SmallMinute;
-	}
-	return romanMinutes;
 }
 
 function romanTime(time) {
@@ -66,6 +26,7 @@ function romanTime(time) {
 	if(time.length != 5){
 		throw new TypeError("неверный формат; введите в формате hh:mm");
 	}
+	else {
 	let hours = time.slice(0,2);
 	let minutes = time.slice(-2);
 	let hoursInInt = parseInt(hours);
@@ -93,10 +54,49 @@ function romanTime(time) {
 		["4", "XL"],
 		["5", "L"]
 	]);
-	getHours(hoursInInt);
-	getMinutes(minutesInInt);
-	let ans = romanHours + ":" + romanMinutes;
-	return ans;
-}
+	
 
+		if (hoursInInt < 10) {
+			if (hoursInInt == 0) {
+				romanHours = "N";
+			}
+			else { 
+				romanHours = dictionarySmallNumbers.get(hours.charAt(1));
+			}
+		}
+		else if (hoursInInt % 10 == 0) {
+			romanHours = dictionaryBigNumbers.get(hours.charAt(0));
+			}
+			else {
+				let BigHour = dictionaryBigNumbers.get(hours.charAt(0));
+				let SmallHour = dictionarySmallNumbers.get(hours.charAt(1));
+				romanHours = BigHour + SmallHour;
+			}
+		
+	
+		if (minutesInInt < 10) {	
+			if (minutesInInt == 0) {
+				romanMinutes = "N";
+			}
+			else { 
+				romanMinutes = dictionarySmallNumbers.get(minutes.charAt(1));
+			}
+		}
+		else if (minutesInInt % 10 == 0) {
+			romanMinutes = dictionaryBigNumbers.get(minutes.charAt(0));
+			}
+		else {
+			let BigMinute = dictionaryBigNumbers.get(minutes.charAt(0));
+			let SmallMinute = dictionarySmallNumbers.get(minutes.charAt(1));
+			romanMinutes = BigMinute + SmallMinute;
+			}
+			
+		
+
+	return (romanHours + ":" + romanMinutes);
+	//console.log(ans);
+}
+	//return ans;
+	
+}
 module.exports = romanTime;

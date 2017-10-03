@@ -10,8 +10,8 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     let [hours, minutes] = time.split(':', 2);
-    hours = parseInt(hours, 10);
-    minutes = parseInt(minutes, 10);
+    hours = parseInt(hours);
+    minutes = parseInt(minutes);
     if (isNaN(hours) || isNaN(minutes) || !isValid(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
@@ -20,7 +20,7 @@ function romanTime(time) {
 }
 
 function isValid(hours, minutes) {
-    if (hours >= 24 || hours < 0 || minutes > 59 || minutes < 0) {
+    if (hours > 23 || hours < 0 || minutes > 59 || minutes < 0) {
         return false;
     }
 

@@ -12,22 +12,23 @@ function romanTime(time) {
         throw new TypeError('Задан не верный формат времени", "index.js');
     }
     time = translation(arrayOfStrings[0]) + ':' + translation(arrayOfStrings[1]);
+
     return time;
 }
 
 module.exports = romanTime;
 
 function translation(num) {
-    let highOrder = Number(num[0]);
-    let lowOrder = Number(num[1]);
     if (num === '00') {
+
         return 'N';
     }
-    return forHour(highOrder) + forMinutes(lowOrder);
+
+    return forHighOrder(Number(num[0])) + forLowOrder(Number(num[1]));
 }
 
-function forHour(hour) {
-    switch (hour) {
+function forHighOrder(highOrder) {
+    switch (highOrder) {
         case 1:
             return 'X';
         case 2:
@@ -43,26 +44,39 @@ function forHour(hour) {
     }
 }
 
-function forMinutes(Minutes) {
-    if (Minutes < 4) {
-        let per = '';
-        for (let i = 0; i < Minutes; i++) {
-            per = per + 'I';
-        }
-        return per;
+function forLowOrder(lowOrder) {
+    if (lowOrder === 1 || lowOrder === 2 || lowOrder === 3) {
+
+        return for123(lowOrder);
     }
-    if (Minutes < 9 & Minutes > 4) {
-        let per = 'V';
-        for (let i = 0; i < Minutes - 5; i++) {
-            per = per + 'I';
-        }
-        return per;
+    if (lowOrder === 5 || lowOrder === 6 || lowOrder === 7 || lowOrder === 8) {
+
+        return for5678(lowOrder);
     }
-    switch (Minutes) {
+    switch (lowOrder) {
         case 4:
             return 'IV';        
         case 9:
             return 'IX';
     }
+
     return '';
+}
+
+function for123 (lowOrder) {
+    let per = '';
+    for (let i = 0; i < lowOrder; i++) {
+        per = per + 'I';
+    }
+
+    return per;
+}
+
+function for5678 (lowOrder) {
+    let per = 'V';
+    for (let i = 0; i < lowOrder - 5; i++) {
+        per = per + 'I';
+    }
+
+    return per;
 }

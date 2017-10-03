@@ -10,6 +10,10 @@ function romanTime(time) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }
+    if (time.indexOf(':') === -1) {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
     var elemOfTypes = time.split(':');
     if (elemOfTypes.length > 2) {
 

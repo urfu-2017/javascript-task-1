@@ -5,10 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    array = ["0", "1"];
-    for(i = 0; i < array.length; i++) {
-        console.log(array[i]);
-    }
+    // убрал массив
     return time;
 }
 

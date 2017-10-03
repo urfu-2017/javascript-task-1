@@ -10,7 +10,7 @@ function romanTime(time) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }
-    if (time.indexOf(':') === -1) {
+    if (isNaN(time) === true) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }

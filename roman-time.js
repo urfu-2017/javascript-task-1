@@ -1,6 +1,6 @@
 'use strict';
-var associations = { 1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 50: 'L' };
-var timeChecker = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
+var associations = { 1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L' };
+var timeChecker = /^([01]\d|2[0-3]):?([0-5]\d)$/;
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)

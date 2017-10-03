@@ -66,7 +66,7 @@ function minutesToRoman(time) {
     }
 
     return dicM1[m1] + dicM2[m2];
-} 
+}
 function romanTime(time) {
     // проверяем формат времени
     let valid = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;

@@ -38,10 +38,9 @@ function makeRomanNumber(num) {
     return result;
 }
 function romanTime(time) {
-    //return time;
-    if (!isTimeValidate(time)){
+    if (!isTimeValidate(time)) {
 
-        return new TypeError('Invalid time format');
+        throw new TypeError('Invalid time format');
     }
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];

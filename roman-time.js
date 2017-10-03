@@ -23,13 +23,17 @@ function getRomeTime(a) {
 }
 
 function romanTime(time) {
-    if (!time || time.length < 5) {
+    if (!time) {
         throw new TypeError();
     } else {
-        var hours = parseInt(time.split(':')[0]);
-        var minutes = parseInt(time.split(':')[1]);
+        var hours = time.split(':')[0];
+        var minutes = time.split(':')[1];
 
-        if (checkValid(hours, minutes)) {
+        if (hours.trim().length < 2 || minutes.trim().length < 2) {
+            throw new TypeError();
+        }
+
+        if (checkValid(parseInt(hours), parseInt(minutes))) {
             throw new TypeError();
         }
 

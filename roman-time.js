@@ -6,28 +6,31 @@
  */
 function romanTime(time) {
     try {
-        //проверяем на null или undefined
+        // проверяем на null или undefined
         if ((time === undefined) || (time === null)){
             throw new TypeError('Неверный формат времени', 'roman-time.js');
         }
-        var arrayOfTime = time.split(':'); //Делим входное время на две части (справа и слева от двоеточия)
-        var HH = arrayOfTime[0], //Часы
-            MM = arrayOfTime[1], //Минуты
-            h1 = parseInt(HH[0]), //разбиваем поэлементно часы, преобразуя к Int
-            h2 = parseInt(HH[1]), // ---
-            m1 = parseInt(MM[0]), //разбиваем поэлементно минуты, преобразуя к Int
-            m2 = parseInt(MM[1]); // ---
-        //проверяем валидность строк
-        if (!(HH.length === 2 && MM.length === 2) || //часы и минуты состоят ровно из 2 символов
-        (isNaN(h1)) || (isNaN(h2)) || (isNaN(m1)) || (isNaN(m2))) { //каждый из символов может быть приведен к числовому формату
+        var arrayOfTime = time.split(':'); // Делим входное время на две части
+        var HH = arrayOfTime[0]; // Часы
+        var MM = arrayOfTime[1]; // Минуты
+        var h1 = parseInt(HH[0]); // разбиваем поэлементно часы, преобразуя к Int
+        var h2 = parseInt(HH[1]); // ---
+        var m1 = parseInt(MM[0]); // разбиваем поэлементно минуты, преобразуя к Int
+        var m2 = parseInt(MM[1]); // ---
+        // проверяем валидность строк
+        if (!(HH.length === 2 && MM.length === 2) || // часы и минуты состоят ровно из 2 символов
+        (isNaN(h1)) || (isNaN(h2)) || (isNaN(m1)) || (isNaN(m2))) { // символы могут быть приведены к числу
             throw new TypeError('Неверный формат времени', 'roman-time.js');
         }
-        //проверяем валиднось чисел
+        // проверяем валиднось чисел
         if ((h1 * 10 + h2 > 23) || (h1 < 0) || (h2 < 0) || (m1<0) || (m1>5) || (m2<0)) {
             throw new TypeError('Неверный формат времени', 'roman-time.js');
         }
-        var rh1 = '', rh2 = '', rm1 = '', rm2 = ''; //часы и минуты в римском формате
-        //перевод часов
+        var rh1 = '';
+        var rh2 = '';
+        var rm1 = '';
+        var rm2 = ''; // часы и минуты в римском формате
+        // перевод часов
         switch(h1) {
             case 0:
                 break;
@@ -73,7 +76,7 @@ function romanTime(time) {
             rh1='N';
             rh2='';
         }
-        //перевод минут
+        // перевод минут
         switch(m1) {
             case 0:
                 break;

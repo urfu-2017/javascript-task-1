@@ -9,7 +9,7 @@ function romanTime(time) {
     if (typeof time === 'undefined' || typeof time === 'object') {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
-    }    
+    }
     var elemOfTypes = time.split(':');
     if (elemOfTypes.length > 2) {
 
@@ -26,13 +26,14 @@ function romanTime(time) {
 module.exports = romanTime;
 
 function test1(elemOfTypes) {
-    if (Number(elemOfTypes[0]) > 23 || Number(elemOfTypes[1]) > 59) {
+    if (elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }
 }
+
 function test2(elemOfTypes) {
-    if (elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2) {
+    if (Number(elemOfTypes[0]) > 23 || Number(elemOfTypes[1]) > 59) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }

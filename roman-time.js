@@ -5,11 +5,11 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии  
-    var arrayOfStrings = time.split(":");
+    // Немного авторского кода и замечательной магии
+    var arrayOfStrings = time.split(':');
     if (Number(arrayOfStrings[0]) > 23 || Number(arrayOfStrings[1]) > 59) {
-         
-        throw TypeError("Задан не верный формат времени", "index.js");
+
+        throw new TypeError('Задан не верный формат времени", "index.js');
     }
     time = translation(arrayOfStrings[0]) + ":" + translation(arrayOfStrings[1]);
      
@@ -21,62 +21,68 @@ module.exports = romanTime;
 function translation(num) {
     let highOrder = Number(num[0]);
     let lowOrder = Number(num[1]);
-    if (Number(num[0]) === 0 & Number(num[1]) === 0) {
+    if (num === '00') {
         
-        return "N";
-    }
-    switch (highOrder) {
-        case 1:
-        highOrder = "X";
-        break;
-        case 2:
-        highOrder = "XX";
-        break;
-        case 3:
-        highOrder = "XXX";
-        break;
-        case 4:
-        highOrder = "XL";
-        break;
-        case 5:
-        highOrder = "L";
-        break;
-        default:
-        highOrder = "";
-        break;
-    }
-    switch (lowOrder) {
-        case 1:
-        lowOrder = "I";
-        break;
-        case 2:
-        lowOrder = "II";
-        break;
-        case 3:
-        lowOrder = "III";
-        break;
-        case 4:
-        lowOrder = "IV";
-        break;
-        case 5:
-        lowOrder = "V";
-        break;
-        case 6:
-        lowOrder = "VI";
-        break;
-        case 7:
-        lowOrder = "VII";
-        break;
-        case 8:
-        lowOrder = "VIII";
-        break;
-        case 9:
-        lowOrder = "IX";
-        break;
-        default:
-        lowOrder = "";
-        break;
+        return 'N';
     }
     
-    return highOrder + lowOrder;
+    return forHour(highOrder) + forMinutes(lowOrder);
+}
+
+function forHour(hour) {
+    switch (hour) {
+        case 1:
+        return 'X';
+        break;
+        case 2:
+        return 'XX';
+        break;
+        case 3:
+        return 'XXX';
+        break;
+        case 4:
+        return 'XL';
+        break;
+        case 5:
+        return 'L';
+        break;
+        default:
+        return '';
+        break;
+    }
+}
+
+function forMinutes(Minutes) {
+    switch (Minutes) {
+        case 1:
+        return 'I';
+        break;
+        case 2:
+        return 'II';
+        break;
+        case 3:
+        return 'III';
+        break;
+        case 4:
+        return 'IV';
+        break;
+        case 5:
+        return 'V';
+        break;
+        case 6:
+        return 'VI';
+        break;
+        case 7:
+        return 'VII';
+        break;
+        case 8:
+        return 'VIII';
+        break;
+        case 9:
+        return 'IX';
+        break;
+        default:
+        return '';
+        break;
+    }
 }

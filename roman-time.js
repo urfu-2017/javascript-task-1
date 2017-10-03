@@ -9,7 +9,7 @@ function isTimeValidate(time) {
 
     return timePattern.test(time);
 }
-function makeRomanNumber(num) {
+function changeToRomanNumber(num) {
     if (Number(num) === 0) {
         return 'N';
     }
@@ -26,12 +26,10 @@ function makeRomanNumber(num) {
     for (var i = 0; i < rules.length; i++) {
         var value = rules[i].value;
         var symbol = rules[i].symbol;
-        if (value <= num) {
-            var repeatCount = Math.floor(num / value);
-            for (var j = 0; j < repeatCount; j++) {
-                result += symbol;
-                num -= value;
-            }
+        var repeatCount = Math.floor(num / value);
+        for (var j = 0; j < repeatCount; j++) {
+            result += symbol;
+            num -= value;
         }
     }
 
@@ -45,7 +43,8 @@ function romanTime(time) {
     var hours = time.split(':')[0];
     var minutes = time.split(':')[1];
 
-    return makeRomanNumber(hours) + ':' + makeRomanNumber(minutes);
+   return changeToRomanNumber(hours) + ':' + changeToRomanNumber(minutes);
 }
+
 
 module.exports = romanTime;

@@ -4,8 +4,8 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-const ROMAN_DECADES = [' ', 'X', 'XX', 'XXX', 'XL', 'L'];
-const ROMAN_DIGITS = [' ', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+const ROMAN_DECADES = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+const ROMAN_DIGITS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 function isHoursCorrect(hours) {
     return hours < 0 || hours > 23 || isNaN(hours);
 }
@@ -34,18 +34,14 @@ function fromArabToRoman(number) {
     }
     let romanFirst = transformEveryChar(number, ROMAN_DECADES, 0);
     let romanSecond = transformEveryChar(number, ROMAN_DIGITS, 1);
-    if (number.length === 2) {
-        roman = (romanFirst + romanSecond).replace(' ', '');
-    } else {
-        roman = transformEveryChar(number, ROMAN_DIGITS, 0);
-    }
+    roman = romanFirst + romanSecond;
 
     return roman;
 }
 
 function romanTime(time) {
-    if (arguments.length === 0 || time === undefined || time === null) {
-        throw new TypeError('Неверноe время');
+    if (time.length !== 5 || arguments.length === 0 || time === undefined || time === null) {
+        throw new TypeError('Неверно введено время');
     }
     // Немного авторского кода и замечательной магии
     const HOURS = time.split(':')[0];

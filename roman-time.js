@@ -1,5 +1,6 @@
 'use strict';
 var associations = { 1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 50: 'L' };
+var timeChecker = /^([01]\d|2[0-3]):?([0-5]\d)$/;
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
@@ -7,23 +8,14 @@ var associations = { 1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 50: 'L' };
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (isNullOrUndefined(time)) {
+    if (!timeChecker.test(time)) {
         throw new TypeError();
     }
 
-    var hourAndMinute = parseInput(time);
+    var hourAndMinute = timeChecker.exec(time);
 
-    if (!isValuableTime(hourAndMinute)) {
-        throw new TypeError();
-    }
-
-    return convertToRomanTime(hourAndMinute[0]) + ':' + convertToRomanTime(hourAndMinute[1]);
-}
-
-function parseInput(time) {
-    var preProcessedStrings = time.split(':');
-
-    return [Number(preProcessedStrings[0]), Number(preProcessedStrings[1])];
+    return convertToRomanTime(hourAndMinute[1] - 0) +
+        ':' + convertToRomanTime(hourAndMinute[2] - 0);
 }
 
 function convertToRomanTime(intValue) {
@@ -40,25 +32,6 @@ function convertToRomanTime(intValue) {
     }
 
     return stringRepresentation;
-}
-
-function isValuableTime(hourAndMinute) {
-
-    return isAppropriateHourValue(hourAndMinute[0]) && isAppropriateMinuteValue(hourAndMinute[1]);
-}
-
-function isNullOrUndefined(value) {
-    if (value === null || value === undefined) {
-        return true;
-    }
-}
-
-function isAppropriateHourValue(intValue) {
-    return intValue >= 0 && intValue < 24 && !isNaN(intValue);
-}
-
-function isAppropriateMinuteValue(intValue) {
-    return intValue >= 0 && intValue < 60 && !isNaN(intValue);
 }
 
 module.exports = romanTime;

@@ -7,24 +7,24 @@
 var ARABIC = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60];
 var ROMAN = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII',
         'IX', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
-var romanHour = '';
-var romanMinute = '';
-var romanNumber = '';
+var ROMANHOUR = '';
+var ROMANMINUTE = '';
+var ROMANNUMBER = '';
 
 function translate(number) {
     if (number === 0) {
-        romanNumber += 'N';
+        ROMANNUMBER += 'N';
 
-        return romanNumber;
+        return ROMANNUMBER;
     }
 
-    romanNumber += ROMAN[findLeftBorder(number)[1]];
+    ROMANNUMBER += ROMAN[findLeftBorder(number)[1]];
     number -= findLeftBorder(number)[0];
     if (number !== 0) {
         translate(number);
     }
 
-    return romanNumber;
+    return ROMANNUMBER;
 
 }
 
@@ -40,43 +40,26 @@ function findLeftBorder(number) {
     }
 }
 
-function checkInputValueCorrect(time) {
-    return /\d+:\d+/.test(time);
-}
-
-function checkInputLengthCorrect(time) {
-    if (time.length >= 3 && time.length <= 5) {
-        return true;
-    }
-
-    return false;
-}
-
-function checkTimeCorrect(hours, minutes) {
-    if (!(hours < 24 && minutes < 60)) {
+function checkInputCorrect(time) {
+    if (!(/^[0-1][0-9]|[2][2-3]:[0-5][0-9]$/.test(time))) {
         throw new TypeError('Неверное время');
     }
 
-    return hours < 24 && minutes < 60;
+    return true;
 }
 
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
-    time = time.replace(/\s+/g, '');
-    if (checkInputValueCorrect(time) && checkInputLengthCorrect(time)) {
-        time = time.split(':');
-        var hours = Number(time[0]);
-        var minutes = Number(time[1]);
-        if (checkTimeCorrect(hours, minutes)) {
-            romanHour = translate(hours);
-            romanNumber = '';
-            romanMinute = translate(minutes);
-            romanNumber = '';
+    // Немного авторского кода и замечательной магии 0:0
+    if (checkInputCorrect(time)) {
+        var timeParts = time.split(':');
+        var hours = Number(timeParts[0]);
+        var minutes = Number(timeParts[1]);
+        ROMANHOUR = translate(hours);
+        ROMANNUMBER = '';
+        ROMANMINUTE = translate(minutes);
+        ROMANNUMBER = '';
 
-            return romanHour + ':' + romanMinute;
-        }
-    } else {
-        throw new TypeError('Неверное время');
+        return ROMANHOUR + ':' + ROMANMINUTE;
     }
 }
 module.exports = romanTime;

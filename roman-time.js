@@ -23,6 +23,14 @@ function translation(num) {
 
         return 'N';
     }
+    if (Number(num[1]) < 4) {
+
+        return forHighOrder(Number(num[0])) + for123(Number(num[1]));
+    }
+    if (Number(num[1]) > 4 && Number(num[1]) < 9) {
+        
+        return forHighOrder(Number(num[0])) + for5678(Number(num[1]));
+    }
 
     return forHighOrder(Number(num[0])) + forLowOrder(Number(num[1]));
 }
@@ -45,25 +53,19 @@ function forHighOrder(highOrder) {
 }
 
 function forLowOrder(lowOrder) {
-    if (lowOrder === 1 || lowOrder === 2 || lowOrder === 3) {
-
-        return for123(lowOrder);
-    }
-    if (lowOrder === 5 || lowOrder === 6 || lowOrder === 7 || lowOrder === 8) {
-
-        return for5678(lowOrder);
-    }
     switch (lowOrder) {
         case 4:
-            return 'IV';        
+            return 'IV';
         case 9:
             return 'IX';
+        default:
+            return;
     }
 
     return '';
 }
 
-function for123 (lowOrder) {
+function for123(lowOrder) {
     let per = '';
     for (let i = 0; i < lowOrder; i++) {
         per = per + 'I';
@@ -72,7 +74,7 @@ function for123 (lowOrder) {
     return per;
 }
 
-function for5678 (lowOrder) {
+function for5678(lowOrder) {
     let per = 'V';
     for (let i = 0; i < lowOrder - 5; i++) {
         per = per + 'I';

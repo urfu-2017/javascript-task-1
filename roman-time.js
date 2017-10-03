@@ -10,59 +10,32 @@ function hoursToRoman(time) {
     var HH = arrayOfTime[0]; // Часы
     var h1 = parseInt(HH[0]); // разбиваем поэлементно часы, преобразуя к Int
     var h2 = parseInt(HH[1]);
-    var rh1 = '';
-    var rh2 = '';
-    switch (h1) {
-        case 0:
-            break;
-        case 1:
-            rh1 = 'X';
-            break;
-        case 2:
-            rh1 = 'XX';
-            break;
-        default:
-            break;
-    }
-    switch (h2) {
-        case 0:
-            break;
-        case 1:
-            rh2 = 'I';
-            break;
-        case 2:
-            rh2 = 'II';
-            break;
-        case 3:
-            rh2 = 'III';
-            break;
-        case 4:
-            rh2 = 'IV';
-            break;
-        case 5:
-            rh2 = 'V';
-            break;
-        case 6:
-            rh2 = 'VI';
-            break;
-        case 7:
-            rh2 = 'VII';
-            break;
-        case 8:
-            rh2 = 'VIII';
-            break;
-        case 9:
-            rh2 = 'IX';
-            break;
-        default:
-            break;
-    }
+    let dicH1 = {
+        '0' : '',
+        '1' : 'X',
+        '2' : 'XX'
+    };
+    let dicH2 = {
+        '0' : '',
+        '1' : 'I',
+        '2' : 'II',
+        '3' : 'III',
+        '4' : 'IV',
+        '5' : 'V',
+        '6' : 'VI',
+        '7' : 'VII',
+        '8' : 'VIII',
+        '9' : 'IX'
+    };
+    
     if ((h1 === 0) && (h2 === 0)) {
-        rh1 = 'N';
-        rh2 = '';
+        
+        return 'N';
     }
-    return rh1 + rh2;
-}
+
+    return dicH1[h1] + dicH2[h2];
+ }
+
 function minutesToRoman(time){
     // перевод минут
     var arrayOfTime = time.split(':'); // Делим входное время на две части
@@ -71,74 +44,41 @@ function minutesToRoman(time){
     var m2 = parseInt(MM[1]); // ---
     var rm1 = '';
     var rm2 = '';
-    switch (m1) {
-        case 0:
-            break;
-        case 1:
-            rm1 = 'X';
-            break;
-        case 2:
-            rm1 = 'XX';
-            break;
-        case 3:
-            rm1 = 'XXX';
-            break;
-        case 4:
-            rm1 = 'XL';
-            break;
-        case 5:
-            rm1 = 'L';
-            break;
-        default:
-            break;
-    }
-    switch (m2) {
-        case 0:
-            break;
-        case 1:
-            rm2 = 'I';
-            break;
-        case 2:
-            rm2 = 'II';
-            break;
-        case 3:
-            rm2 = 'III';
-            break;
-        case 4:
-            rm2 = 'IV';
-            break;
-        case 5:
-            rm2 = 'V';
-            break;
-        case 6:
-            rm2 = 'VI';
-            break;
-        case 7:
-            rm2 = 'VII';
-            break;
-        case 8:
-            rm2 = 'VIII';
-            break;
-        case 9:
-            rm2 = 'IX';
-            break;
-        default:
-            break;
-    }
+    let dicM1 = {
+        '0' : '',
+        '1' : 'X',
+        '2' : 'XX',
+        '3' : 'XX',
+        '4' : 'XX',
+        '5' : 'XX'
+    };
+    let dicM2 = {
+        '0' : '',
+        '1' : 'I',
+        '2' : 'II',
+        '3' : 'III',
+        '4' : 'IV',
+        '5' : 'V',
+        '6' : 'VI',
+        '7' : 'VII',
+        '8' : 'VIII',
+        '9' : 'IX'
+    };
     if ((m1 === 0) && (m2 === 0)) {
-        rm1 = 'N';
-        rm2 = '';
+
+        return 'N';
     }
-    return rm1 + rm2;
-}
+
+    return dicM1[m1] + dicM2[m2];
+ } 
 function romanTime(time) {
     // проверяем формат времени
     let valid = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;
     if (!valid.test(time)) {
         throw new TypeError('Неверное время', 'roman-time.js');
     }
-    
     time = hoursToRoman(time) + ':' + minutesToRoman(time);
+
     return time;
 }
 

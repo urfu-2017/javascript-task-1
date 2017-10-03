@@ -13,13 +13,13 @@ function isMinutesCorrect(minutes) {
     return minutes < 0 || minutes > 59 || isNaN(minutes);
 }
 function checkTime(hours, minutes) {
-    if (isHoursCorrect(parseInt(hours)) || isMinutesCorrect(parseInt(minutes))) {
+    if (isHoursCorrect(Number(hours)) || isMinutesCorrect(Number(minutes))) {
         throw new TypeError('Неверное время');
     }
 }
 function fromArabToRoman(number) {
     let roman = '';
-    if (number === '00' || number === '0') {
+    if (number === '00') {
         roman = 'N';
 
         return roman;
@@ -40,7 +40,10 @@ function fromArabToRoman(number) {
 }
 
 function romanTime(time) {
-    if (time.length !== 5 || arguments.length === 0 || time === undefined || time === null) {
+    if (arguments.length === 0 || time === undefined || time === null) {
+        throw new TypeError('Неверно введено время');
+    }
+    if (time.length !== 5) {
         throw new TypeError('Неверно введено время');
     }
     // Немного авторского кода и замечательной магии

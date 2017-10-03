@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
     if (time[2] !== ':') {
-        throw new TypeError("Неверное время");
+        throw new TypeError('Неверное время');
     }
     var arr = time.split(':');
     var hour = arr[0];

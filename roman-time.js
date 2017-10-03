@@ -11,15 +11,13 @@ const Roman10 = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    let t = time.split(':', 2);
-    if (t.length > 2){
+    let t = time.split([':']);
+    if (t.length > 2) {
         throw new TypeError('Неверное время: ' + time);
     }
     let min = parseInt(t[1], 10);
     let hour = parseInt(t[0], 10);
-    if (min > 59 || min < 0 || hour > 23 || hour < 0 || isNaN(min)) {
-        throw new TypeError('Неверное время: ' + time);
-    } else if (isNaN(hour)) {
+    if (min > 59 || min < 0 || hour > 23 || hour < 0 || isNaN(min) || isNaN(hour)) {
         throw new TypeError('Неверное время: ' + time);
     } else {
         let romanMin = Roman10[Math.floor(min / 10)] + Roman1to9[min % 10];

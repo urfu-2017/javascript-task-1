@@ -73,9 +73,11 @@ function transmutation(timeNorm) {
             timeRome.push(numbersRome[timeNorm[i]]);
             exN ++;
         }
-
         for (let k = 0; k < exN; k++) {
             delete timeRome[timeRome.indexOf('N')];
+        }
+        if (i === 1) {
+            timeRome.push(':');
         }
     }
 
@@ -89,8 +91,12 @@ function correction(timeRome) {
     timeRome = timeRome.split(' ');
     var answer = [];
     for (let i = 0; i < timeRome.length; i++) {
-        answer.push(timeRome[i]);
-        if (i === (timeRome.length / 2) - 1) {
+        if (timeRome[0] === ':' && i === 0) {
+            continue;
+        } else {
+            answer.push(timeRome[i]);
+        }
+        if (timeRome[0] === ':' && i === 1) {
             answer.push(':');
         }
     }

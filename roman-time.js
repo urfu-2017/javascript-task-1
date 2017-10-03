@@ -6,11 +6,13 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    if (typeof time === 'undefined' || typeof time === 'object') {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
     var elemOfTypes = time.split(':');
     test1(elemOfTypes);
     test2(elemOfTypes);
-    test3(elemOfTypes);
-    test4(elemOfTypes);
     time = translation(elemOfTypes[0]) + ':' + translation(elemOfTypes[1]);
 
     return time;
@@ -30,18 +32,7 @@ function test2(elemOfTypes) {
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }
 }
-function test3(elemOfTypes) {
-    if (elemOfTypes[0] === null || elemOfTypes[1] === null) {
 
-        throw new TypeError('Задан не верный формат времени', 'index.js');
-    }
-}
-function test4(elemOfTypes) {
-    if (elemOfTypes[0] === 'undefined' || elemOfTypes[1] === 'undefined') {
-
-        throw new TypeError('Задан не верный формат времени', 'index.js');
-    }
-}
 function translation(num) {
     if (num === '00') {
 

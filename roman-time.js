@@ -11,8 +11,8 @@ function romanTime(time) {
 
         throw new TypeError('Задан не верный формат времени", "index.js');
     }
-    time = translation(arrayOfStrings[0]) + ":" + translation(arrayOfStrings[1]);
-     
+    time = translation(arrayOfStrings[0]) + ':' + translation(arrayOfStrings[1]);
+    
     return time;
 }
 
@@ -32,57 +32,41 @@ function translation(num) {
 function forHour(hour) {
     switch (hour) {
         case 1:
-        return 'X';
-        break;
+            return 'X';
         case 2:
-        return 'XX';
-        break;
+            return 'XX';
         case 3:
-        return 'XXX';
-        break;
+            return 'XXX';
         case 4:
-        return 'XL';
-        break;
+            return 'XL';
         case 5:
-        return 'L';
-        break;
+            return 'L';
         default:
-        return '';
-        break;
+            return '';
     }
 }
 
 function forMinutes(Minutes) {
     switch (Minutes) {
         case 1:
-        return 'I';
-        break;
+            return 'I';
         case 2:
-        return 'II';
-        break;
+            return 'II';
         case 3:
-        return 'III';
-        break;
+            return 'III';
         case 4:
-        return 'IV';
-        break;
+            return 'IV';
         case 5:
-        return 'V';
-        break;
+            return 'V';
         case 6:
-        return 'VI';
-        break;
+            return 'VI';
         case 7:
-        return 'VII';
-        break;
+            return 'VII';
         case 8:
-        return 'VIII';
-        break;
+            return 'VIII';
         case 9:
-        return 'IX';
-        break;
+            return 'IX';
         default:
-        return '';
-        break;
+            return '';
     }
 }

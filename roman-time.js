@@ -28,12 +28,12 @@ function hoursToRoman(time) {
         '9': 'IX'
     };
     if ((h1 === 0) && (h2 === 0)) {
-        
-    return 'N';
+
+        return 'N';
     }
 
     return dicH1[h1] + dicH2[h2];
- }
+}
 function minutesToRoman(time) {
     // перевод минут
     var arrayOfTime = time.split(':'); // Делим входное время на две части
@@ -44,9 +44,9 @@ function minutesToRoman(time) {
         '0': '',
         '1': 'X',
         '2': 'XX',
-        '3': 'XX',
-        '4': 'XX',
-        '5': 'XX'
+        '3': 'XXX',
+        '4': 'XL',
+        '5': 'L'
     };
     let dicM2 = {
         '0': '',
@@ -62,10 +62,11 @@ function minutesToRoman(time) {
     };
     if ((m1 === 0) && (m2 === 0)) {
 
-    return 'N';
+        return 'N';
     }
+
     return dicM1[m1] + dicM2[m2];
- } 
+} 
 function romanTime(time) {
     // проверяем формат времени
     let valid = /^([0-1][0-9]|[2][0-3]):([0-5][0-9])$/;

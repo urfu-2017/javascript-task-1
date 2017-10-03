@@ -9,11 +9,7 @@ function romanTime(time) {
     if (typeof time === 'undefined' || typeof time === 'object') {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
-    }
-    if (isNaN(time) === true) {
-
-        throw new TypeError('Задан не верный формат времени', 'index.js');
-    }
+    }    
     var elemOfTypes = time.split(':');
     if (elemOfTypes.length > 2) {
 
@@ -21,6 +17,7 @@ function romanTime(time) {
     }
     test1(elemOfTypes);
     test2(elemOfTypes);
+    test3(elemOfTypes);
     time = translation(elemOfTypes[0]) + ':' + translation(elemOfTypes[1]);
 
     return time;
@@ -36,6 +33,13 @@ function test1(elemOfTypes) {
 }
 function test2(elemOfTypes) {
     if (elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2) {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
+}
+
+function test3(elemOfTypes) {
+    if (isNaN(elemOfTypes[0]) === true || isNaN(elemOfTypes[1]) === true) {
 
         throw new TypeError('Задан не верный формат времени', 'index.js');
     }

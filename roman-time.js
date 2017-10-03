@@ -14,7 +14,7 @@ function isMinutesCorrect(minutes) {
 }
 function checkTime(hours, minutes) {
     if (isHoursCorrect(parseInt(hours)) || isMinutesCorrect(parseInt(minutes))) {
-        throw new TypeError('Время введено неверно');
+        throw new TypeError('Неверное время');
     }
 }
 function fromArabToRoman(number) {
@@ -42,7 +42,11 @@ function fromArabToRoman(number) {
 
     return roman;
 }
+
 function romanTime(time) {
+    if (arguments.length === 0 || time === undefined || time === null) {
+        throw new TypeError('Неверноe время');
+    }
     // Немного авторского кода и замечательной магии
     const HOURS = time.split(':')[0];
     const MINUTES = time.split(':')[1];

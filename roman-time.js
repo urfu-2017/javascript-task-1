@@ -7,8 +7,8 @@
 function romanTime(time) {
     try {
         // проверяем на null или undefined
-        if ((time === undefined) || (time === null)){
-            throw new TypeError('Неверный формат времени', 'roman-time.js');
+        if ((time === undefined) || (time === null)) {
+            throw new TypeError('Неверное время', 'roman-time.js');
         }
         var arrayOfTime = time.split(':'); // Делим входное время на две части
         var HH = arrayOfTime[0]; // Часы
@@ -19,19 +19,19 @@ function romanTime(time) {
         var m2 = parseInt(MM[1]); // ---
         // проверяем валидность строк
         if (!(HH.length === 2 && MM.length === 2) || // часы и минуты состоят ровно из 2 символов
-        (isNaN(h1)) || (isNaN(h2)) || (isNaN(m1)) || (isNaN(m2))) { // символы могут быть приведены к числу
-            throw new TypeError('Неверный формат времени', 'roman-time.js');
+        (isNaN(h1)) || (isNaN(h2)) || (isNaN(m1)) || (isNaN(m2))) { // символы приводимы к числу?
+            throw new TypeError('Неверное время', 'roman-time.js');
         }
         // проверяем валиднось чисел
-        if ((h1 * 10 + h2 > 23) || (h1 < 0) || (h2 < 0) || (m1<0) || (m1>5) || (m2<0)) {
-            throw new TypeError('Неверный формат времени', 'roman-time.js');
+        if ((h1 * 10 + h2 > 23) || (h1 < 0) || (h2 < 0) || (m1 < 0) || (m1 > 5) || (m2 < 0)) {
+            throw new TypeError('Неверное время', 'roman-time.js');
         }
         var rh1 = '';
         var rh2 = '';
         var rm1 = '';
         var rm2 = ''; // часы и минуты в римском формате
         // перевод часов
-        switch(h1) {
+        switch (h1) {
             case 0:
                 break;
             case 1:
@@ -40,8 +40,10 @@ function romanTime(time) {
             case 2:
                 rh1 = 'XX';
                 break;
+            default:
+                break;
         }
-        switch(h2) {
+        switch (h2) {
             case 0:
                 break;
             case 1:
@@ -71,13 +73,15 @@ function romanTime(time) {
             case 9:
                 rh2 = 'IX';
                 break;
+            default:
+                break;
         }
-        if ((h1===0) && (h2===0)) {
-            rh1='N';
-            rh2='';
+        if ((h1 === 0) && (h2 === 0)) {
+            rh1 = 'N';
+            rh2 = '';
         }
         // перевод минут
-        switch(m1) {
+        switch (m1) {
             case 0:
                 break;
             case 1:
@@ -95,8 +99,10 @@ function romanTime(time) {
             case 5:
                 rm1 = 'L';
                 break;
+            default:
+                break;
         }
-        switch(m2) {
+        switch (m2) {
             case 0:
                 break;
             case 1:
@@ -126,15 +132,18 @@ function romanTime(time) {
             case 9:
                 rm2 = 'IX';
                 break;
+            default:
+                break;
         }
-        if ((m1===0) && (m2===0)) {
-            rm1='N';
-            rm2='';
+        if ((m1 === 0) && (m2 === 0)) {
+            rm1 = 'N';
+            rm2 = '';
         }
         time = rh1 + rh2 + ':' + rm1 + rm2;
-    } catch(err) {
-        console.log(err.message);
+    } catch (err) {
+        alert('Неверное время');
     }
+
     return time;
 }
 

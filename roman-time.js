@@ -24,7 +24,7 @@ function checkValid(a, b) {
 }
 
 function romanTime(time) {
-    if (!time || time.trim() === '' || time.length !== 5) {
+    if (!time || time.length !== 5) {
         throw new TypeError();
     }
 

@@ -96,7 +96,7 @@ function correction(timeRome) {
         } else {
             answer.push(timeRome[i]);
         }
-        if (timeRome[0] === ':' && i === 1 ) {
+        if (timeRome[0] === ':' && i === 1) {
             answer.push(':');
         }
     }

@@ -14,7 +14,6 @@ function romanTime(time) {
     
     hour = toHour(hour);
     minute = toMinute(minute);
-    
     time = hour + ":" + minute;
     return time;
 }

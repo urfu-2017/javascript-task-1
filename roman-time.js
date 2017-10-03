@@ -29,7 +29,6 @@ function romanTime(time) {
         if (hour === 0) {
             romanHour = 'N';
         }
-        
         return (`${romanHour}:${romanMin}`);
     }
 }

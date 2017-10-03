@@ -9,7 +9,7 @@ function romanTime(time) {
     var timeNorm;
     var timeRome;
     var answer = [];
-    if (isTimeCorrect(time)) {
+    if (isTimeCorrect(time) && time.length === 5) {
         timeNorm = time.split(':');
         timeNorm = timeNorm.join('');
         timeNorm = timeNorm.slice();

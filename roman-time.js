@@ -23,15 +23,13 @@ function romanTime(time) {
         let romanMin = Roman10[Math.floor(min / 10)] + Roman1to9[min % 10];
         let romanHour = Roman10[Math.floor(hour / 10)] + Roman1to9[hour % 10];
 
-        if (min === 0 && hour !== 0) {
-            romanMin = 'N';
-        } else if (hour === 0 && min !== 0) {
-            romanHour = 'N';
-        } else if (min === 0 && hour === 0) {
-            romanHour = 'N';
+        if (min === 0) {
             romanMin = 'N';
         }
-
+        if (hour === 0) {
+            romanHour = 'N';
+        }
+        
         return (`${romanHour}:${romanMin}`);
     }
 }

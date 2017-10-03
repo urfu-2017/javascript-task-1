@@ -28,7 +28,7 @@ function translation(num) {
         return forHighOrder(Number(num[0])) + for123(Number(num[1]));
     }
     if (Number(num[1]) > 4 && Number(num[1]) < 9) {
-        
+
         return forHighOrder(Number(num[0])) + for5678(Number(num[1]));
     }
 
@@ -61,8 +61,6 @@ function forLowOrder(lowOrder) {
         default:
             return;
     }
-
-    return '';
 }
 
 function for123(lowOrder) {

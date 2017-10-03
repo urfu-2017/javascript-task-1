@@ -5,9 +5,6 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-function checkValid(a, b) {
-    return (a < 0 || a > 23 || b < 0 || b > 59 || isNaN(a) || isNaN(b));
-}
 function getRomeTime(a) {
     var listOfDecimal = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var listOfUnit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -22,23 +19,29 @@ function getRomeTime(a) {
     return listOfDecimal[decimal] + listOfUnit[unit];
 }
 
+function checkValid(a, b) {
+    return (isNaN(a) || isNaN(b) || a > 23 || a < 0 || b > 59 || b < 0);
+}
+
 function romanTime(time) {
-    if (!time) {
+    if (!time || time.trim() === '') {
         throw new TypeError();
-    } else {
-        var hours = time.split(':')[0];
-        var minutes = time.split(':')[1];
-
-        if (hours.trim().length < 2 || minutes.trim().length < 2) {
-            throw new TypeError();
-        }
-
-        if (checkValid(parseInt(hours), parseInt(minutes))) {
-            throw new TypeError();
-        }
-
-        time = getRomeTime(hours) + ':' + getRomeTime(minutes);
     }
+
+    var hours = time.split(':')[0].trim();
+    var minutes = time.split(':')[1].trim();
+
+    if (hours.length !== 2 || minutes.length !== 2) {
+        throw new TypeError();
+    }
+
+    hours = Number(hours);
+    minutes = Number(minutes);
+    if (checkValid(hours, minutes)) {
+        throw new TypeError();
+    }
+
+    time = getRomeTime(hours) + ':' + getRomeTime(minutes);
 
     return time;
 }

@@ -17,7 +17,7 @@ function romanTime(time) {
         answer = correction(timeRome);
         time = answer.join('');
     } else {
-        time = 'TypeError: Неверное время';
+        throw new TypeError('TypeError: Неверное время');
     }
 
 
@@ -96,7 +96,7 @@ function correction(timeRome) {
         } else {
             answer.push(timeRome[i]);
         }
-        if (timeRome[0] === ':' && i === 1) {
+        if (timeRome[0] === ':' && i === 1 ) {
             answer.push(':');
         }
     }

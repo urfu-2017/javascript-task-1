@@ -7,10 +7,10 @@
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     var elemOfTypes = time.split(':');
-    if (Number(elemOfTypes[0]) > 23 || Number(elemOfTypes[1]) > 59 || elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2 || elemOfTypes[0] === null || elemOfTypes[1] === null || elemOfTypes[0] === 'undefined' || elemOfTypes[1] === 'undefined') {
-
-        throw new TypeError('Задан не верный формат времени", "index.js');
-    }
+    test1(elemOfTypes);
+    test2(elemOfTypes);
+    test3(elemOfTypes);
+    test4(elemOfTypes);
     time = translation(elemOfTypes[0]) + ':' + translation(elemOfTypes[1]);
 
     return time;
@@ -18,6 +18,30 @@ function romanTime(time) {
 
 module.exports = romanTime;
 
+function test1(elemOfTypes) {
+    if (Number(elemOfTypes[0]) > 23 || Number(elemOfTypes[1]) > 59) {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
+}
+function test2(elemOfTypes) {
+    if (elemOfTypes[0].length > 2 || elemOfTypes[1].length > 2) {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
+}
+function test3(elemOfTypes) {
+    if (elemOfTypes[0] === null || elemOfTypes[1] === null) {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
+}
+function test4(elemOfTypes) {
+    if (elemOfTypes[0] === 'undefined' || elemOfTypes[1] === 'undefined') {
+
+        throw new TypeError('Задан не верный формат времени', 'index.js');
+    }
+}
 function translation(num) {
     if (num === '00') {
 

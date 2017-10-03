@@ -17,7 +17,7 @@ describe('Модуль roman-time', function () {
         assert.strictEqual(romanTime('23:59'), 'XXIII:LIX');
     });
     it('должен возвращать для 23:40 значение XXIII:XL', function () {
-        assert.strictEqual(romanTime('23:40'), 'XXIII:LIX');
+        assert.strictEqual(romanTime('23:40'), 'XXIII:XL');
     });
 
     it('должен выбрасывать исключение TypeError для 24:00', function () {

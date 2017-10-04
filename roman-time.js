@@ -31,7 +31,7 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (num[0] > 23 || num[1] > 59 ||
+    if (num[0] > 23 || num[0] < 0 || num[1] > 59 || num[1] < 0 ||
     num[0].isNaN || num[1].isNaN) {
         throw new TypeError('Неверное время');
     }
@@ -39,12 +39,15 @@ function romanTime(time) {
     return (roman(num[0]) + ':' + roman(num[1]));
 }
 
-
 function wholeTime(time) {
     if (time === null || time === undefined || typeof time !== 'string') {
         throw new TypeError('Неверное время');
     }
-
+    
+    if (time.indexOf(':') === (-1)) {
+        throw new TypeError('Неверное время');
+    }
+    
     if (time.length !== 5) {
         throw new TypeError('Неверное время');
     }

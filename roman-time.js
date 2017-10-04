@@ -2,7 +2,7 @@
 function convert(tense) {
     var smallNumbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
     var bigNumbers = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-    if (tense === '00') {
+    if (tense === '00' || parseInt(tense) === 0) {
 
         return ('N');
     }
@@ -19,6 +19,9 @@ function check(tense) {
     }
 }
 function romanTime(time) {
+    if (time.lenght < 5) {
+        throw new TypeError('Неверное время');
+    }
     time = time.split([':']);
     check(time[0]);
     check(time[1]);

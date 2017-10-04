@@ -9,7 +9,11 @@ function roman(time) {
 
     var result = '';
 
-    if (time === 0) {
+    if (time.lenght > 2 || time.lenght < 2) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (time === 00) {
         result = 'N';
     }
 
@@ -25,15 +29,16 @@ function roman(time) {
 
     return result;
 
+    if (isNaN(time) || time === undefined || time === null) {
+        throw new TypeError('Неверное время');
+    }
 }
 
 function romanTime(time) {
     var time12 = time.split(':');
     if (parseInt(time12[0], 10).isNaN || parseInt(time12[1], 10).isNaN ||
     parseInt(time12[0], 10) > 23 || parseInt(time12[1], 10) > 59 ||
-    time.length > 5 ||
-    parseInt(time12[0], 10).length !== 2 ||
-    parseInt(time12[1], 10).length !== 2) {
+    typeof time!== 'string') {
         throw new TypeError('Неверное время');
     }
 

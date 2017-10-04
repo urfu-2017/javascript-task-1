@@ -47,6 +47,10 @@ function wholeTime(time) {
         throw new TypeError('Неверное время');
     }
 
+    if (time.indexOf(':') === (-1)) {
+        throw new TypeError('Неверное время');
+    }
+
     if (time.length !== 5) {
         throw new TypeError('Неверное время');
     }

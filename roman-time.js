@@ -76,7 +76,9 @@ function toRomanRight(time) {
 
 function errorTime(time) {
     var colon = time.indexOf(':');
-    if (colon !== 2 || time.length !== 5 || time === null || time === undefined || typeof(time) !== 'string') {
+    if (colon !== 2 || time.length !== 5 ||
+        time === null || time === undefined ||
+        typeof(time) !== 'string') {
         throw new TypeError('Неверное время');
     }
     parseTime(time);

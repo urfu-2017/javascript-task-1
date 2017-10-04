@@ -13,7 +13,7 @@ function checkNumber(number, min, max) {
 
 function convertToRoman(nummber) {
     var numbersArray = [50, 40, 10, 9, 5, 4, 1];
-    var romanNumerals = {1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L'};
+    var romanNumerals = { 1: 'I', 4: 'IV', 5: 'V', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L' };
     var strInRoman = '';
     var count = 0;
     if (nummber === 0) {
@@ -24,12 +24,15 @@ function convertToRoman(nummber) {
             return strInRoman;
         }
         var num = numbersArray[count];
-        if (nummber >= num){
+        if (nummber >= num) {
             strInRoman += romanNumerals[num];
             nummber -= num;
         }
-        else count++;
+        else {
+            count++;
+        }
     }
+
     return strInRoman;
 }
 
@@ -48,8 +51,8 @@ function romanTime(time) {
     else {
         throw new TypeError();
     }
-    checkNumber(hours, 0 , 23);
-    checkNumber(minutes, 0 , 59);
+    checkNumber(hours, 0, 23);
+    checkNumber(minutes, 0, 59);
     time = convertToRoman(hours) + ':' + convertToRoman(minutes);
 
     return time;

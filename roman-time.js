@@ -1,35 +1,120 @@
 'use strict';
 
-/**
+/*
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+function isnull(q1) {
+    if (q1 === null || q1.length < 1) {
+        throw new TypeError('HH or MM is null');
+    }
+    //  console.log('2.' + i + ') ' + tdec[0] + ':' + tdec[1]);
+
+    return q1;
+}
+function isfrac(q2) {
+    if (q2 % 1 !== 0) {
+        throw new TypeError('Value HH or MM is frac');
+    }
+    //  console.log('4.' + i + ') ' + tdec[0] + ':' + tdec[1]);
+
+    return q2;
+}
+function checknan(q3) {
+    if (isNaN(q3) || q3 < 0) {
+        throw new TypeError('Value out of range or NaN');
+    }
+    //  console.log('5.' + i + ') ' + tdec[0] + ':' + tdec[1]);
+
+    return q3;
+}
 function adduct(time) {
     var tdec = time.split(':');
     //  console.log('1) ' + tdec[0] + ':' + tdec[1]);
     for (var i = 0; i < 2; i++) {
-        if (tdec[i] === null || tdec[i].length < 2) {
-            throw new TypeError('Problems with elemets in massive', 'roman-time.js', 11);
-        }
-        //  console.log('2.' + i + ') ' + tdec[0] + ':' + tdec[1] + 'w');
+        tdec[i] = isnull(tdec[i]);
         tdec[i] = Number(tdec[i]);
         //  console.log('3.' + i + ') ' + tdec[0] + ':' + tdec[1]);
-        if (tdec[i] % 1 !== 0) {
-            throw new TypeError('Value HH or MM is frac', 'roman-time.js', 16);
-        }
-        //  console.log('4.' + i + ') ' + tdec[0] + ':' + tdec[1]);
+        tdec[i] = isfrac(tdec[i]);
         tdec[i] = parseInt(tdec[i], 10);
-        //  console.log('5.' + i + ') ' + tdec[0] + ':' + tdec[1]);
-        if (isNaN(tdec[i]) || tdec[i] < 0) {
-            throw new TypeError('Value out of range or NaN', 'roman-time.js', 12);
-        }
-        //  console.log('6.' + i + ') ' + tdec[0] + ':' + tdec[1]);
+        tdec[i] = checknan(tdec[i]);
     }
     if (tdec[0] > 23 || tdec[1] > 59) {
-        throw new TypeError('Value out of range (more)', 'roman-time.js', 12);
+        throw new TypeError('Value out of range (more)');
     }
+    //  console.log('6.' + i + ') ' + tdec[0] + ':' + tdec[1]);
 
     return tdec[0] + ':' + tdec[1];
+}
+
+function conversionD(tt) {
+    var _tt;
+    switch (parseInt(tt / 10, 10)) {
+        case 1:
+            _tt = 'X';
+            break;
+        case 2:
+            _tt = 'XX';
+            break;
+        case 3:
+            _tt = 'XXX';
+            break;
+        case 4:
+            _tt = 'XL';
+            break;
+        case 5:
+            _tt = 'L';
+            break;
+        default:
+            _tt = '';
+            break;
+    }
+
+    return _tt;
+}
+function conversionU(tt) {
+    var tt_;
+    switch (tt % 10) {
+        case 1:
+            tt_ = 'I';
+            break;
+        case 2:
+            tt_ = 'II';
+            break;
+        case 3:
+            tt_ = 'III';
+            break;
+        case 4:
+            tt_ = 'IV';
+            break;
+        default:
+            tt_ = '';
+            break;
+    }
+
+    return tt_;
+}
+function conversionU2(tt) {
+    var tt_;
+    switch (tt % 10) {
+        case 5:
+            tt_ = 'V';
+            break;
+        case 6:
+            tt_ = 'VI';
+            break;
+        case 7:
+            tt_ = 'VII';
+            break;
+        case 8:
+            tt_ = 'VIII';
+            break;
+        default:
+            tt_ = 'IX';
+            break;
+    }
+
+    return tt_;
 }
 function romanTime(time) {
     var newtime = adduct(time);
@@ -38,67 +123,23 @@ function romanTime(time) {
     //  console.log('NEW) ' + nt[0] + ':' + nt[1]);
     for (var i = 0; i < 2; i++) {
         //  console.log(parseInt(nt[i] / 10, 10));
-        if (nt[i] == 0) {
+        if (nt[i] === '0') {
             arrtime[i] = 'N';
             continue;
         }
-        switch (parseInt(nt[i] / 10, 10)) {
-            case 1:
-                arrtime[i] = 'X';
-                break;
-            case 2:
-                arrtime[i] = 'XX';
-                break;
-            case 3:
-                arrtime[i] = 'XXX';
-                break;
-            case 4:
-                arrtime[i] = 'XL';
-                break;
-            case 5:
-                arrtime[i] = 'L';
-                break;
-            default:
-                break;
+        arrtime[i] = conversionD(nt[i]);
+        if (nt[i] % 10 > 4) {
+            arrtime[i] += conversionU2(nt[i]);
+        } else {
+            arrtime[i] += conversionU(nt[i]);
         }
         //  console.log(nt[i] % 10);
-        switch (nt[i] % 10) {
-            case 1:
-                arrtime[i] += 'I';
-                break;
-            case 2:
-                arrtime[i] += 'II';
-                break;
-            case 3:
-                arrtime[i] += 'III';
-                break;
-            case 4:
-                arrtime[i] += 'IV';
-                break;
-            case 5:
-                arrtime[i] += 'V';
-                break;
-            case 6:
-                arrtime[i] += 'VI';
-                break;
-            case 7:
-                arrtime[i] += 'VII';
-                break;
-            case 8:
-                arrtime[i] += 'VIII';
-                break;
-            case 9:
-                arrtime[i] += 'IX';
-                break;
-            default:
-                break;
-        }
     }
     time = arrtime[0] + ':' + arrtime[1];
 
     return time;
 }
 
-//  console.log(romanTime('24:00'));
+//  console.log(romanTime('23:09'));
 
 module.exports = romanTime;

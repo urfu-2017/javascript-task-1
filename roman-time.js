@@ -1,4 +1,3 @@
-/* eslint-disable complexity,max-statements */
 'use strict';
 
 /**
@@ -6,67 +5,62 @@
  * @returns {String} – время римскими цифрами (IX:V)
  **/
 function romanTime(time) {
+    var reg = new RegExp('^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$');
+    if (!reg.test(time)) {
+        throw new TypeError('Wrong format');
+    }
     var arr = time.split(':');
     var hourArab = parseInt(arr[0]);
     var minuteArab = parseInt(arr[1]);
-    if (isNaN(minuteArab) || minuteArab < 0 || minuteArab > 60) {
-        throw new TypeError('must be digits');
-    }
-    if (hourArab >= 24 || hourArab < 0 || isNaN(hourArab)) {
-        throw new TypeError('must be hours < 24, minutes < 60');
-    }
     function toRoman(number) {
         var rimNumber = '';
         var remain;
-        if (Math.floor(number / 50) === 1) {
-            rimNumber = 'L';
-            remain = number % 50;
-        }
-        if (Math.floor(number / 10) === 4) {
-            rimNumber = 'XL';
-            remain = number % 40;
-        }
-        if (Math.floor(number / 10) === 3) {
-            rimNumber = 'XXX';
-            remain = number % 30;
-        }
-        if (Math.floor(number / 10) === 2) {
-            rimNumber = 'XX';
-            remain = number % 20;
-        }
-        if (Math.floor(number / 10) === 1) {
-            rimNumber = 'X';
-            remain = number % 10;
-        }
-        if (Math.floor(number / 10) === 0) {
-            remain = number;
-        }
-        if (remain > 5 && remain < 9) {
-            while (remain > 5) {
-                rimNumber += 'I';
-                remain--;
-            }
-        }
-        if (remain === 9) {
-            rimNumber += 'IX';
-        }
-        if (remain < 4) {
-            while (remain !== 0) {
-                rimNumber += 'I';
-                remain--;
-            }
-        }
-        if (remain === 4) {
-            rimNumber += 'IV';
-        }
-        if (remain === 5) {
-            rimNumber += 'V';
-        }
-        if (Math.floor(number / 1) === 0) {
-            rimNumber = 'NN';
+        var tens = Math.floor(number / 10);
+        if (number === 0) {
+            return 'N';
         }
 
+        if (tens < 4) {
+            rimNumber = repeatString('X', tens);
+        } else {
+            rimNumber = repeatString('X', 5 - tens) + 'L';
+        }
+        if (tens === 0) {
+            remain = number;
+        } else {
+            remain = number % (tens * 10);
+        }
+        rimNumber += calcRemain(remain);
+
         return rimNumber;
+    }
+
+    function repeatString(string, count) {
+        var result = '';
+        while (count !== 0) {
+            result += string;
+            count--;
+        }
+
+        return result;
+    }
+
+    function calcRemain(remain) {
+        if (remain > 5 && remain < 9) {
+            return repeatString('I', remain - 5);
+        }
+        if (remain === 9) {
+            return 'IX';
+        }
+        if (remain < 4) {
+            return repeatString('I', remain);
+        }
+        if (remain === 4) {
+            return 'IV';
+        }
+        if (remain === 5) {
+            return 'V';
+        }
     }
 
     return toRoman(hourArab) + ':' + toRoman(minuteArab);

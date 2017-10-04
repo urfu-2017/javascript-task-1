@@ -5,15 +5,12 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function areNumbersCorrect(time) {
-    var timeParts = time.split(':');
     var hours = parseInt(timeParts[0]);
     var minutes = parseInt(timeParts[1]);
-    if (timeParts.length !== 2 || (timeParts[0] % 1 !== 0 || timeParts[1] % 1 !== 0)) {
-        return false;
-    }
     if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
         return false;
     }
+    
     return true;
 }
 function isCorrectTime(time) {
@@ -23,8 +20,12 @@ function isCorrectTime(time) {
     if (time.match(/[0-9][0-9]:[0-9][0-9]/ig) === null) {
         return false;
     }
-
-    return areNumbersCorrect(time);
+    var timeParts = time.split(':');
+    if (timeParts.length !== 2 || (timeParts[0] % 1 !== 0 || timeParts[1] % 1 !== 0)) {
+        return false;
+    }
+    
+    return areNumbersCorrect(timeParts);
 }
 
 function hoursToRoman(hours, romanDict) {

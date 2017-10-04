@@ -37,21 +37,14 @@ function convertToRoman(nummber) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time === undefined || time === null) {
-        throw new TypeError();
-    }
     var numbers = time.split(':');
-    var hours = parseInt(numbers[0]);
-    var minutes = parseInt(numbers[1]);
-    if (hours !== Math.floor(numbers[0]) || minutes !== Math.floor(numbers[1])) {
+    if (time === undefined || time === null || numbers.length !== 2) {
         throw new TypeError();
     }
-    if (numbers.length === 2) {
-        checkNumber(hours, 0, 23);
-        checkNumber(minutes, 0, 59);
-    } else {
-        throw new TypeError();
-    }
+    var hours = Number(numbers[0]);
+    var minutes = Number(numbers[1]);
+    checkNumber(hours, 0, 23);
+    checkNumber(minutes, 0, 59);
     time = convertToRoman(hours) + ':' + convertToRoman(minutes);
 
     return time;

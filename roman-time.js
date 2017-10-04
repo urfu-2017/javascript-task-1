@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
     var reg = RegExp('(([01][0-9])|(2[0123]))\:[012345][0-9]')
-    if (time.length != 5) || (!reg.test(time)){
+    if ((time.length != 5) || (!reg.test(time))){
         throw new TypeError()
     }
     var romanUnits = ['', '|', '||', '|||', '|V', 'V', 'VI', 'VII', 'VIII', 'IX']

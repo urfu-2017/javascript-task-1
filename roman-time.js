@@ -6,18 +6,18 @@
  * @returns {String} – время римскими цифрами (IX:V)
  **/
 function romanTime(time) {
-    let arr = time.split(':');
-    let hour = parseInt(arr[0]);
-    let minute = parseInt(arr[1]);
-    if (isNaN(minute) || minute > 60) {
+    var arr = time.split(':');
+    var hourArab = parseInt(arr[0]);
+    var minuteArab = parseInt(arr[1]);
+    if (isNaN(minuteArab) || minuteArab < 0 || minuteArab > 60) {
         throw new TypeError('must be digits');
     }
-    if (isNaN(hour) || hour > 23) {
+    if (hourArab >= 24 || hourArab < 0 || isNaN(hourArab)) {
         throw new TypeError('must be hours < 24, minutes < 60');
     }
     function toRoman(number) {
-        let rimNumber = '';
-        let remain;
+        var rimNumber = '';
+        var remain;
         if (Math.floor(number / 50) === 1) {
             rimNumber = 'L';
             remain = number % 50;
@@ -63,13 +63,13 @@ function romanTime(time) {
             rimNumber += 'V';
         }
         if (Math.floor(number / 1) === 0) {
-            rimNumber = 'N';
+            rimNumber = 'NN';
         }
 
         return rimNumber;
     }
 
-    return toRoman(hour) + ':' + toRoman(minute);
+    return toRoman(hourArab) + ':' + toRoman(minuteArab);
 }
 
 module.exports = romanTime;

@@ -27,8 +27,7 @@ function convertToRoman(nummber) {
         if (nummber >= num) {
             strInRoman += romanNumerals[num];
             nummber -= num;
-        }
-        else {
+        } else {
             count++;
         }
     }
@@ -47,8 +46,7 @@ function romanTime(time) {
     if (numbers.length === 2) {
         hours = parseInt(numbers[0]);
         minutes = parseInt(numbers[1]);
-    }
-    else {
+    } else {
         throw new TypeError();
     }
     checkNumber(hours, 0, 23);

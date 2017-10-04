@@ -28,7 +28,13 @@ function checknan(q3) {
 
     return q3;
 }
+function checkinput(t) {
+    if (String(t.length) !== '5' || String(t.indexOf(':')) !== '2') {
+        throw new TypeError('More input string!');
+    }
+}
 function adduct(time) {
+    checkinput(time);
     var tdec = time.split(':');
     //  console.log('1) ' + tdec[0] + ':' + tdec[1] + ':' + tdec[2]);
     tdec[2] = parseInt(tdec[2], 10);
@@ -144,6 +150,6 @@ function romanTime(time) {
     return time;
 }
 
-//  console.log(romanTime('2:23:34'));
+//  console.log(romanTime('2:00'));
 
 module.exports = romanTime;

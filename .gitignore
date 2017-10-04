@@ -1,3 +1,20 @@
-.idea
-/node_modules
+# Mac trash files
+.DS_Store
+
+# Windows trash files
+Thumbs.db
+
+# Backup files
+*~
+
+# JetBrains IDE
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# External libraries and tools
+node_modules/
+
+# Log files
 *.log

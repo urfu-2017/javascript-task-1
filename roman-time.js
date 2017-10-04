@@ -9,7 +9,7 @@ function romanTime(time) {
     if (!time) {
         throw new TypeError('Неверное время');
     }
-    let splitTime = time.split(':');
+    let splitTime = time.toString().split(':');
     if (splitTime.length !== 2) {
         throw new TypeError('Неверное время');
     }

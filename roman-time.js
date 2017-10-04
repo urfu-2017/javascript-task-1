@@ -6,7 +6,7 @@
  */
 
 function checkNumber(number, min, max) {
-    if (isNaN(number) || number < min || number > max) {
+    if (isNaN(number) || number < min || number > max || number !== Math.floor(number)) {
         throw new TypeError();
     }
 }
@@ -37,7 +37,7 @@ function convertToRoman(nummber) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time === undefined || time === null || time.length !== 5) {
+    if (time === undefined || time === null) {
         throw new TypeError();
     }
     var numbers = time.split(':');

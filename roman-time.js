@@ -4,6 +4,18 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+function areNumbersCorrect(time) {
+    var timeParts = time.split(':');
+    var hours = parseInt(timeParts[0]);
+    var minutes = parseInt(timeParts[1]);
+    if (timeParts.length !== 2 || (timeParts[0] % 1 !== 0 || timeParts[1] % 1 !== 0)) {
+        return false;
+    }
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        return false;
+    }
+    return true;
+}
 function isCorrectTime(time) {
     if (time === undefined || (time === null && typeof(a) === 'object')) {
         return false;
@@ -11,17 +23,8 @@ function isCorrectTime(time) {
     if (time.match(/[0-9][0-9]:[0-9][0-9]/ig) === null) {
         return false;
     }
-    var timeParts = time.split(':');
-    if (timeParts.length !== 2 || (timeParts[0] % 1 !== 0 || timeParts[1] % 1 !== 0)) {
-        return false;
-    }
-    var hours = parseInt(timeParts[0]);
-    var minutes = parseInt(timeParts[1]);
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
-        return false;
-    }
 
-    return true;
+    return areNumbersCorrect(time);
 }
 
 function hoursToRoman(hours, romanDict) {
@@ -43,11 +46,12 @@ function minutesToRoman(minutes, romanDict) {
     var romanMinutes;
     if (minutes === 0) {
         romanMinutes += 'N';
+        
         return romanMinutes;
     }
     if (minutes < 40) {
         var i;
-        for(i = 0; i < parseInt(minutes / 10); i++) {
+        for (i = 0; i < parseInt(minutes / 10); i++) {
             romanMinutes += romanDict[10];
         }
     } else if (minutes >= 40 && minutes < 50) {
@@ -79,7 +83,7 @@ function romanTime(time) {
     if (!isCorrectTime(time)) {
         throw new TypeError();
     }
- 
+
     return timeToRoman(time);
 }
 

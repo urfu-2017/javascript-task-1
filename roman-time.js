@@ -4,6 +4,13 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+
+function checkString(string) {
+    if (typeof string !== 'string') {
+        throw new TypeError('Такого времени не может быть');
+    }
+}
+
 function romanTime(time) {
 
     let romanNumbers = [
@@ -27,6 +34,8 @@ function romanTime(time) {
         40,
         50
     ];
+
+    checkString(time);
 
     let hoursAndMinuts = time.split(':');
 

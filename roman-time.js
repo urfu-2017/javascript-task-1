@@ -20,6 +20,7 @@ function romanTime(time) {
     }
     var leftPart = toRomanLeft(partTime[0]);
     var rightPart = toRomanRight(partTime[1]);
+    
     return leftPart + ':' + rightPart;
 }
 
@@ -35,19 +36,14 @@ function toRomanLeft(time) {
             for (var j = 0; j < 10; j++) {
                 if (parseInt(num[1], 10) === j) {
                     result += minutes[j];
+
                     return result;
                 }
             }
         }
     }
+
     return result;
-    // if (parseInt(num[0], 10) === 0) {
-    //     for (var i = 1; i < 10; i++) {
-    //         if (parseInt(num[1], 10) === i) {
-    //             return minutes[i-1];
-    //         }
-    //     }
-    // }
 }
 
 //Правая часть времени в формате MM
@@ -62,11 +58,13 @@ function toRomanRight(time) {
             for (var j = 0; j < 10; j++) {
                 if (parseInt(num[1], 10) === j) {
                     result += minutes[j];
+
                     return result;
                 }
             }
         }
     }
+
     return result;
 }
 

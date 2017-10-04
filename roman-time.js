@@ -82,7 +82,7 @@ function timeToRoman(timeString) {
     /**
     * @param {String} time – корректное время-строка в формате HH:MM (например, 09:05)
     */
-    var romanDict = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII',
+    var romanDict = { 0: '', 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII',
                  8: 'VIII', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L' };
     var timeParts = timeString.split(':');
     var hours = parseInt(timeParts[0]);

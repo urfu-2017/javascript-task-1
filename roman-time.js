@@ -45,6 +45,12 @@ function assertInBound(number, min, max) {
     }
 }
 
+function assertEmpty(array) {
+    if (array.length !== 0) {
+        throw new TypeError();
+    }
+}
+
 function assertNotNaN(number) {
     if (isNaN(number)) {
         throw new TypeError();
@@ -56,8 +62,9 @@ function assertNotNaN(number) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    let [hours, minutes] = time.split(':').map(Number);
+    let [hours, minutes, ...rest] = time.split(':').map(Number);
 
+    assertEmpty(rest);
     assertNotNaN(hours);
     assertNotNaN(minutes);
 

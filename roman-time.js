@@ -8,20 +8,24 @@ function romanTime(time) {
     errorTime(time);
     var partTime = time.split(':');
     var leftPart = '', rightPart = '';
+
     if (parseInt(partTime[0], 10) === 0 && parseInt(partTime[1], 10) === 0) {
 
         return 'N:N';
     }
+
     if (parseInt(partTime[0], 10) === 0) {
         rightPart = toRomanRight(partTime[1]);
 
         return 'N:' + rightPart;
     }
+
     if (parseInt(partTime[1], 10) === 0) {
         leftPart = toRomanLeft(partTime[0]);
 
         return leftPart + ':N';
     }
+    
     leftPart = toRomanLeft(partTime[0]);
     rightPart = toRomanRight(partTime[1]);
     
@@ -45,7 +49,7 @@ function toRomanLeft(time) {
             return result;
         }
     }
-    
+
     return result;
 }
 
@@ -75,6 +79,10 @@ function errorTime(time) {
     if (colon !== 2 || time.length !== 5) {
         throw new TypeError('Неверное время');
     }
+    parseTime(time);
+}
+
+function parseTime(time) {
     var partTime = time.split(':');
     if (parseInt(partTime[0], 10) < 0 || parseInt(partTime[0], 10) > 23 ||
         parseInt(partTime[1], 10) < 0 || parseInt(partTime[1], 10) > 59) {

@@ -4,58 +4,84 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-var romans = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-var romansTeens = ['X', 'XX', 'XXX', 'XL', 'L'];
-function convertTime(num) {
-    var num1 = parseInt(num);
-    if (num.length !== 2) {
+var romans = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+var romansTeens = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
+function convertHours(hours) {
+    var num = parseInt(hours);
+    if (hours.length !== 2) {
         throw new TypeError('Неверный формат');
     }
-    if (num === '00') {
-        return (romans.indexOf(0));
+    if (hours === '00') {
+        return ('N');
     }
-    if (num1 % 10 === 0) {
-        num = romansTeens.indexOf((num1 / 10) - 1);
+    if (num % 10 === 0) {
+        hours = romansTeens[(num / 10)];
 
-        return num;
+        return hours;
     }
-    if (num1 % 10 !== 0) {
-        num = romansTeens.indexOf(Math.floor(num1 / 10) - 1) + romans.indexOf(num.slice(-1));
+    if (num % 10 !== 0) {
+        hours = romansTeens[Math.floor(num / 10)] + romans[hours.slice(-1)];
 
-        return num;
+        return hours;
     }
 }
-function testTime(num) {
-    if (num === null) {
+function convertMinutes(minutes) {
+    var num = parseInt(minutes);
+    if (minutes.length !== 2) {
         throw new TypeError('Неверный формат');
-    } else if (num === undefined) {
+    }
+    if (minutes === '00') {
+        return ('N');
+    }
+    if (num % 10 === 0) {
+        minutes = romansTeens[(num / 10)];
+
+        return minutes;
+    }
+    if (num % 10 !== 0) {
+        minutes = romansTeens[Math.floor(num / 10)] + romans[minutes.slice(-1)];
+
+        return minutes;
+    }
+}
+function testHours(hours) {
+    if (hours === null) {
         throw new TypeError('Неверный формат');
-    } else if (isNaN(num)) {
+    } else if (hours === undefined) {
+        throw new TypeError('Неверный формат');
+    } else if (isNaN(hours)) {
         throw new TypeError('Неверный формат');
     } else {
-        convertTime(num);
+        convertHours(hours);
     }
 }
-function splitTime(time) {
-    if (time.length !== 5) {
+function testMinutes(minutes) {
+    if (minutes === null) {
         throw new TypeError('Неверный формат');
-    }
-    if (time.length === 5) {
-        time.split(':');
+    } else if (minutes === undefined) {
+        throw new TypeError('Неверный формат');
+    } else if (isNaN(minutes)) {
+        throw new TypeError('Неверный формат');
+    } else {
+        convertMinutes(minutes);
     }
 }
 function romanTime(time) {
-    splitTime(time);
-    var hours = time[0];
-    var minutes = time[1];
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    if (time.length !== 5) {
         throw new TypeError('Неверный формат');
     } else {
-        testTime(hours);
-        testTime(minutes);
-        time = convertTime(hours) + ':' + convertTime(minutes);
+        time = time.split([':']);
+        var hours = time[0];
+        var minutes = time[1];
+        if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+            throw new TypeError('Неверный формат');
+        } else {
+            testHours(hours);
+            testMinutes(minutes);
+            time = convertHours(hours) + ':' + convertMinutes(minutes);
 
-        return time;
+            return time;
+        }
     }
 }
 

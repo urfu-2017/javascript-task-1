@@ -8,8 +8,7 @@ function isCorrectTime(time) {
     if (time === undefined || (time === null && typeof(a) === 'object')) {
         return false;
     }
-    var result = time.match(/[0-9][0-9]:[0-9][0-9]/ig);
-    if (result === null) {
+    if (time.match(/[0-9][0-9]:[0-9][0-9]/ig) === null) {
         return false;
     }
     var timeParts = time.split(':');
@@ -36,27 +35,30 @@ function hoursToRoman(hours, romanDict) {
         }
         romanHours += romanDict[hours % 10];
     }
+
     return romanHours;
 }
 
 function minutesToRoman(minutes, romanDict) {
     var romanMinutes;
     if (minutes === 0) {
-        romanMinutes += "N";
-    } else {
-        if (minutes < 40) {
-            var i;
-            for(i = 0; i < parseInt(minutes / 10); i++) {
-                romanMinutes += romanDict[10];
-            }
-        } else if (minutes >= 40 && minutes < 50) {
-            romanMinutes += romanDict[40];
-            romanMinutes += romanDict[minutes % 10];
-        } else {
-            romanMinutes += romanDict[50];
-            romanMinutes += romanDict[minutes % 10];
-        }
+        romanMinutes += 'N';
+        return romanMinutes;
     }
+    if (minutes < 40) {
+        var i;
+        for(i = 0; i < parseInt(minutes / 10); i++) {
+            romanMinutes += romanDict[10];
+        }
+    } else if (minutes >= 40 && minutes < 50) {
+        romanMinutes += romanDict[40];
+        romanMinutes += romanDict[minutes % 10];
+    } else {
+        romanMinutes += romanDict[50];
+        romanMinutes += romanDict[minutes % 10];
+    }
+
+    return romanMinutes;
 }
 function timeToRoman(timeString) {
 

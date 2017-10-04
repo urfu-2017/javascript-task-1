@@ -9,7 +9,7 @@ function romanTime(time) {
     if ((time.length !== 5) || (!reg.test(time))) {
         throw new TypeError();
     }
-    var romanUnits = ['', '|', '||', '|||', '|V', 'V', 'VI', 'VII', 'VIII', 'IX'];
+    var romanUnits = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var romanDec = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     time = romanDec[parseInt(time[0])] + romanUnits[parseInt(time[1])] + ':' +
         romanDec[parseInt(time[3])] + romanUnits[parseInt(time[4])];

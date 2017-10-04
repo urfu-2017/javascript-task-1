@@ -21,13 +21,12 @@ function romanTime(time) {
     for (var i = 0; i<3; i++){
         if (time[i] == 0)
         {
-            line += 'N'
+            line += 'N';
+            break;
         }
         if (time[i]>=50)
         {
-            line+='L'
-            if (time[i] == 60)
-            { line+='X'}
+            line+='L';
         }
         else if (time[i] >= 10)
         {
@@ -55,10 +54,9 @@ function romanTime(time) {
             else
             { line = line + 'I'.repeat(time[i] % 5);}
         }
-        line += ':'
+        line += ':';
     }
-    return line.substring(0, line.length - 2)
+    return line.substring(0, line.length - 2);
 }
 
 module.exports = romanTime;
-

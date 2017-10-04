@@ -41,13 +41,14 @@ function romanTime(time) {
         throw new TypeError();
     }
     var numbers = time.split(':');
-    var hours = numbers[0];
-    var minutes = numbers[1];
-    if (numbers.length === 2  && numbers[0] === Math.floor(numbers[0]) && numbers[1] === Math.floor(numbers[1])) {
+    var hours = parseInt(numbers[0]);
+    var minutes = parseInt(numbers[1]);
+    if (hours !== Math.floor(numbers[0]) || minutes !== Math.floor(numbers[1])) {
+        throw new TypeError();
+    }
+    if (numbers.length === 2) {
         checkNumber(hours, 0, 23);
         checkNumber(minutes, 0, 59);
-        hours = parseInt(numbers[0]);
-        minutes = parseInt(numbers[1]);
     } else {
         throw new TypeError();
     }

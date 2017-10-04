@@ -29,7 +29,7 @@ function areNumbersCorrect(time) {
     return true;
 }
 function isCorrectTime(time) {
-    if (time === undefined || (time === null && typeof(a) === 'object')) {
+    if (time === undefined || (time === null && typeof(time) === 'object')) {
         return false;
     }
     if (time.match(/[0-9][0-9]:[0-9][0-9]/ig) === null) {
@@ -66,6 +66,7 @@ function minutesToRoman(minutes, romanDict) {
         for (i = 0; i < parseInt(minutes / 10); i++) {
             romanMinutes += romanDict[10];
         }
+        romanMinutes += romanDict[minutes % 10];
     } else if (minutes >= 40 && minutes < 50) {
         romanMinutes += romanDict[40];
         romanMinutes += romanDict[minutes % 10];

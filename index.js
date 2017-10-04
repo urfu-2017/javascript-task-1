@@ -26,3 +26,7 @@ console.info(romanTime('09:10'));
 // console.info(romanTime('5,5:1'));
 // console.info(romanTime('55:13'));
 // console.info(romanTime('NaN:NaN'));
+// console.info(romanTime('5.5:NaN'));
+// console.info(romanTime('5.5:4.4'));
+// console.info(romanTime('55:44'));
+// console.info(romanTime('aa:bb'));

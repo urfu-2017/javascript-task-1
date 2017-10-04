@@ -36,7 +36,7 @@ function findLeftBorder(number) {
 }
 
 function assertInputCorrect(time) {
-    if (!/^[0-1][0-9]|[2][2-3]:[0-5][0-9]$/.test(time)) {
+    if (!/^[0-1][0-9]:[0-5][0-9]$|^[2][0-3]:[0-5][0-9]$/.test(time)) {
         throw new TypeError('Неверное время');
     }
 }

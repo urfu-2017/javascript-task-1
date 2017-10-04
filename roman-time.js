@@ -1,7 +1,7 @@
 'use strict';
 function roman(time) {
-    var arab = [1, 4, 5, 9, 10, 40, 50]; 
-    var roma = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L']
+    var arab = [1, 4, 5, 9, 10, 40, 50];
+    var roma = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
     var i = arab.length - 1;
 
     var result = '';

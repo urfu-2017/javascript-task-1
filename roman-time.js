@@ -41,12 +41,12 @@ function romanTime(time) {
     if (time.match(/^\d\d:\d\d$/) !== null) {
         time = time.split(':');
         if (time[0] < 0 || time[1] < 0 || time[0] > 23 || time[1] > 59) {
-            throw new TypeError('Что-то не так');
+            throw new TypeError('Что-то не тo');
         }
         hours = Number(time[0]);
         minutes = Number(time[1]);
     } else {
-        throw new TypeError('Что-то не так');
+        throw new TypeError('Что-то не тo');
     }
 
     return nullCheck(hours) + ':' + nullCheck(minutes);

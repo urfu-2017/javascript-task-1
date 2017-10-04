@@ -17,11 +17,16 @@ function parseTime(time) {
     var tokens = time.split(':');
     var hours = Number(tokens[0]);
     var minutes = Number(tokens[1]);
-    if (isNaN(hours) || isNaN(minutes) || !inRange(0, hours, 23) || !inRange(0, minutes, 59)) {
+    if (tokens[0] === '' || tokens[1] === '' || !isValidTime(hours, minutes)) {
         throw new TypeError();
     }
 
     return [hours, minutes];
+}
+
+function isValidTime(hours, minutes) {
+
+    return !isNaN(hours) && !isNaN(minutes) && inRange(0, hours, 23) && inRange(0, minutes, 59);
 }
 
 function intToRoman(value) {

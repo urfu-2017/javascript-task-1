@@ -34,20 +34,26 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (num[0] > 23 || num[1] > 59 ||
-    num[0].isNaN || num[1].isNaN) {
+    if (num[0] > 23 || num[1] > 59) {
         throw new TypeError('Неверное время');
     }
+    c(num);
 
     return (roman(num[0]) + ':' + roman(num[1]));
 }
 
-function wholeTime(time) {
-    if (time === null || time === undefined || typeof time !== 'string') {
-        throw new TypeError('Неверное время');
+function c(time) {
+    for (var i = 0; i < time.length; i++) {
+        if (isNaN(parseInt(time[i], 10))) {
+            throw new TypeError('Неверное время');
+        }
     }
 
-    if (time.indexOf(':') === (-1)) {
+    return false;
+}
+
+function wholeTime(time) {
+    if (time === null || time === undefined || typeof time !== 'string') {
         throw new TypeError('Неверное время');
     }
 

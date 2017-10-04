@@ -1,7 +1,12 @@
 {
+  "rules": { 
+    "linebreak-style": 0 
+    },
   "extends": "hrundel/node",
   "parser": "babel-eslint",
   "parserOptions": {
     "sourceType": "script"
   }
+  
 }
+

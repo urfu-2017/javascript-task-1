@@ -7,24 +7,27 @@
 function romanTime(time) {
     errorTime(time);
     var partTime = time.split(':');
+    var leftPart = '', rightPart = '';
     if (parseInt(partTime[0], 10) === 0 && parseInt(partTime[1], 10) === 0) {
+
         return 'N:N';
     }
     if (parseInt(partTime[0], 10) === 0) {
-        var rightPart = toRomanRight(partTime[1]);
+        rightPart = toRomanRight(partTime[1]);
+
         return 'N:' + rightPart;
     }
     if (parseInt(partTime[1], 10) === 0) {
-        var leftPart = toRomanLeft(partTime[0]);
+        leftPart = toRomanLeft(partTime[0]);
+
         return leftPart + ':N';
     }
-    var leftPart = toRomanLeft(partTime[0]);
-    var rightPart = toRomanRight(partTime[1]);
+    leftPart = toRomanLeft(partTime[0]);
+    rightPart = toRomanRight(partTime[1]);
     
     return leftPart + ':' + rightPart;
 }
 
-//Левая часть времени в формате HH
 function toRomanLeft(time) {
     var hours = ['', 'X', 'XX'];
     var minutes = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -33,20 +36,19 @@ function toRomanLeft(time) {
     for (var i = 0; i < 3; i++) {
         if (parseInt(num[0], 10) === i) {
             result = hours[i];
-            for (var j = 0; j < 10; j++) {
-                if (parseInt(num[1], 10) === j) {
-                    result += minutes[j];
-
-                    return result;
-                }
-            }
         }
     }
+    for (var j = 0; j < 10; j++) {
+        if (parseInt(num[1], 10) === j) {
+            result += minutes[j];
 
+            return result;
+        }
+    }
+    
     return result;
 }
 
-//Правая часть времени в формате MM
 function toRomanRight(time) {
     var hours = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
     var minutes = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
@@ -55,13 +57,13 @@ function toRomanRight(time) {
     for (var i = 0; i < 6; i++) {
         if (parseInt(num[0], 10) === i) {
             result = hours[i];
-            for (var j = 0; j < 10; j++) {
-                if (parseInt(num[1], 10) === j) {
-                    result += minutes[j];
+        }
+    }
+    for (var j = 0; j < 10; j++) {
+        if (parseInt(num[1], 10) === j) {
+            result += minutes[j];
 
-                    return result;
-                }
-            }
+            return result;
         }
     }
 

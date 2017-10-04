@@ -5,14 +5,14 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var arrOfTime = time.split(":");
+    var arrOfTime = time.split(':');
     var hours = Number(arrOfTime[0]);
     var minutes = Number(arrOfTime[1]);
     if (checkValid(time, hours, minutes)) {
 
         return (getHours(hours) + getMinutes(minutes));
     }
-    throw new TypeError("Incorrect data");
+    throw new TypeError('Incorrect data');
 }
 
 function checkValid(time, hours, minutes) {
@@ -33,37 +33,37 @@ module.exports = romanTime;
 function getFifty(numb) {
     if (numb === 1) {
 
-        return "L";
+        return 'L';
     }
 
-    return "";
+    return '';
 }
 
 function getTen(numb) {
     if (numb === 0) {
 
-        return "N";
+        return 'N';
     }
     if (numb === 4) {
 
-        return "XL";
+        return 'XL';
     }
     if ((numb !== 0) && (numb < 4)) {
         var i = 0;
-        var a = "";
+        var a = '';
         while (i < numb) {
-            a += "X";
+            a += 'X';
             i++;
         }
 
         return a;
     }
 
-    return "";
+    return '';
 }
 
 function getNum(numb) {
-    var a = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+    var a = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
 
     return a[numb];
 }
@@ -71,20 +71,20 @@ function getNum(numb) {
 function getHours(hours) {
     if (hours === 0) {
 
-        return ("N:");
+        return ('N:');
     }
     if (hours < 10) {
 
-        return (getNum(hours) + ":");
+        return (getNum(hours) + ':');
     }
 
-    return (getTen(Math.floor(hours / 10)) + getNum(hours % 10) + ":");
+    return (getTen(Math.floor(hours / 10)) + getNum(hours % 10) + ':');
 }
 
 function getMinutes(minutes) {
     if (minutes === 0) {
 
-        return "N";
+        return 'N';
     }
     if (minutes < 10) {
 

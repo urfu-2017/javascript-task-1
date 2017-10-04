@@ -25,12 +25,13 @@ function roman(time) {
 function romanTime(time) {
     wholeTime(time);
     var time12 = time.split(':');
-    var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (num[0] > 23 || num[1] > 59 || isNaN(num[0]) || isNaN(num[1])) {
+    var num1 = Number(time12[0]);
+    var num2 = Number(time12[1]);
+    if (num1 > 23 || num2 > 59 || isNaN(num1) || isNaN(num2)) {
         throw new TypeError('Неверное время');
     }
 
-    return (roman(num[0]) + ':' + roman(num[1]));
+    return (roman(num1) + ':' + roman(num2));
 }
 
 function wholeTime(time) {

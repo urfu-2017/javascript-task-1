@@ -6,6 +6,7 @@ function roman(time) {
         'V', 'VI', 'VII', 'VIII', 'IX', 'X',
         'XX', 'XXX', 'XL', 'L'];
     var i = arab.length - 1;
+
     var result = '';
 
     if (time === 0) {
@@ -26,8 +27,6 @@ function roman(time) {
     return result;
 }
 
-
-
 function romanTime(time) {
     wholeTime(time);
     var time12 = time.split(':');
@@ -39,7 +38,6 @@ function romanTime(time) {
 
     return (roman(num[0]) + ':' + roman(num[1]));
 }
-
 
 function wholeTime(time) {
     if (time === null || time === undefined || typeof time !== 'string') {

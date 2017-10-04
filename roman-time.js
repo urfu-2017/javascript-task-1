@@ -10,8 +10,7 @@ function roman(time) {
         result = 'N';
     }
 
-    while (time > 0)
-    {
+    while (time > 0) {
         if (time >= arab[i]) {
             result += roma[i];
             time -= arab[i];

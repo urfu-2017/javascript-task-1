@@ -6,7 +6,7 @@
  */
 
 function checkNumber(number, min, max) {
-    if (isNaN(number) || number < min || number > max || number !== Math.floor(number)) {
+    if (isNaN(number) || number < min || number > max) {
         throw new TypeError();
     }
 }
@@ -43,7 +43,7 @@ function romanTime(time) {
     var numbers = time.split(':');
     var hours = numbers[0];
     var minutes = numbers[1];
-    if (numbers.length === 2) {
+    if (numbers.length === 2  && numbers[0] === Math.floor(numbers[0]) && numbers[1] === Math.floor(numbers[1])) {
         checkNumber(hours, 0, 23);
         checkNumber(minutes, 0, 59);
         hours = parseInt(numbers[0]);

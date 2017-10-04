@@ -18,7 +18,7 @@ function romanTime(time) {
     return hoursRoman + ':' + minutesRoman;
 }
 
-function checkingRange (time1) {
+function checkingRange(time1) {
     var rangeCheck = new RegExp('((0[0-9])|(1[0-9])|(2[0-3])):[0-5][0-9]');
     var rangeChecked = rangeCheck.test(time1);
     if (rangeChecked === false) {
@@ -26,7 +26,6 @@ function checkingRange (time1) {
     }
 
     return time1;
-
 }
 
 function toRoman(hh) {

@@ -40,7 +40,7 @@ function isCorrectTime(time) {
 }
 
 function hoursToRoman(hours, romanDict) {
-    var romanHours;
+    var romanHours = '';
     if (hours === 0) {
         romanHours += 'N';
     } else {
@@ -55,7 +55,7 @@ function hoursToRoman(hours, romanDict) {
 }
 
 function minutesToRoman(minutes, romanDict) {
-    var romanMinutes;
+    var romanMinutes = '';
     if (minutes === 0) {
         romanMinutes += 'N';
 

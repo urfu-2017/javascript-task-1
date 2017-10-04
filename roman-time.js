@@ -1,12 +1,12 @@
 'use strict';
 function convert(tense) {
-    var smallNumbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+    var smallNumbers = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var bigNumbers = ['', 'X', 'XX', 'XXX', 'XL', 'L'];
-    if (tense === '00' || parseInt(tense) === 0) {
+    if (tense === '00' || tense === ' 0' || tense === ' 0') {
 
         return ('N');
     }
-    if (tense.lenght > 2 || tense.lenght < 2) {
+    if (tense.length !== 2) {
         throw new TypeError('Неверное время не 2');
     } else {
 
@@ -19,7 +19,7 @@ function check(tense) {
     }
 }
 function romanTime(time) {
-    if (time.lenght < 5) {
+    if (time.length !== 5) {
         throw new TypeError('Неверное время');
     }
     time = time.split([':']);

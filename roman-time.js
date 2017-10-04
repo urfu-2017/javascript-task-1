@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
@@ -15,7 +15,7 @@ function translate(arabNumber, firstNumeral) {
         secondNumeral = firstNumeral % 10;
     }
     if (firstNumeral === 0) {
-        result = 'N'
+        result = 'N';
     } else {
         result = romanDict[firstNumeral - secondNumeral] + romanDict[secondNumeral];
     }
@@ -31,8 +31,8 @@ function romanTime(time) {
     var hh = parseInt(romanDate[0], 10);
     var mm = parseInt(romanDate[1], 10);
     if (time.length === rTime.length && hh >= 0 && hh <= 23) {
-        roman[0] = translate(romanDate[0], hh)
-        roman[1] = translate(romanDate[1], mm)
+        roman[0] = translate(romanDate[0], hh);
+        roman[1] = translate(romanDate[1], mm);
     } else {
         throw new TypeError();
     }

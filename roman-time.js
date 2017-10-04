@@ -6,57 +6,44 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+    var rules = [
+        { symbol: 'L', value: 50 },
+        { symbol: 'XL', value: 40 },
+        { symbol: 'X', value: 10 },
+        { symbol: 'IX', value: 9 },
+        { symbol: 'V', value: 5 },
+        { symbol: 'IV', value: 4 },
+        { symbol: 'I', value: 1 }
+    ];
     time = time.split(':')
-    try {
-        if ((time[0] > 23) || (time[1] > 59) || (time[0].length > 2) || (time[1].length > 2))
-        {
-            throw new TypeError("Неверное время");
-        }
-    }
-    catch (e)
+    if ((Number(time[0]) > 23) || (Number(time[1]) > 59) || (time[0].length > 2) || (time[1].length > 2))
     {
-        return e.message;
+        return "Неверное время";
     }
     var line = '';
-    for (var i = 0; i<3; i++){
-        if (time[i] == 0)
+    for (var e = 0; e<3; e++){
+        var num = Number(time[e]);
+        if (num == 0)
         {
             line += 'N';
-            break;
         }
-        if (time[i]>=50)
-        {
-            line+='L';
-        }
-        else if (time[i] >= 10)
-        {
-            if (time[i] == 40)
-                {
-                    line += 'XL';
+
+        for (var i = 0; i < rules.length; i++) {
+            var value = rules[i].value;
+            var symbol = rules[i].symbol;
+
+            if (value <= num) {
+                var repeat = Math.floor(num / value);
+    
+                for (var j = 0; j < repeat; j++) {
+                    line += symbol;
+                    num -= value;
                 }
-                else
-                {
-                    line += 'X'.repeat(Math.floor(time[i]/10));
-                }
+            }
         }
-        if (time[i] % 10 >= 5)
-            {
-                if (time[i] % 10 == 9)
-                {    line += 'IX';}
-                else
-                {
-                    line = line + 'V' + 'I'.repeat((time[i] % 5));}
-                }
-        else
-        {
-            if (time[i] % 10 == 4)
-            {  line += 'IV';}
-            else
-            { line = line + 'I'.repeat(time[i] % 5);}
-        }
-        line += ':';
+        line +=':';
     }
-    return line.substring(0, line.length - 2);
+    return line.substr(0, line.length - 2);
 }
 
 module.exports = romanTime;

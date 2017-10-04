@@ -33,7 +33,7 @@ function hoursToRoman(hh) {
         firstNum = 'N';
         secNum = '';
     } else if (hh < 10) {
-        firstNum='';
+        firstNum = '';
         secNum = secNumArr[hh];
     } else {
         firstNum = firstNumArr[parseInt((hh / 10), 10)];
@@ -53,7 +53,7 @@ function minutesToRoman(mm) {
         firstNum = 'N';
         secNum = '';
     } else if (mm < 10) {
-        firstNum='';
+        firstNum = '';
         secNum = secNumArr[mm];
     } else {
         firstNum = firstNumArr[parseInt((mm / 10), 10)];

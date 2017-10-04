@@ -1,11 +1,25 @@
 'use strict';
 
+function validateMinutes(minutes) {
+    if (isNaN(minutes)) {
+        throw new TypeError();
+    }
 
-function assertTimeBounds(hours, minutes) {
-    if (hours > 23 || hours < 0 || minutes > 59 || minutes < 0) {
+    if (minutes < 0 || minutes > 59) {
         throw new TypeError();
     }
 }
+
+function validateHours(hours) {
+    if (isNaN(hours)) {
+        throw new TypeError();
+    }
+
+    if (hours < 0 || hours > 23) {
+        throw new TypeError();
+    }
+}
+
 
 /**
  * @param {Number} num – любое число
@@ -34,16 +48,15 @@ function toRoman(num) {
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    let parsedTime = /(\d+):(\d+)/.exec(time);
+    let [hours, minutes, ...otherData] = time.split(':').map(Number);
 
-    if (!parsedTime || !parsedTime[1] || !parsedTime[2]) {
+    validateMinutes(minutes);
+    validateHours(hours);
+    if (otherData.length !== 0) {
         throw new TypeError();
     }
 
-    let [hours, minutes] = [Number(parsedTime[1]), Number(parsedTime[2])];
-    assertTimeBounds(hours, minutes);
-
-    return toRoman(hours) + ':' + toRoman(minutes);
+    return `${toRoman(hours)}:${toRoman(minutes)}`;
 }
 
 module.exports = romanTime;

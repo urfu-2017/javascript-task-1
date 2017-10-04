@@ -14,7 +14,7 @@ function roman(time) {
         throw new TypeError('Неверное время');
     }
 
-    if (time === 00) {
+    if (time === 0) {
         result = 'N';
     }
 

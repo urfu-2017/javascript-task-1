@@ -16,10 +16,9 @@ function romanTime(time) {
     if (time[0] === ':') {
         time = 'N' + time;
     }
-    if (time[time.length - 1] === ':'){
+    if (time[time.length - 1] === ':') {
         time = time + 'N';
     }
-    
     return time;
 }
 

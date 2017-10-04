@@ -6,12 +6,16 @@
  */
 
 function romanTime(time) {
+    if (time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
     var listTime = time.split(':');
     var hours = listTime[0];
     var minutes = listTime[1];
-    if (isNaN(Number(hours)) || isNaN(Number(minutes)) ||
-        hours === null || minutes === null ||
-        hours < 0 || hours >= 24 || minutes < 0 || minutes >= 60) {
+    if (isNaN(Number(hours)) || isNaN(Number(minutes))) {
+        throw new TypeError('Неверное время');
+    }
+    if (!checkTime(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
     var newHours = toRoman(Number(hours));
@@ -22,6 +26,14 @@ function romanTime(time) {
 }
 
 module.exports = romanTime;
+
+function checkTime(hours, minutes) {
+    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+        return false;
+    }
+
+    return true;
+}
 
 function toRoman(num) {
     var rules = [

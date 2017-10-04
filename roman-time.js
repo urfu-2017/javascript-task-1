@@ -16,6 +16,10 @@ function checkString(string) {
     }
 }
 
+function checkTime(hours, minutes) {
+    return hours < 24 && hours >= 0 && minutes >= 0 && minutes < 60;
+}
+
 function romanTime(time) {
 
     checkString(time);
@@ -25,9 +29,7 @@ function romanTime(time) {
     // Варианты неправильного ввода
     if (hoursAndMinuts.length !== 2 ||
         hoursAndMinuts.forEach((string) => (string.isNaN)) ||
-        hoursAndMinuts.forEach((clock) => (clock < 0)) ||
-        hoursAndMinuts[0] > 23 ||
-        hoursAndMinuts[1] > 59) {
+        !checkTime(hoursAndMinuts[0], hoursAndMinuts[1])) {
         throw new TypeError('Такого времени не может быть');
     }
 

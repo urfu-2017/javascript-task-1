@@ -1,3 +1,4 @@
+/* eslint-disable complexity,max-statements */
 'use strict';
 
 /**
@@ -37,13 +38,6 @@ function romanTime(time) {
             rimNumber = 'X';
             remain = number % 10;
         }
-        // if (Math.floor(number / 10) < 4) {
-        //     while (number > 0) {
-        //         rimNumber += 'X';
-        //         number = number / 10;
-        //     }
-        //     remain = number;
-        // }
         if (Math.floor(number / 10) === 0) {
             remain = number;
         }

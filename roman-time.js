@@ -38,9 +38,9 @@ function nullCheck(number) {
 function romanTime(time) {
     var hours;
     var minutes;
-    if (time.split(':')) {
+    if (time.match(/^\d\d:\d\d$/) !== null) {
         time = time.split(':');
-        if ((time[0] || time[1]) < 0 || time[0] > 23 || time[1] > 59) {
+        if (time[0] < 0 || time[1] < 0 || time[0] > 23 || time[1] > 59) {
             throw new TypeError('Что-то не так');
         }
         hours = Number(time[0]);

@@ -1,24 +1,10 @@
 'use strict';
 
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
-function romanTime(time) {
-    let parsedTime = /(\d+):(\d+)/.exec(time);
-
-    if (!parsedTime || !parsedTime[1] || !parsedTime[2]) {
-        throw new TypeError();
-    }
-
-    let [hours, minutes] = [Number(parsedTime[1]), Number(parsedTime[2])];
-
+function assertTimeBounds(hours, minutes) {
     if (hours > 23 || hours < 0 || minutes > 59 || minutes < 0) {
         throw new TypeError();
     }
-
-    return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 /**
@@ -41,6 +27,23 @@ function toRoman(num) {
     }
 
     return result;
+}
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function romanTime(time) {
+    let parsedTime = /(\d+):(\d+)/.exec(time);
+
+    if (!parsedTime || !parsedTime[1] || !parsedTime[2]) {
+        throw new TypeError();
+    }
+
+    let [hours, minutes] = [Number(parsedTime[1]), Number(parsedTime[2])];
+    assertTimeBounds(hours, minutes);
+
+    return toRoman(hours) + ':' + toRoman(minutes);
 }
 
 module.exports = romanTime;

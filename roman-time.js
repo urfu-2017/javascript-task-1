@@ -24,13 +24,15 @@ function arabicToRoman(arabicNumber) {
 function isRightHoursFormat(hours) {
     var h = parseInt(hours);
 
-    return !isNaN(h) && h >= 0 && h < 24 && String(hours).length === 2;
+    return !isNaN(h) && String(hours).match(/^[0-9]{2}/) && String(hours).length === 2 &&
+            h >= 0 && h < 24;
 }
 
 function isRightMinutesFormat(minutes) {
     var m = parseInt(minutes);
 
-    return !isNaN(m) && m >= 0 && m < 60 && String(minutes).length === 2;
+    return !isNaN(m) && String(minutes).match(/^[0-9]{2}/) && String(minutes).length === 2 &&
+            m >= 0 && m < 60;
 }
 
 function isRightTimeFormat(stringHours, stringMinutes) {
@@ -54,7 +56,7 @@ function romanTime(time) {
         if (!isRightTimeFormat(timeParts[0], timeParts[1]) || timeParts.length !== 2) {
             throw new TypeError('Wrong time format');
         }
-        res = arabicToRoman(hours) + ':' + arabicToRoman(minutes);
+        res = String(arabicToRoman(hours)) + ':' + String(arabicToRoman(minutes));
 
         return res;
     } catch (e) {

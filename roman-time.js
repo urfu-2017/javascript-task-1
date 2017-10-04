@@ -37,7 +37,7 @@ function convertToRoman(nummber) {
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    if (time === undefined || time === null) {
+    if (time === undefined || time === null || time.length !== 5) {
         throw new TypeError();
     }
     var numbers = time.split(':');

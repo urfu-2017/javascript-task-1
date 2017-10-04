@@ -9,8 +9,7 @@ function roman(time) {
 
     var result = '';
 
-    if (time.lenght !== 2 ||
-        time === undefined || time === null) {
+    if (time.lenght !== 2) {
         throw new TypeError('Неверное время');
     }
 
@@ -35,7 +34,7 @@ function romanTime(time) {
     var time12 = time.split(':');
     if (parseInt(time12[0], 10).isNaN || parseInt(time12[1], 10).isNaN ||
     parseInt(time12[0], 10) > 23 || parseInt(time12[1], 10) > 59 ||
-    typeof time!== 'string') {
+    typeof time !== 'string') {
         throw new TypeError('Неверное время');
     }
 

@@ -1,28 +1,29 @@
-
 'use strict';
 
 /**
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-
-// w a d d u p b i g p i m p s
-function rangeCheckHours(h) {
-
-    if (h < 0 || h > 23 || isNaN(h) || h === undefined) {
+function romanTime(time) {
+    var rangeCheck = new RegExp('((0[0-9])|(1[0-9])|(2[0-3])):[0-5][0-9]');
+    var rangeChecked = rangeCheck.test(time);
+    if (rangeChecked === false) {
         throw new TypeError();
+    } else {
+        var timeArr = time.split(':');
+        var hours = timeArr[0];
+        var minutes = timeArr[1];
+        var hoursRoman;
+        var minutesRoman;
+        if ((hours.length === 2) && (minutes.length === 2)) {
+            hoursRoman = toRoman(hours);
+            minutesRoman = toRoman(minutes);
+        } else {
+            throw new TypeError();
+        }
+
+        return [hoursRoman] + ':' + [minutesRoman];
     }
-
-    return h;
-}
-
-function rangeCheckMinutes(m) {
-
-    if (m < 0 || m > 59 || isNaN(m) || m === undefined) {
-        throw new TypeError();
-    }
-
-    return m;
 }
 
 function toRoman(hh) {
@@ -30,39 +31,18 @@ function toRoman(hh) {
     var secNumArr = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var firstNum;
     var secNum;
-    if (hh === 0) {
+    if ((parseInt(hh)) === 0) {
         firstNum = 'N';
         secNum = '';
-    } else if (hh < 10) {
+    } else if ((parseInt(hh)) < 10) {
         firstNum = '';
-        secNum = secNumArr[hh];
+        secNum = secNumArr[parseInt(hh)];
     } else {
         firstNum = firstNumArr[parseInt((hh / 10), 10)];
-        secNum = secNumArr[hh % 10];
+        secNum = secNumArr[(parseInt(hh)) % 10];
     }
 
     return [firstNum + secNum];
-
 }
 
-function romanTime(time) {
-    var hoursRoman;
-    var minutesRoman;
-    var timeArr = time.split(':');
-    var hours = timeArr[0];
-    var minutes = timeArr[1];
-    if ((hours.length === 2) && (minutes.length === 2)) {
-        var hoursParsed = parseInt (hours, 10);
-        var minutesParsed = parseInt (minutes, 10);
-        var hoursRangeChecked = rangeCheckHours (hoursParsed);
-        var minutesRangeChecked = rangeCheckMinutes (minutesParsed);
-        hoursRoman = toRoman(hoursRangeChecked);
-        minutesRoman = toRoman(minutesRangeChecked);
-    } else {
-        throw new TypeError();
-    }
-
-    return [hoursRoman] + ':' + [minutesRoman];
-}
 module.exports = romanTime;
-

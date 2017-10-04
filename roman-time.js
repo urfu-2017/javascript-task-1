@@ -28,6 +28,7 @@ function romanTime(time) {
     }
     leftPart = toRomanLeft(partTime[0]);
     rightPart = toRomanRight(partTime[1]);
+    
     return leftPart + ':' + rightPart;
 }
 

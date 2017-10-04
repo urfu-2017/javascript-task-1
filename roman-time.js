@@ -6,12 +6,7 @@ function roman(time) {
         'V', 'VI', 'VII', 'VIII', 'IX', 'X',
         'XX', 'XXX', 'XL', 'L'];
     var i = arab.length - 1;
-
     var result = '';
-
-    if (time.lenght !== 2) {
-        throw new TypeError('Неверное время');
-    }
 
     if (time === 0) {
         result = 'N';
@@ -21,24 +16,38 @@ function roman(time) {
         if (time >= arab[i]) {
             result += roma[i];
             time -= arab[i];
+        } else {
+            i--;
         }
-        i--;
     }
 
-    while (time > 0 && i > 0);
+    while (time > 0);
 
     return result;
 }
 
+
+
 function romanTime(time) {
+    wholeTime(time);
     var time12 = time.split(':');
-    if (parseInt(time12[0], 10).isNaN || parseInt(time12[1], 10).isNaN ||
-    parseInt(time12[0], 10) > 23 || parseInt(time12[1], 10) > 59 ||
-    typeof time !== 'string') {
+    var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
+    if (num[0] > 23 || num[1] > 59 ||
+    num[0].isNaN || num[1].isNaN) {
         throw new TypeError('Неверное время');
     }
 
-    return (roman(parseInt(time12[0], 10)) + ':' + roman(parseInt(time12[1], 10)));
+    return (roman(num[0]) + ':' + roman(num[1]));
 }
 
+
+function wholeTime(time) {
+    if (time === null || time === undefined || typeof time !== 'string') {
+        throw new TypeError('Неверное время');
+    }
+
+    if (time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
+}
 module.exports = romanTime;

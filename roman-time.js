@@ -5,6 +5,11 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
+const romanNumbers = ['N', 'I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
+
+const presentNumbers = [0, 1, 4, 5, 9, 10, 40, 50];
+
+
 function checkString(string) {
     if (typeof string !== 'string') {
         throw new TypeError('Такого времени не может быть');
@@ -12,28 +17,6 @@ function checkString(string) {
 }
 
 function romanTime(time) {
-
-    let romanNumbers = [
-        'N',
-        'I',
-        'IV',
-        'V',
-        'IX',
-        'X',
-        'XL',
-        'L'
-    ];
-
-    let presentNumbers = [
-        0,
-        1,
-        4,
-        5,
-        9,
-        10,
-        40,
-        50
-    ];
 
     checkString(time);
 

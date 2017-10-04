@@ -31,7 +31,7 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (num[0] > 23 || num[0] < 0 || num[1] > 59 || num[1] < 0 ||
+    if (num[0] > 23 || num[1] > 59 ||
     num[0].isNaN || num[1].isNaN) {
         throw new TypeError('Неверное время');
     }

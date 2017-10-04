@@ -33,7 +33,7 @@ function tryToRoman(sp) {
  */
 function romanTime(time) {
     var splits = time.split(':');
-    if (parseInt(splits[0], 10) >= 24 || parseInt(splits[1], 10) >= 60) {
+    if (parseInt(splits[0], 10) >= 24 || parseInt(splits[1], 10) >= 60 || time.match(/^\d\d:\d\d$/) === null) {
         throw new TypeError('Type Error!.......');
     }
     ret = [];

@@ -15,35 +15,40 @@ function romanTime(time) {
         { symbol: 'IV', value: 4 },
         { symbol: 'I', value: 1 }
     ];
-    time = time.split(':')
+    time = time.split(':');
+    var line = '';
+    
     if ((Number(time[0]) > 23) || (Number(time[1]) > 59) || (time[0].length > 2) || (time[1].length > 2))
     {
         return "Неверное время";
     }
-    var line = '';
-    for (var e = 0; e<3; e++){
-        var num = Number(time[e]);
-        if (num == 0)
-        {
-            line += 'N';
-        }
 
-        for (var i = 0; i < rules.length; i++) {
-            var value = rules[i].value;
-            var symbol = rules[i].symbol;
-
-            if (value <= num) {
-                var repeat = Math.floor(num / value);
-    
-                for (var j = 0; j < repeat; j++) {
-                    line += symbol;
-                    num -= value;
-                }
-            }
-        }
-        line +=':';
+    for (var e = 0; e<3; e++)
+    {
+        line = roman(Number(time[e]), rules, line);
     }
     return line.substr(0, line.length - 2);
+}
+
+function roman(time, rules, line){
+    if (time == 0)
+    {
+        line += 'N';
+    }
+    for (var i = 0; i < rules.length; i++) {
+        var value = rules[i].value;
+        var symbol = rules[i].symbol;
+
+        if (value <= time) {
+            var repeat = Math.floor(time / value);
+
+            for (var j = 0; j < repeat; j++) {
+                line += symbol;
+                time -= value;
+            }
+        }
+    }
+    return line +=':';
 }
 
 module.exports = romanTime;

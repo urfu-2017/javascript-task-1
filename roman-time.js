@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    // код
+    errorTime(time);
     return time;
 }
 
@@ -16,4 +16,15 @@ function toRomanTime(arr) {
 
 }
 
+function errorTime(time) {
+    var colon = time.indexOf(':');
+    if (colon !== 2 || time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
+    var partTime = time.split(':');
+    if (parseInt(partTime[0], 10) < 0 || parseInt(partTime[0], 10) > 23 ||
+        parseInt(partTime[1], 10) < 0 || parseInt(partTime[1], 10) > 59) {
+        throw new TypeError('Неверное время');
+    }
+}
 module.exports = romanTime;

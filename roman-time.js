@@ -4,13 +4,16 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function areNumbersCorrect(timeParts) {
-    var hours = parseInt(timeParts[0]);
-    var minutes = parseInt(timeParts[1]);
-    if (timeParts[0] % 1 !== 0 || timeParts[1] % 1 !== 0) {
+function areNumbersCorrect(time) {
+    var hours = parseInt(time);
+    var minutes = parseInt(time);
+    if (time % 1 !== 0 || time % 1 !== 0) {
         return false;
     }
-    if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59) {
+    if (hours < 0 || hours > 23) {
+        return false;
+    }
+    if (minutes < 0 || minutes > 59) {
         return false;
     }
 

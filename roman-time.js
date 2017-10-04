@@ -15,7 +15,7 @@ function isCorrectTime(time) {
     if (result === null) {
         return false;
     }
-    var timeParts = time.split(":");
+    var timeParts = time.split(':');
     if (timeParts.length !== 2) {
         return false;
     }
@@ -30,16 +30,16 @@ function isCorrectTime(time) {
     if (minutes < 0 || minutes > 59) {
         return false;
     }
-    
+
     return true;
 }
 
 function timeToRoman(timeString) {
-    
+
     /**
     * @param {String} time – корректное время-строка в формате HH:MM (например, 09:05)
     */
-    var romanDict = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII', 
+    var romanDict = { 1: 'I', 2: 'II', 3: 'III', 4: 'IV', 5: 'V', 6: 'VI', 7: 'VII',
                  8: 'VIII', 9: 'IX', 10: 'X', 40: 'XL', 50: 'L' };
     var timeParts = timeString.split(':');
     var hours = parseInt(timeParts[0]);
@@ -49,17 +49,18 @@ function timeToRoman(timeString) {
     if (hours === 0) {
         romanHours += 'N';
     } else {
-        for(var i = 0; i < parseInt(hours / 10); i ++) {
-                romanHours += romanDict[10];
+        for (var i = 0; i < parseInt(hours / 10); i ++) {
+            romanHours += romanDict[10];
         }
         romanHours += romanDict[hours % 10];
     }
-    
-    if (minutes == 0) {
+
+    if (minutes === 0) {
         romanMinutes += "N";
     } else {
         if (minutes < 40) {
-            for(var i = 0; i < parseInt(minutes / 10); i++) {
+            var i;
+            for(i = 0; i < parseInt(minutes / 10); i++) {
                 romanMinutes += romanDict[10];
             }
         } else if (minutes >= 40 && minutes < 50) {
@@ -70,8 +71,8 @@ function timeToRoman(timeString) {
             romanMinutes += romanDict[minutes % 10];
         }
     }
-    
-    return romanHours + ":" + romanMinutes;
+
+    return romanHours + ':' + romanMinutes;
 }
 
 function romanTime(time) {

@@ -10,12 +10,12 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     let splitTime = time.toString().split(':');
-    if (splitTime.length !== 2) {
+    if (splitTime.length !== 2 || isNaN(splitTime[0]) || isNaN(splitTime[1])) {
         throw new TypeError('Неверное время');
     }
     let hours = parseInt(splitTime[0], 10);
     let minutes = parseInt(splitTime[1], 10);
-    if (isNaN(hours) || isNaN(minutes) || !isValid(hours, minutes)) {
+    if (!isValid(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
 

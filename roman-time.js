@@ -17,7 +17,8 @@ function parseTime(time) {
     var tokens = time.split(':');
     var hours = Number(tokens[0]);
     var minutes = Number(tokens[1]);
-    if (tokens[0] === '' || tokens[1] === '' || !isValidTime(hours, minutes)) {
+    if (tokens.length !== 2 || tokens[0] === '' || tokens[1] === '' ||
+        !isValidTime(hours, minutes)) {
         throw new TypeError();
     }
 

@@ -39,12 +39,16 @@ function romanTime(time) {
     if (!isRightTimeFormat(time)) {
         throw new TypeError('Wrong time format');
     }
-    var timeParts = time.split(':');
-    var hours = parseInt(timeParts[0]);
-    var minutes = parseInt(timeParts[1]);
-    res = arabicToRoman(hours) + ':' + arabicToRoman(minutes);
+    try {
+        var timeParts = String(time).split(':');
+        var hours = parseInt(timeParts[0]);
+        var minutes = parseInt(timeParts[1]);
+        res = arabicToRoman(hours) + ':' + arabicToRoman(minutes);
 
-    return res;
+        return res;
+    } catch (e) {
+        throw new TypeError('Wrong time format');
+    }
 }
 
 module.exports = romanTime;

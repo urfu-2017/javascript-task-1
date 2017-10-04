@@ -9,11 +9,12 @@ function roman(time) {
 
     var result = '';
 
-    if (time.lenght > 2 || time.lenght < 2) {
+    if (time.lenght > 2 || time.lenght < 2 ||
+        time === undefined || time === null) {
         throw new TypeError('Неверное время');
     }
 
-    if (time === 0) {
+    if (time === 00) {
         result = 'N';
     }
 
@@ -28,10 +29,7 @@ function roman(time) {
     while (time > 0 && i > 0);
 
     return result;
-
-    if (isNaN(time) || time === undefined || time === null) {
-        throw new TypeError('Неверное время');
-    }
+    
 }
 
 function romanTime(time) {

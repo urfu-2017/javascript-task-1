@@ -9,10 +9,10 @@ function romanTime(time) {
     var arr = time.split(':');
     var hour = parseInt(arr[0]);
     var minute = parseInt(arr[1]);
-    if (isNaN(minute) || minute < 0 || minute > 60) {
+    if (isNaN(minute) || minute > 60) {
         throw new TypeError('must be digits');
     }
-    if (isNaN(hour) || hour >= 24 || hour < 0) {
+    if (isNaN(hour) || hour > 23) {
         throw new TypeError('must be hours < 24, minutes < 60');
     }
     function toRoman(number) {

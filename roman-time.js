@@ -31,7 +31,9 @@ function romanTime(time) {
     var time12 = time.split(':');
     if (parseInt(time12[0], 10).isNaN || parseInt(time12[1], 10).isNaN ||
     parseInt(time12[0], 10) > 23 || parseInt(time12[1], 10) > 59 ||
-    time.length > 5) {
+    time.length > 5 || typeof time!== 'string' ||
+    parseInt(time12[0], 10).length !== 2 ||
+    parseInt(time12[1], 10).length !== 2) {
         throw new TypeError('Неверное время');
     }
 

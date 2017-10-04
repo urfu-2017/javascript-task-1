@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -22,7 +23,7 @@ function romanTime(time) {
             throw new TypeError();
         }
 
-        return [hoursRoman] + ':' + [minutesRoman];
+        return hoursRoman + ':' + minutesRoman;
     }
 }
 
@@ -42,7 +43,7 @@ function toRoman(hh) {
         secNum = secNumArr[(parseInt(hh)) % 10];
     }
 
-    return [firstNum + secNum];
+    return firstNum + secNum;
 }
 
 module.exports = romanTime;

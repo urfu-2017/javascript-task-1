@@ -1,10 +1,7 @@
 'use strict';
 function roman(time) {
-    var arab = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50];
-    var roma = [
-        'I', 'II', 'III', 'IV',
-        'V', 'VI', 'VII', 'VIII', 'IX', 'X',
-        'XX', 'XXX', 'XL', 'L'];
+    var arab = [1, 4, 5, 9, 10, 40, 50]; 
+    var roma = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L']
     var i = arab.length - 1;
 
     var result = '';
@@ -34,23 +31,14 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var num = [parseInt(time12[0], 10), parseInt(time12[1], 10)];
-    if (num[0] > 23 || num[1] > 59) {
+    if (num[0] > 23 || num[1] > 59 ||
+    num[0].isNaN || num[1].isNaN) {
         throw new TypeError('Неверное время');
     }
-    c(num);
 
     return (roman(num[0]) + ':' + roman(num[1]));
 }
 
-function c(time) {
-    for (var i = 0; i < time.length; i++) {
-        if (isNaN(parseInt(time[i], 10))) {
-            throw new TypeError('Неверное время');
-        }
-    }
-
-    return false;
-}
 
 function wholeTime(time) {
     if (time === null || time === undefined || typeof time !== 'string') {

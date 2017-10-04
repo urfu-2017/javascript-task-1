@@ -44,13 +44,13 @@ function romanTime(time) {
     var hours = numbers[0];
     var minutes = numbers[1];
     if (numbers.length === 2) {
+        checkNumber(hours, 0, 23);
+        checkNumber(minutes, 0, 59);
         hours = parseInt(numbers[0]);
         minutes = parseInt(numbers[1]);
     } else {
         throw new TypeError();
     }
-    checkNumber(hours, 0, 23);
-    checkNumber(minutes, 0, 59);
     time = convertToRoman(hours) + ':' + convertToRoman(minutes);
 
     return time;

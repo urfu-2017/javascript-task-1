@@ -6,21 +6,20 @@
  */
 function romanTime(time) {
     var arrayOfTime = String(time).split(':');
-    if (arrayOfTime.length !== 2) {
+    if (arrayOfTime.length !== 2 || String(time).length !== 5) {
         throw new TypeError();
     }
     var usualHour = parseInt(arrayOfTime[0], 10);
     var usualMinute = parseInt(arrayOfTime[1], 10);
-    if (isNaN(usualHour) || isNaN(usualMinute)) {
-        throw new TypeError();
-    }
-    if (usualHour > 23 || usualMinute > 59) {
-        throw new TypeError();
-    }
-    time = romanNumber(usualHour) + ':';
-    time += romanNumber(usualMinute);
+    isValidTime(usualHour, usualMinute);
+    time = romanNumber(usualHour) + ':' + romanNumber(usualMinute);
 
     return time;
+}
+function isValidTime(hour, minute) {
+    if (isNaN(hour) || isNaN(minute) || hour > 23 || minute > 59) {
+        throw new TypeError();
+    }
 }
 function romanNumber(usualNumber) {
     var result = romanDecade(parseInt(usualNumber / 10));

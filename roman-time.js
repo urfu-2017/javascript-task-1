@@ -30,7 +30,9 @@ function checknan(q3) {
 }
 function adduct(time) {
     var tdec = time.split(':');
-    //  console.log('1) ' + tdec[0] + ':' + tdec[1]);
+    //  console.log('1) ' + tdec[0] + ':' + tdec[1] + ':' + tdec[2]);
+    tdec[2] = parseInt(tdec[2], 10);
+    if (!(isNaN(tdec[2]))) {throw new TypeError('More elenments');}
     for (var i = 0; i < 2; i++) {
         tdec[i] = isnull(tdec[i]);
         tdec[i] = Number(tdec[i]);
@@ -140,6 +142,6 @@ function romanTime(time) {
     return time;
 }
 
-//  console.log(romanTime('23:09'));
+  console.log(romanTime('2:23:34'));
 
 module.exports = romanTime;

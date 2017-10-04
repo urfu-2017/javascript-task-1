@@ -6,9 +6,9 @@
  * @returns {String} – время римскими цифрами (IX:V)
  **/
 function romanTime(time) {
-    var arr = time.split(':');
-    var hour = parseInt(arr[0]);
-    var minute = parseInt(arr[1]);
+    let arr = time.split(':');
+    let hour = parseInt(arr[0]);
+    let minute = parseInt(arr[1]);
     if (isNaN(minute) || minute > 60) {
         throw new TypeError('must be digits');
     }
@@ -16,8 +16,8 @@ function romanTime(time) {
         throw new TypeError('must be hours < 24, minutes < 60');
     }
     function toRoman(number) {
-        var rimNumber = '';
-        var remain;
+        let rimNumber = '';
+        let remain;
         if (Math.floor(number / 50) === 1) {
             rimNumber = 'L';
             remain = number % 50;

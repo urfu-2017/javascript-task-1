@@ -7,7 +7,7 @@
 function romanTime(time) {
     errorTime(time);
     var partTime = time.split(':');
-    var leftPart = ''; 
+    var leftPart = '';
     var rightPart = '';
 
     if (parseInt(partTime[0], 10) === 0 && parseInt(partTime[1], 10) === 0) {
@@ -49,7 +49,7 @@ function toRomanLeft(time) {
             return result;
         }
     }
-
+    
     return result;
 }
 

@@ -14,7 +14,7 @@ function romanTime(time) {
 	var justMinInH = hh%10;
 	var justMinInM = mm%10;
 	var roman = [];
-	if (time.length == result[0].length && hh >= 0 && hh <= 23{
+	if (time.length == result[0].length && hh >= 0 && hh <= 23){
 		if (hh == 0){
 			roman[0]='N';
 		}

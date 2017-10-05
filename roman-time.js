@@ -17,8 +17,8 @@ function romanTime(time) {
     ];
     test(time);
     var times = time.split(':');
-    times[0] = Number(times[0], 10);
-    times[1] = Number(times[1], 10);
+    times[0] = Number(times[0]);
+    times[1] = Number(times[1]);
     if ((isNaN(times[0])) || (isNaN(times[1]))) {
         throw new TypeError('неверное время');
     }
@@ -34,11 +34,11 @@ function test(time) {
     if ((time === undefined) || (time === null)) {
         throw new TypeError('неверное время');
     }
-    var flag = time.search(/\d{2}:\d{2}/);
-    time = time.split(':');
+    var flag = time.search(/^\d{2}:\d{2}$/);
     if (flag !== 0) {
         throw new TypeError('неверное время');
     }
+    time = time.split(':');
     if ((Number(time[0]) > 23) || (Number(time[1]) > 59)) {
         throw new TypeError('неверное время');
     }

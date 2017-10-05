@@ -8,7 +8,7 @@
 const romanesEuntDomus = { 0:"N", 1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX", 
                             10:"X", 20:"XX", 30:"XXX", 40:"XL", 50:"L"};
 
-const wrongTimeError = new TypeError("Неверное время");
+var wrongTimeError = new TypeError("Неверное время");
 
 function decToRom(decimal) {
     var roman = "";
@@ -29,6 +29,7 @@ function validTime(HH, MM){
 }
 
 function validHours(HH){
+    var check;
     if (isNaN(HH) || HH < 0 || HH > 23){
         check = false;
     } else {
@@ -38,6 +39,7 @@ function validHours(HH){
 }
 
 function validMinutes(MM){
+    var check;
     if (isNaN(MM) || MM < 0 || MM > 59){
         check = false;
     } else {
@@ -51,7 +53,10 @@ function romanTime(time) {
     if (time[2] !== ':' ||  time.length !== 5 || timeSplitted.length !== 2) {
         throw wrongTimeError;
     }
-    
+    var hours = timeSplitted[0];
+    var minutes = timeSplitted[1];
+    validHours(hours, minutes);
+    time = decToRom(hours) + ':' + decToRom(minutes);
     return time;
 }
 

@@ -15,7 +15,7 @@ function romanTime(time) {
 }
 function getHours(firstArray) {
     var romH = '';
-    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX '];
+    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var Ten = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
     if (firstArray >= 1 && firstArray <= 23) {
         firstArray %= 100; // 2,5

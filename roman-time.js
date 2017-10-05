@@ -5,22 +5,23 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-const tensRom = { 0:"", 10:"X", 20:"XX", 30:"XXX", 40:"XL", 50:"L"};
-const onesRom = { 0:"N", 1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX" };
+const romanesEuntDomus = { 0:"N", 1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX", 
+                            10:"X", 20:"XX", 30:"XXX", 40:"XL", 50:"L"};
 
 function decToRom(decimal) {
     var roman = "";
     if (decimal == 0){
-        roman = onesRom[0];
+        roman = romanesEuntDomus[0];
     } else {
         var x = (decimal / 10 | 0) * 10;
         var y = decimal % 10;
-        roman = tensRom[x] + onesRom[y];
+        roman = romanesEuntDomus[x] + romanesEuntDomus[y];
     }
     return roman;
 }
 
 function validateTime(){
+    //const regExp = new RegExp('([0-2])?[0-9]:([0-5])?[0-9]');
 
 }
 

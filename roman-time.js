@@ -28,7 +28,7 @@ function rim(t, type){
 	v = 0;
 	
 	if(type == 'h' || type == 'm'){
-		if(t == 00) v = "N";
+		if(t == 0) v = "N";
 		if(t == 01) v = "I";
 		if(t == 02) v = "II";
 		if(t == 03) v = "III";

@@ -29,7 +29,7 @@ function romanTime(time) {
 }
 
 function test(time) {
-    if ((time === null) || (time === undefined) || (isNaN(time))) {
+    if ((time === null) || (time === undefined)) {
         throw new TypeError('неверное время');
     }
 }

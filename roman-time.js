@@ -9,13 +9,13 @@ function romanTime(time) {
     if (time === null || time === undefined) {
         throw new TypeError('Неверное время');
     }
+    if (!check(time)) {
+        throw new TypeError('Неверное время');
+    }
     var listTime = time.split(':');
     var hours = listTime[0];
     var minutes = listTime[1];
     if (isNaN(Number(hours)) || isNaN(Number(minutes))) {
-        throw new TypeError('Неверное время');
-    }
-    if (!checkTime(hours, minutes)) {
         throw new TypeError('Неверное время');
     }
     var newHours = toRoman(Number(hours));
@@ -33,6 +33,18 @@ function checkTime(hours, minutes) {
     }
 
     return true;
+}
+
+function check(time) {
+    var flag = false;
+    if (time.length === 5) {
+        var listTime = time.split(':');
+        var hours = listTime[0];
+        var minutes = listTime[1];
+        flag = checkTime(hours, minutes);
+    }
+
+    return flag;
 }
 
 function toRoman(num) {

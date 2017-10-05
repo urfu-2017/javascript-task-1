@@ -26,13 +26,13 @@ function toRoman(time, number) {
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
     let mas = time.split(':');
-    let clock = parseInt(mas[0], 10);
-    let minutes = parseInt(mas[1], 10);
+    let clock = Number(mas[0]);
+    let minutes = Number(mas[1]);
     let strClock = 'N';
     let strMinutes = 'N';
     let numMas = mas.length;
     let result = '';
-    if ((numMas < 3) && (clock < 24) && (minutes < 60) && (clock >= 0) && (minutes >= 0)) {
+    if ((numMas === 2) && (clock < 24) && (minutes < 60) && (clock >= 0) && (minutes >= 0)) {
         if (clock > 0) {
             strClock = toRoman(clock, 4);
         }

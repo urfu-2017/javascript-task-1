@@ -32,7 +32,6 @@ function test(time, times) {
     if ((time === null) || (time === undefined)) {
         throw new TypeError('неверное время');
     }
-    console.log(time.length)
     if ((isNaN(times[0])) || (isNaN(times[1])) || (time.length < 5)) {
         throw new TypeError('неверное время');
     }

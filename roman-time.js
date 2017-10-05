@@ -13,9 +13,13 @@ function romanTime(time) {
         throw new TypeError(`Wrong type of parameter "time": ${typeof time}`);
     }
 
+    let timeValues = [];
     // instead of time.split(':').map(parseInt);
-    let timeValues = time.split(':').map(function (value) {
-        return parseInt(value);
+    time.split(':').forEach(function (value) {
+        let parsed = parseInt(value);
+        if (!isNaN(parsed)) {
+            timeValues.push(parsed);
+        }
     });
 
     if (!(timeValues.length === 2 &&

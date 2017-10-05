@@ -13,6 +13,10 @@ function romanTime(time) {
         throw new TypeError(`Wrong type of parameter "time": ${typeof time}`);
     }
 
+    if (!time.match(/^\d{2}:\d{2}$/i)) {
+        throw new TypeError('Mismatching format');
+    }
+
     let timeValues = [];
     // instead of time.split(':').map(parseInt);
     time.split(':').forEach(function (value) {
@@ -25,7 +29,7 @@ function romanTime(time) {
     if (!(timeValues.length === 2 &&
         timeValues[0] >= 0 && timeValues[0] < 24 &&
         timeValues[1] >= 0 && timeValues[1] < 60)) {
-        throw new TypeError('Mismatching format');
+        throw new TypeError(`Mismatching values: ${timeValues[0]}, ${timeValues[1]}`);
     }
 
     let romanTimeValues = timeValues.map(romanNumber);

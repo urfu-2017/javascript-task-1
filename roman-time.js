@@ -31,7 +31,7 @@ function romanTime(time) {
 function test(time) {
     if ((time === null) || (time === undefined) || (isNaN(time))) {
         throw new TypeError('неверное время');
-        }
+    }
 }
 
 function testLength(time) {

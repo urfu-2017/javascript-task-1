@@ -15,11 +15,9 @@ function romanTime(time) {
     time = convertNumberToRim(time[0]) + ':' + convertNumberToRim(time[1]);
 
     return time;
-    
     function convertNumberToRim(number) {
         var convertedNumber = '';
-
-        if (number == '00') {
+        if (number === '00') {
             return 'N';
         } else if (number.charAt(0) === '4') {
             convertedNumber = 'XL';
@@ -28,32 +26,20 @@ function romanTime(time) {
         } else {
             convertedNumber += 'X'.repeat(Number(number.charAt(0)));
         }
-
         if (number.charAt(1) === '9') {
-
             if (convertedNumber.length > 0) {
-
                 if (number.charAt(0) === '5' || number.charAt(0) === '4') {
-                    convertedNumber += 'X';
-
-                }
-
-                convertedNumber = convertedNumber.substring(0, convertedNumber.length - 1)
-                    + 'I' + convertedNumber.substring(convertedNumber.length - 1);
+                    convertedNumber += 'X';}
+                convertedNumber = convertedNumber.substring(0, convertedNumber.length - 1) +
+                    'I' + convertedNumber.substring(convertedNumber.length - 1);
             }
             else {
-                convertedNumber = 'IX';
-            }
-
+                convertedNumber = 'IX';}
         }
-
         else {
-            convertedNumber += rimDigits[Number(number.charAt(1))];
-        }
-
+            convertedNumber += rimDigits[Number(number.charAt(1))];}
         return convertedNumber;
     }
-
     function checkIfTimeIsCorrect(checkingTime) {
         if ((checkingTime === null) || (checkingTime === undefined) || !regExp.test(checkingTime)) {
             throw new TypeError('Неверное время');

@@ -5,8 +5,9 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var arrayOfTime = String(time).split(':');
-    if (arrayOfTime.length !== 2 || String(time).length !== 5) {
+    time = String(time);
+    var arrayOfTime = time.split(':');
+    if (arrayOfTime.length !== 2 || time.length !== 5 || time[2] !== ':') {
         throw new TypeError();
     }
     var usualHour = parseInt(arrayOfTime[0], 10);

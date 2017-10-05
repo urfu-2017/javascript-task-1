@@ -7,7 +7,7 @@
 function romanTime(time) {
         // Немного авторского кода и замечательной магии
     var regexp = /^(([0,1][0-9])|(2[0-3])):[0-5][0-9]$/;
-    if (regexp.test(time) !== 1) {
+    if (regexp.test(time) === false) {
         throw new TypeError('Неверное время');
     }
     var strTime;

@@ -5,6 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function toRim(chislo) {
+    //console.log('zdarova')
     var rimnomber = "";
     var n = chislo;
     while (n >= 50) {
@@ -35,18 +36,35 @@ function toRim(chislo) {
         rimnomber += "I";
         n -= 1;
     }
+    //console.log(rimnomber);
     return rimnomber;
 }
+function isValid(stroka){
+    //console.log(stroka);
+    //console.log(stroka.length);
+    if (stroka.length === 2){
+        return true;
+    }
+    else {
+        console.log('owubka')
+        throw new TypeError('Неверное время');
+    }
+}
 function romanTime(time) {
-    var hours_min = time.split(':');
-    var hours = parseInt(arrayTime[0]);
-    var mins = parseInt(arrayTime[1]);
-    if (!(isnan(hours) && isnan(mins))) {
+    var hoursMin = time.split(':');
+    var hours = parseInt(hoursMin[0]);
+    var mins = parseInt(hoursMin[1]);
+    //console.log('h=',hours,'m',mins);
+    var time =""
+    if (isValid(hoursMin[0]) && isValid(hoursMin[1])) {
         if (hours < 24 && mins < 60) {
             hours = toRim(hours);
             mins = toRim(mins);
+            if (hours == "") {hours='N';}
+            if (mins == "") {mins='N';}
             time = hours+":"+mins;
         }
+        else throw new TypeError('Неверное время');
     }
     return time;
 }

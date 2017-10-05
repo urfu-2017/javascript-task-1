@@ -15,12 +15,11 @@ function romanTime(time) {
         { symbol: 'IV', value: 4 },
         { symbol: 'I', value: 1 }
     ];
+    test(time);
     var times = time.split(':');
-    times[0] = parseInt(times[0], 10);
-    times[1] = parseInt(times[1], 10);
+    times[0] = Number(times[0], 10);
+    times[1] = Number(times[1], 10);
     var line = '';
-    test(time, times);
-    testLength(times);
     for (var e = 0; e < 3; e++) {
         line = roman(Number(times[e]), rules, line);
     }
@@ -28,17 +27,17 @@ function romanTime(time) {
     return line.substr(0, line.length - 2);
 }
 
-function test(time, times) {
-    if ((time === null) || (time === undefined)) {
+function test(time) {
+    if ((time === undefined) || (time === null))
+    {
         throw new TypeError('неверное время');
     }
-    if ((isNaN(times[0])) || (isNaN(times[1])) || (time.length < 5)) {
+    var flag = time.search(/\d{2}:\d{2}/);
+    if (flag !== 0)
+    {
         throw new TypeError('неверное время');
     }
-}
-
-function testLength(time) {
-    if ((time[0] > 23) || (time[1] > 59) || (time[0].length > 2) || (time[1].length > 2)) {
+    if ((time.split(':')[0] > 23) || (time.split(':')[1] > 59)) {
         throw new TypeError('неверное время');
     }
 }

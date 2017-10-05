@@ -37,7 +37,7 @@ function toRim(chislo) {
     }
     return rimnomber;
 }
-function rimnomberTime(time) {
+function romanTime(time) {
     var hours_min = time.split(':');
     var hours = parseInt(arrayTime[0]);
     var mins = parseInt(arrayTime[1]);
@@ -51,4 +51,4 @@ function rimnomberTime(time) {
     return time;
 }
 
-module.exports = rimnomberTime;
+module.exports = romanTime;

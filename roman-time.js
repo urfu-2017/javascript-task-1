@@ -15,12 +15,12 @@ function romanTime(time) {
         { symbol: 'IV', value: 4 },
         { symbol: 'I', value: 1 }
     ];
+    test(time);
     time = time.split(':');
     time[0] = Number(time[0]);
     time[1] = Number(time[1]);
     var line = '';
     testLength(time);
-    test(time);
     for (var e = 0; e < 3; e++) {
         line = roman(Number(time[e]), rules, line);
     }
@@ -29,11 +29,9 @@ function romanTime(time) {
 }
 
 function test(time) {
-    for (var i = 0; i < 2; i++) {
-        if ((time[i] === null) || (time[i] === undefined) || (isNaN(time[i]))) {
-            throw new TypeError('неверное время');
+    if ((time === null) || (time === undefined) || (isNaN(time))) {
+        throw new TypeError('неверное время');
         }
-    }
 }
 
 function testLength(time) {

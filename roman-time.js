@@ -1,31 +1,5 @@
 'use strict';
 
-/**
- * @param {String} time – время в формате HH:MM (например, 09:05)
- * @returns {String} – время римскими цифрами (IX:V)
- */
-function romanTime(time) { // eslint-disable-line complexity
-    if (time === null || time === undefined) {
-        throw new TypeError('Переменная или параметр неправильного типа');
-    }
-
-    var hours = parseInt(time.split(':')[0], 10);
-    var minutes = parseInt(time.split(':')[1], 10);
-
-    if (isNaN(hours) || isNaN(minutes)) {
-        throw new TypeError('Переменная или параметр неправильного типа');
-    }
-
-    if (hours >= 24 || minutes > 59) {
-        throw new TypeError('Переданный параметр находится за границами допустимого диапазона');
-    }
-
-    var hoursToRoman = romanNumber(hours);
-    var minutesToRoman = romanNumber(minutes);
-
-    return hoursToRoman + ':' + minutesToRoman;
-}
-
 function romanNumber(num) { // eslint-disable-line complexity, max-statements
     var reminder = num;
     var result = '';
@@ -70,6 +44,38 @@ function romanNumber(num) { // eslint-disable-line complexity, max-statements
     }
 
     return result;
+}
+
+/**
+ * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @returns {String} – время римскими цифрами (IX:V)
+ */
+function romanTime(time) { // eslint-disable-line complexity
+    if (time === null || time === undefined) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (time.length !== 5) {
+        throw new TypeError('Неверное время');
+    }
+
+    var hours = parseInt(time.slice(0, 2), 10);
+    var minutes = parseInt(time.slice(3, 5), 10);
+
+    if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+        throw new TypeError('Неверное время');
+    }
+
+    if (hours >= 24 || minutes > 59) {
+        throw new TypeError('Неверное время');
+    }
+
+    var hoursToRoman = romanNumber(hours);
+    var minutesToRoman = romanNumber(minutes);
+
+    time = hoursToRoman + ':' + minutesToRoman;
+
+    return time;
 }
 
 module.exports = romanTime;

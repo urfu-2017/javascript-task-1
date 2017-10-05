@@ -10,13 +10,13 @@ function romanTime(time) {
 
     var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
     var rimDigits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
-    
+
     console.log(time);
     checkIfTimeIsCorrect(time);
     time = time.split(":");
     checkIfNaN(time);
-    
-    
+
+
     time = convertNumberToRim(time[0]) + ":" + convertNumberToRim(time[1]);
     return time;
 
@@ -59,18 +59,14 @@ function romanTime(time) {
         return convertedNumber;
     }
 
-
-
-
-
     function checkIfTimeIsCorrect(time) {
         if ((time === null) || (time === undefined) || !regExp.test(time)) {
-            throw new TypeError();
+            throw new TypeError('Неверное время');
         }
     }
     function checkIfNaN(splitedTime) {
         if (isNaN(splitedTime[0]) || isNaN(splitedTime[1])) {
-            throw new TypeError();
+            throw new TypeError('Неверное время');
         }
     }
 }

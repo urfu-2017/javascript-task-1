@@ -6,34 +6,24 @@
  */
 function toRim(chislo) {
     //console.log('zdarova')
-    var rimnomber = "";
+    var rimnomber = '';
     var n = chislo;
-    while (n >= 50) {
-       rimnomber += "L";
-       n -= 50;
-    }
-    while (n >= 40) {
-        rimnomber += "XL";
-        n -= 40;
-    }
-    while (n >= 10) {
-        rimnomber += "X";
-        n -= 10;
-    }
-    while (n >= 9) {
-        rimnomber += "XI";
+    while (n >= 50) {rimnomber += 'L'; n -= 50;}
+    while (n >= 40) {rimnomber += 'XL'; n -= 40;}
+    while (n >= 10) {rimnomber += 'X'; n -= 10;}
+    while (n >= 9)  {rimnomber += 'XI';
         n -= 9;
     }
     while (n >= 5) {
-        rimnomber += "V";
+        rimnomber += 'V';
         n -= 5;
     }
     while (n >= 4) {
-        rimnomber += "IV";
+        rimnomber += 'IV';
         n -= 4;
     }
     while (n >= 1) {
-        rimnomber += "I";
+        rimnomber += 'I';
         n -= 1;
     }
     //console.log(rimnomber);
@@ -55,14 +45,14 @@ function romanTime(time) {
     var hours = parseInt(hoursMin[0]);
     var mins = parseInt(hoursMin[1]);
     //console.log('h=',hours,'m',mins);
-    var time =""
+    var time =''
     if (isValid(hoursMin[0]) && isValid(hoursMin[1])) {
         if (hours < 24 && mins < 60) {
             hours = toRim(hours);
             mins = toRim(mins);
-            if (hours == "") {hours='N';}
-            if (mins == "") {mins='N';}
-            time = hours+":"+mins;
+            if (hours == '') {hours='N';}
+            if (mins == '') {mins='N';}
+            time = hours+':'+mins;
         }
         else throw new TypeError('Неверное время');
     }

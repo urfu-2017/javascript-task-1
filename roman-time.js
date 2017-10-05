@@ -8,7 +8,8 @@
 function romanTime(time) {
     const TIME_RE = /^([01]\d|2[0-3]):([0-5]\d)$/;
     let [hours, minutes] = TIME_RE.exec(time)
-                                  .slice(1, 3);
+        .slice(1, 3);
+
     return `${convertNumber(hours)}:${convertNumber(minutes)}`;
 }
 
@@ -28,14 +29,17 @@ function convertRoundNumber(number) {
     let onesCount = fourRemainder || rem && 1;
     let oneDigit = ONES_BY_ORDER[order];
     let precPosition = order * 3 + quot;
-    if (Math.floor(rem / power) === 4)
+    if (Math.floor(rem / power) === 4) {
         precPosition++;
+    }
     let precedingDigit = PRECEDINGS_BY_ORDER[precPosition];
     let result = oneDigit.repeat(onesCount) + precedingDigit;
     // если число находится во второй половине десятка и != 9, разворачиваем его
     if (quot && fourRemainder)
-        result = result.split('').reverse().join('');
-    return result
+        result = result.split('').reverse()
+            .join('');
+
+    return result;
 }
 
 
@@ -44,14 +48,16 @@ function convertNumber(number) {
     if (ALL_ZEROES_RE.test(number))
         return 'N';
     let result = [];
-    let order = 10**2;
+    let order = 10 ** 2;
     while (order) {
         let quot = Math.floor(number / order);
-        if (quot)
+        if (quot) {
             result.push(convertRoundNumber(quot * order));
+        }
         number %= order;
         order = Math.floor(order / 10);
     }
+
     return result.join('');
 }
 

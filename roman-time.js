@@ -17,6 +17,9 @@ function romanTime(time) {
     ];
     test(time);
     var times = time.split(':');
+    if ((isNaN(times[0])) || (isNaN(times[1]))) {
+        throw new TypeError('неверное время');
+    }
     times[0] = Number(times[0], 10);
     times[1] = Number(times[1], 10);
     var line = '';
@@ -33,7 +36,7 @@ function test(time) {
     }
     var flag = time.search(/\d{2}:\d{2}/);
     time = time.split(':');
-    if (flag !== 0 || (isNaN(time[0])) ||(isNaN(time[1]))) {
+    if (flag !== 0) {
         throw new TypeError('неверное время');
     }
     if ((Number(time[0]) > 23) || (Number(time[1]) > 59)) {

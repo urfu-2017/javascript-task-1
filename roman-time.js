@@ -15,21 +15,24 @@ function romanTime(time) {
         { symbol: 'IV', value: 4 },
         { symbol: 'I', value: 1 }
     ];
-    test(time);
-    time = time.split(':');
-    time[0] = Number(time[0]);
-    time[1] = Number(time[1]);
+    var times = time.split(':');
+    times[0] = Number(times[0]);
+    times[1] = Number(times[1]);
     var line = '';
-    testLength(time);
+    test(time, times);
+    testLength(times);
     for (var e = 0; e < 3; e++) {
-        line = roman(Number(time[e]), rules, line);
+        line = roman(Number(times[e]), rules, line);
     }
 
     return line.substr(0, line.length - 2);
 }
 
-function test(time) {
+function test(time, times) {
     if ((time === null) || (time === undefined)) {
+        throw new TypeError('неверное время');
+    }
+    if ((isNaN(times[0])) || (isNaN(times[1]))) {
         throw new TypeError('неверное время');
     }
 }

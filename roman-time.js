@@ -20,25 +20,34 @@ function decToRom(decimal) {
     return roman;
 }
 
-function validateTime(){
-    //const regExp = new RegExp('([0-2])?[0-9]:([0-5])?[0-9]');
+function validTime(HH, MM){
 
 }
 
-function validateHours(){}
-
-function validateMinutes(){}
-
-/*
-function splitString(string){
-    var HH = 0;
-    var MM = 0;
-    return [HH, MM];
+function validHours(HH){
+    if (isNaN(HH) || HH < 0 || HH > 23){
+        check = false;
+    } else {
+        check = true;
+    }
+    return check;
 }
-*/
+
+function validMinutes(MM){
+    if (isNaN(MM) || MM < 0 || MM > 59){
+        check = false;
+    } else {
+        check = true;
+    }
+    return check;
+}
 
 function romanTime(time) {
-    // Немного авторского кода и замечательной магии
+    var timeSplitted = time.split(':');
+    if (time[2] !== ':' ||  time.length !== 5 || timeSplitted.length !== 2) {
+        throw new TypeError();
+    }
+    
     return time;
 }
 

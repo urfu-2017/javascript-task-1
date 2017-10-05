@@ -29,11 +29,13 @@ function validateHours(){}
 
 function validateMinutes(){}
 
+/*
 function splitString(string){
     var HH = 0;
     var MM = 0;
     return [HH, MM];
 }
+*/
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии

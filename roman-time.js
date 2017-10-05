@@ -51,8 +51,11 @@ function romanDecade(decades) {
 
 function romanUnits(units) {
     var romanDict = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-
-    return romanDict[units];
+    if (romanDict[units] === undefined) {
+        throw new TypeError();
+    } else {
+        return romanDict[units];
+    }
 }
 
 module.exports = romanTime;

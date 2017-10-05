@@ -14,9 +14,11 @@ function romanTime(time) {
 }
 
 
+const PRECEDINGS_BY_ORDER = ['', 'V', 'X', '', 'L', 'C', '', 'D', 'M'];
+const ONES_BY_ORDER = 'IXC'.split('');
+
+
 function convertRoundNumber(number) {
-    const PRECEDINGS_BY_ORDER = ['', 'V', 'X', '', 'L', 'C', '', 'D', 'M'];
-    const ONES_BY_ORDER = 'IXC'.split('');
     let order = Math.floor(Math.log10(number));
     let power = 10 ** order;
     // берём целое и остаток от деления числа на 5 с учётом порядка
@@ -35,9 +37,10 @@ function convertRoundNumber(number) {
     let precedingDigit = PRECEDINGS_BY_ORDER[precPosition];
     let result = oneDigit.repeat(onesCount) + precedingDigit;
     // если число находится во второй половине десятка и != 9, разворачиваем его
-    if (quot && fourRemainder)
+    if (quot && fourRemainder) {
         result = result.split('').reverse()
             .join('');
+    }
 
     return result;
 }
@@ -45,8 +48,9 @@ function convertRoundNumber(number) {
 
 function convertNumber(number) {
     const ALL_ZEROES_RE = /^0+$/;
-    if (ALL_ZEROES_RE.test(number))
+    if (ALL_ZEROES_RE.test(number)) {
         return 'N';
+    }
     let result = [];
     let order = 10 ** 2;
     while (order) {

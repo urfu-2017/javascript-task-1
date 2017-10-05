@@ -4,17 +4,20 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
-function toRim(chislo) {
+function toRim(time) {
     //  console.log('zdarova')
     var rimnomber = '';
-    var n = chislo;
-    while (n >= 50) { rimnomber += 'L';
+    var n = time;
+    while (n >= 50) {
+        rimnomber += 'L';
         n -= 50;
     }
-    while (n >= 40) { rimnomber += 'XL';
+    while (n >= 40) {
+        rimnomber += 'XL';
         n -= 40;
     }
-    while (n >= 10) { rimnomber += 'X';
+    while (n >= 10) {
+        rimnomber += 'X';
         n -= 10;
     }
     if(n>0){rimnomber+=toRim2(n);
@@ -22,31 +25,35 @@ function toRim(chislo) {
     //  console.log(rimnomber);
     return rimnomber;
 }
-function toRim2(stroka){
-    var n=stroka;
+function toRim2(time){
+    var n=time;
     //  console.log(n);
     var rimnomber2='';
-    while (n >= 9)  { rimnomber2 += 'XI';
+    while (n >= 9)  {
+        rimnomber2 += 'XI';
         n -= 9;
         //  console.log('9tyt')
     }
-    while (n >= 5) { rimnomber2 += 'V';
+    while (n >= 5) {
+        rimnomber2 += 'V';
         n -= 5;
     }
-    while (n >= 4) { rimnomber2 += 'IV';
+    while (n >= 4) {
+        rimnomber2 += 'IV';
         n -= 4;
     }
-    while (n >= 1) { rimnomber2 += 'I';
+    while (n >= 1) {
+        rimnomber2 += 'I';
         n -= 1;
     //  console.log(rimnomber2,'sadasdasdasdsdasdasd')
     }
     return rimnomber2;
 }
 
-function isValid(stroka){
-    //  console.log(stroka);
-    //  console.log(stroka.length);
-    if (stroka.length === 2){
+function isValid(time){
+    //  console.log(time);
+    //  console.log(time.length);
+    if (time.length === 2){
         return true;
     }
     else {
@@ -68,7 +75,9 @@ function romanTime(time) {
             if (mins == '') {mins='N';}
             time = hours+':'+mins;
         }
-        else throw new TypeError('Неверное время');
+        else {
+            throw new TypeError('Неверное время');
+        }
     }
     return time;
 }

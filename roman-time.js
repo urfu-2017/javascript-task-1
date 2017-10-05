@@ -28,7 +28,7 @@ function romanTime(time) {
 }
 function test(time, times) {
     var flag = time.search(/\d\d[-:]\d\d/);
-    if ((flag != 0) || (times[0] > 23) || (times[1] > 59)) {
+    if ((flag !== 0) || (times[0] > 23) || (times[1] > 59)) {
         throw new TypeError('неверное время');
     }
 }

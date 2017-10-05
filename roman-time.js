@@ -16,18 +16,30 @@ function romanTime(time) {
         { symbol: 'I', value: 1 }
     ];
     time = time.split(':');
-    var line = '';
-    
-    if ((Number(time[0]) > 23) || (Number(time[1]) > 59) || (time[0].length > 2) || (time[1].length > 2))
-    {
-        return "Неверное время";
-    }
-
+    var line = test(time);
+    if (line == "false")
+    { return "неверное время"; }
     for (var e = 0; e<3; e++)
     {
         line = roman(Number(time[e]), rules, line);
     }
     return line.substr(0, line.length - 2);
+}
+
+function test(time){
+    if ((Number(time[0]) > 23) || (Number(time[1]) > 59) || (time[0].length > 2) || (time[1].length > 2))
+    {
+        return "false";
+    }
+    for (var i = 0; i < 3; i++)
+    {
+        if ((Number(time[i]) == null) || (Number(time[i]) == undefined) || (Number(time[i] == NaN)))
+        {
+            return "false";
+        }
+
+    }
+    return '';
 }
 
 function roman(time, rules, line){

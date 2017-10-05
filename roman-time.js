@@ -1,7 +1,7 @@
 /* eslint linebreak-style: ["error", "unix"] */
 'use strict';
 
-let fontAr = [1, 4, 5, 9, 10, 40, 50, 60];
+let fontAr = [1, 4, 5, 9, 10, 40, 50];
 let fontRom = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L'];
 function toRoman(time, number) {
     let rezult = '';
@@ -37,7 +37,7 @@ function romanTime(time) {
             strClock = toRoman(clock, 4);
         }
         if (clock > 0) {
-            strMinutes = toRoman(minutes, 7);
+            strMinutes = toRoman(minutes, 6);
         }
 
         result = strClock + ':' + strMinutes;

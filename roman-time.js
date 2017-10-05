@@ -28,13 +28,11 @@ function romanTime(time) {
 }
 
 function test(time) {
-    if ((time === undefined) || (time === null))
-    {
+    if ((time === undefined) || (time === null)) {
         throw new TypeError('неверное время');
     }
     var flag = time.search(/\d{2}:\d{2}/);
-    if (flag !== 0)
-    {
+    if (flag !== 0) {
         throw new TypeError('неверное время');
     }
     if ((time.split(':')[0] > 23) || (time.split(':')[1] > 59)) {

@@ -12,58 +12,27 @@ function romanTime(time) {
     var arr = time.split(':');
     var hourArab = parseInt(arr[0]);
     var minuteArab = parseInt(arr[1]);
-    function toRoman(number) {
-        var rimNumber = '';
-        var remain;
-        var tens = Math.floor(number / 10);
-        if (number === 0) {
-            return 'N';
-        }
-
-        if (tens < 4) {
-            rimNumber = repeatString('X', tens);
+    var arrR = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X',
+        'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX',
+        'XXI', 'XXII', 'XXIII', 'XXIV', 'XXV', 'XXVI', 'XXVII', 'XXVIII', 'XXIX', 'XXX',
+        'XXXI', 'XXXII', 'XXXIII', 'XXXIV', 'XXXV', 'XXXVI', 'XXXVII', 'XXXVIII', 'XXXIX', 'XL',
+        'XLI', 'XLII', 'XLIII', 'XLIV', 'XLV', 'XLVI', 'XLVII', 'XLVIII', 'XLIX', 'L'];
+    var hourRoman = '';
+    var minuteRoman = '';
+    var remain = '';
+    hourRoman = arrR[hourArab];
+    function toDoRomanMinute(number) {
+        if (number > 50) {
+            remain = arrR[number - 50];
+            minuteRoman = 'L' + remain;
         } else {
-            rimNumber = repeatString('X', 5 - tens) + 'L';
+            minuteRoman = arrR[number];
         }
-        if (tens === 0) {
-            remain = number;
-        } else {
-            remain = number % (tens * 10);
-        }
-        rimNumber += calcRemain(remain);
 
-        return rimNumber;
+        return minuteRoman;
     }
 
-    function repeatString(string, count) {
-        var result = '';
-        while (count !== 0) {
-            result += string;
-            count--;
-        }
-
-        return result;
-    }
-
-    function calcRemain(remain) {
-        if (remain > 5 && remain < 9) {
-            return repeatString('I', remain - 5);
-        }
-        if (remain === 9) {
-            return 'IX';
-        }
-        if (remain < 4) {
-            return repeatString('I', remain);
-        }
-        if (remain === 4) {
-            return 'IV';
-        }
-        if (remain === 5) {
-            return 'V';
-        }
-    }
-
-    return toRoman(hourArab) + ':' + toRoman(minuteArab);
+    return hourRoman + ':' + toDoRomanMinute(minuteArab);
 }
 
 module.exports = romanTime;

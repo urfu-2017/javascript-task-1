@@ -29,15 +29,15 @@ function rim(t, type){
 	
 	if(type == 'h' || type == 'm'){
 		if(t == 0) v = "N";
-		if(t == 01) v = "I";
-		if(t == 02) v = "II";
-		if(t == 03) v = "III";
-		if(t == 04) v = "IV";
-		if(t == 05) v = "V";
-		if(t == 06) v = "VI";
-		if(t == 07) v = "VII";
-		if(t == 08) v = "VIII";
-		if(t == 09) v = "IX";
+		if(t == 1) v = "I";
+		if(t == 2) v = "II";
+		if(t == 3) v = "III";
+		if(t == 4) v = "IV";
+		if(t == 5) v = "V";
+		if(t == 6) v = "VI";
+		if(t == 7) v = "VII";
+		if(t == 8) v = "VIII";
+		if(t == 9) v = "IX";
 		if(t == 10) v = "X";
 		if(t == 11) v = "XI";
 		if(t == 12) v = "XII";

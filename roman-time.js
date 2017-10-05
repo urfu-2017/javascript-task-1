@@ -17,11 +17,11 @@ function romanTime(time) {
     ];
     test(time);
     var times = time.split(':');
+    times[0] = Number(times[0], 10);
+    times[1] = Number(times[1], 10);
     if ((isNaN(times[0])) || (isNaN(times[1]))) {
         throw new TypeError('неверное время');
     }
-    times[0] = Number(times[0], 10);
-    times[1] = Number(times[1], 10);
     var line = '';
     for (var e = 0; e < 3; e++) {
         line = roman(Number(times[e]), rules, line);

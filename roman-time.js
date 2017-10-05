@@ -59,10 +59,10 @@ function romanTime(time) { // eslint-disable-line complexity
         throw new TypeError('Неверное время');
     }
 
-    var hours = parseInt(time.slice(0, 2), 10);
-    var minutes = parseInt(time.slice(3, 5), 10);
+    var hours = Number(time.slice(0, 2), 10);
+    var minutes = Number(time.slice(3, 5), 10);
 
-    if (Number.isNaN(hours) || Number.isNaN(minutes)) {
+    if (isNaN(Number(hours)) || isNaN(Number(minutes))) {
         throw new TypeError('Неверное время');
     }
 

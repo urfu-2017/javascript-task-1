@@ -9,45 +9,43 @@ function romanTime(time) {
     // Немного авторского кода и замечательной магии
 
     var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
-    var rimDigits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
+    var rimDigits = ['N', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']
 
     console.log(time);
     checkIfTimeIsCorrect(time);
-    time = time.split(":");
+    time = time.split(':');
     checkIfNaN(time);
-
-
-    time = convertNumberToRim(time[0]) + ":" + convertNumberToRim(time[1]);
+    time = convertNumberToRim(time[0]) + ':' + convertNumberToRim(time[1]);
     return time;
 
     function convertNumberToRim(number) {
-        var convertedNumber = "";
+        var convertedNumber = '';
 
-        if (number == "00") {
+        if (number == '00') {
             return rimDigits[0];
         } else if (number.charAt(0) === '4') {
-            convertedNumber = "XL"
+            convertedNumber = 'XL'
         } else if (number.charAt(0) === '5') {
-            convertedNumber = "L"
+            convertedNumber = 'L'
         } else {
-            convertedNumber += "X".repeat(Number(number.charAt(0)));
+            convertedNumber += 'X'.repeat(Number(number.charAt(0)));
 
         }
 
-        if (number.charAt(1) === "9") {
+        if (number.charAt(1) === '9') {
             if (convertedNumber.length > 0) {
-                if (number.charAt(0) == 5 || number.charAt(0) == 4) {
-                    convertedNumber += "X";
+                if (number.charAt(0) === 5 || number.charAt(0) === 4) {
+                    convertedNumber += 'X';
                 }
 
-                convertedNumber = convertedNumber.substring(0, convertedNumber.length - 1) + "I" + convertedNumber.substring(convertedNumber.length - 1);
+                convertedNumber = convertedNumber.substring(0, convertedNumber.length - 1) + 'I' + convertedNumber.substring(convertedNumber.length - 1);
             }
             else {
-                convertedNumber = "IX";
+                convertedNumber = 'IX';
             }
 
         }
-        else if (number.charAt(1) === "0") {
+        else if (number.charAt(1) === '0') {
             if (convertedNumber.length === 0) {
                 convertedNumber += rimDigits[0];
             }

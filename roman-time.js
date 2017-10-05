@@ -32,7 +32,7 @@ function getHours(firstArray) {
 }
 function getMinutes(secondArray) {
     var romM = '';
-    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX '];
+    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     var Ten = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
     if (secondArray >= 1 && secondArray <= 60) {
         secondArray %= 100; // 2,5

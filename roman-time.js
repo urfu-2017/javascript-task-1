@@ -10,8 +10,8 @@ function romanTime(time) {
     if (arrayOfTime.length !== 2 || time.length !== 5 || time[2] !== ':') {
         throw new TypeError();
     }
-    var usualHour = parseInt(arrayOfTime[0], 10);
-    var usualMinute = parseInt(arrayOfTime[1], 10);
+    var usualHour = Number(arrayOfTime[0]);
+    var usualMinute = Number(arrayOfTime[1]);
     isValidTime(usualHour, usualMinute);
     time = romanNumber(usualHour) + ':' + romanNumber(usualMinute);
 

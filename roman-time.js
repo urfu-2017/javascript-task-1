@@ -5,36 +5,46 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function romanTime(time) {
-    var strTime = time.split(":");
-        var firstArray = parseInt(strTime[0], 10);
-        var secondArray = parseInt(strTime[1], 10);
-        var Unit = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
-        var Ten = ["", "X", "XX", "XXX", "XL", "L", "LX"];
-        var romHours = "";
-        var romMinutes = "";
-        if (firstArray >= 1 && firstArray <= 23) //25 
-        {
-            firstArray %= 100; //2,5
-            romHours += Ten[Math.floor(firstArray / 10)]; //2 
-            firstArray %= 10; // 5 
-            romHours += Unit[firstArray];
-        } 
-        else if (firstArray == 0)
-        {romHours += "N";}
-        else {throw new TypeError('Неверное время');}
-        if (secondArray >= 1 && secondArray <= 60) //25 
-        {
-            secondArray %= 100; //2,5
-            romMinutes += Ten[Math.floor(secondArray / 10)]; //2 
-            secondArray %= 10; // 5 
-            romMinutes += Unit[secondArray];
-        } 
-        else if (secondArray == 0)
-        {romMinutes += "N";}
-        else {throw new TypeError('Неверное время');}
-        time = romHours + ":" + romMinutes;
-        return time;
-    return time;
-}
+        // Немного авторского кода и замечательной магии
+    var strTime;
+    strTime = time.split(':');
+    var firstArray = parseInt(strTime[0], 10);
+    var secondArray = parseInt(strTime[1], 10);
 
+    return getHours(firstArray) + ':' + getMinutes(secondArray);
+}
+function getHours(firstArray) {
+    var romH = '';
+    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX '];
+    var Ten = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
+    if (firstArray >= 1 && firstArray <= 23) {
+        firstArray %= 100; // 2,5
+        romH += Ten[Math.floor(firstArray / 10)]; // 2
+        firstArray %= 10; // 5
+        romH += Unit[firstArray];
+    } else if (firstArray === 0) {
+        romH += 'N';
+    } else {
+        throw new TypeError('Неверное время');
+    }
+
+    return romH;
+}
+function getMinutes(secondArray) {
+    var romM = '';
+    var Unit = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX '];
+    var Ten = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX'];
+    if (secondArray >= 1 && secondArray <= 60) {
+        secondArray %= 100; // 2,5
+        romM += Ten[Math.floor(secondArray / 10)]; // 2
+        secondArray %= 10; // 5
+        romM += Unit[secondArray];
+    } else if (secondArray === 0) {
+        romM += 'N';
+    } else {
+        throw new TypeError('Неверное время// \r\n ');
+    }
+
+    return romM;
+}
 module.exports = romanTime;

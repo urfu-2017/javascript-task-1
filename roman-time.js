@@ -21,7 +21,7 @@ function romanTime(time) {
     var line = testLength(time);
     line = test(time);
     if (line === 'false') {
-        return 'неверное время'; 
+        return 'неверное время';
     }
     for (var e = 0; e < 3; e++) {
         line = roman(Number(time[e]), rules, line);
@@ -57,7 +57,7 @@ function roman(time, rules, line) {
         for (var j = 0; j < repeat; j++) {
             line += symbol;
             time -= value;
-        }   
+        }
     }
     line += ':';
 

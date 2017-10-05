@@ -16,8 +16,8 @@ function romanTime(time) {
         { symbol: 'I', value: 1 }
     ];
     var times = time.split(':');
-    times[0] = Number(times[0]);
-    times[1] = Number(times[1]);
+    times[0] = parseInt(times[0], 10);
+    times[1] = parseInt(times[1], 10);
     var line = '';
     test(time, times);
     testLength(times);

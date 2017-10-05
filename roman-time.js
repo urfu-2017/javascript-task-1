@@ -32,10 +32,11 @@ function test(time) {
         throw new TypeError('неверное время');
     }
     var flag = time.search(/\d{2}:\d{2}/);
-    if (flag !== 0) {
+    time = time.split(':');
+    if (flag !== 0 || (isNaN(time[0])) ||(isNaN(time[1]))) {
         throw new TypeError('неверное время');
     }
-    if ((time.split(':')[0] > 23) || (time.split(':')[1] > 59)) {
+    if ((Number(time[0]) > 23) || (Number(time[1]) > 59)) {
         throw new TypeError('неверное время');
     }
 }

@@ -4,8 +4,22 @@
  * @param {String} time – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
+
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
+
+    var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
+    var rimDigits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
+    
+    console.log(time);
+    checkIfTimeIsCorrect(time);
+    time = time.split(":");
+    checkIfNaN(time);
+    
+    
+    time = convertNumberToRim(time[0]) + ":" + convertNumberToRim(time[1]);
+    return time;
+
     function convertNumberToRim(number) {
         var convertedNumber = "";
 
@@ -37,7 +51,7 @@ function romanTime(time) {
             if (convertedNumber.length === 0) {
                 convertedNumber += rimDigits[0];
             }
-        }   
+        }
         else {
             convertedNumber += rimDigits[Number(number.charAt(1))];
         }
@@ -45,29 +59,20 @@ function romanTime(time) {
         return convertedNumber;
     }
 
-    var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
-    var rimDigits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 
 
 
-function checkIfTimeIsCorrect(time) {
-    if ((time === null) || (time === undefined) || !regExp.test(time)) {
-        throw new TypeError();
-}
-}
-function checkIfNaN(splitedTime){
-    if (isNaN(splitedTime[0]) || isNaN(splitedTime[1])) {
-        throw new TypeError();
+
+    function checkIfTimeIsCorrect(time) {
+        if ((time === null) || (time === undefined) || !regExp.test(time)) {
+            throw new TypeError();
+        }
     }
-}
-console.log(time);
-    checkIfTimeIsCorrect(time);
-    time = time.split(":");
-    checkIfNaN(time);
-
-    
-    time = convertNumberToRim(time[0]) + ":" + convertNumberToRim(time[1]);
-    return time;
+    function checkIfNaN(splitedTime) {
+        if (isNaN(splitedTime[0]) || isNaN(splitedTime[1])) {
+            throw new TypeError();
+        }
+    }
 }
 
 module.exports = romanTime;

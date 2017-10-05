@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "unix"] */
+/* eslint-disable linebreak-style */
 /* eslint-env mocha */
 'use strict';
 

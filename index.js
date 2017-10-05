@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "unix"] */
+/* eslint-disable linebreak-style */
 'use strict';
 let romanTime = require('./roman-time');
 

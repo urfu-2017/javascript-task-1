@@ -1,4 +1,4 @@
-/* eslint linebreak-style: ["error", "unix"] */
+/* eslint-disable linebreak-style */
 'use strict';
 
 let fontAr = [1, 4, 5, 9, 10, 40, 50];

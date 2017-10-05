@@ -66,7 +66,7 @@ function romanTime(time) { // eslint-disable-line complexity
         throw new TypeError('Неверное время');
     }
 
-    if (hours >= 24 || minutes > 59) {
+    if (hours < 0 || hours >= 24 || minutes < 0 || minutes > 59) {
         throw new TypeError('Неверное время');
     }
 

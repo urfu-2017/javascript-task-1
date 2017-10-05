@@ -6,7 +6,7 @@
  */
 function romanTime(time) {
 
-    function convertToRim(number) {
+    function convertNumberToRim(number) {
         var convertedNumber = "";
 
         if (number == "00") {
@@ -47,13 +47,14 @@ function romanTime(time) {
 
     var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
     var rimDigits = ["N", "I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
+    console.log(isNaN(time));
 
-    if (!regExp.test(time)) {
+    if ((time === null) || (time === undefined) || !regExp.test(time)) {
+        console.log(time);
         throw new TypeError();
     };
-    console.log(time);
-    time = convertToRim(time.substring(0, 2)) + ":" + convertToRim(time.substring(3, 5));
-
+    time = time.split(":");
+    time = convertNumberToRim(time[0]) + ":" + convertNumberToRim(time[1]);
     return time;
 }
 

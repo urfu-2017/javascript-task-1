@@ -6,7 +6,62 @@
  */
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    return time;
+    var rules = [
+        { symbol: 'L', value: 50 },
+        { symbol: 'XL', value: 40 },
+        { symbol: 'X', value: 10 },
+        { symbol: 'IX', value: 9 },
+        { symbol: 'V', value: 5 },
+        { symbol: 'IV', value: 4 },
+        { symbol: 'I', value: 1 }
+    ];
+    time = time.split(':');
+    if ((Number(time[0]) > 23) || (Number(time[1]) > 59)){
+        return 'неверное время';
+    }
+    if ((time[0].length > 2) || (time[1].length > 2)){
+        return 'неверное время';
+    }
+    var line = test(time);
+    if (line === 'false'){
+        return "неверное время"; 
+    }
+    for (var e = 0; e < 3; e++){
+        line = roman(Number(time[e]), rules, line);
+    }
+
+    return line.substr(0, line.length - 2);
+}
+
+function test(time) {
+    for (var i = 0; i < 3; i++){
+        if ((Number(time[i]) === null) || (Number(time[i]) === undefined) || (Number(time[i] === NaN))){
+            return 'false';
+        }
+
+    }
+
+    return '';
+}
+
+function roman(time, rules, line) {
+    if (time === 0){
+        line += 'N';
+    }
+    for (var i = 0; i < rules.length; i++) {
+        var value = rules[i].value;
+        var symbol = rules[i].symbol;
+
+        var repeat = Math.floor(time / value);
+
+        for (var j = 0; j < repeat; j++) {
+            line += symbol;
+            time -= value;
+        }
+        
+    }
+    line += ':'
+    return line;
 }
 
 module.exports = romanTime;

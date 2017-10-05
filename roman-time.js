@@ -86,8 +86,7 @@ function errorTime(time) {
 
 function parseTime(time) {
     var partTime = time.split(':');
-    if (parseInt(partTime[0], 10) < 0 || parseInt(partTime[0], 10) > 23 ||
-        parseInt(partTime[1], 10) < 0 || parseInt(partTime[1], 10) > 59 ||
+    if (parseInt(partTime[0], 10) > 23 || parseInt(partTime[1], 10) > 59 ||
         isNaN(Number(partTime[0])) || isNaN(Number(partTime[1]))) {
         throw new TypeError('Неверное время');
     }

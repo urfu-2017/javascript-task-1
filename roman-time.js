@@ -27,11 +27,13 @@ function romanTime(time) {
 
     return line.substr(0, line.length - 2);
 }
+
 function test(time, times) {
-    if ((time === null) || (time === undefined) || (time.length < 6)) {
+    if ((time === null) || (time === undefined)) {
         throw new TypeError('неверное время');
     }
-    if ((isNaN(times[0])) || (isNaN(times[1]))) {
+    console.log(time.length)
+    if ((isNaN(times[0])) || (isNaN(times[1])) || (time.length < 5)) {
         throw new TypeError('неверное время');
     }
 }

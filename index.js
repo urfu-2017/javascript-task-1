@@ -1,6 +1,6 @@
+/* eslint linebreak-style: ["error", "unix"] */
 'use strict';
-
-var romanTime = require('./roman-time');
+let romanTime = require('./roman-time');
 
 // Выведет 'IX:X'
 console.info(romanTime('09:10'));

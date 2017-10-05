@@ -7,7 +7,7 @@
 
 function romanTime(time) {
     // Немного авторского кода и замечательной магии
-    var regExp = /^((\b[0-1]+\d)|(\b2([0-3])))\:(\b[0-5]?(\d))$/;
+    var regExp = /^((\b[0-1]+\d)|(\b2([0-3]))):(\b[0-5]?(\d))$/;
     var rimDigits = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
     checkIfTimeIsCorrect(time);
     time = time.split(':');
@@ -24,8 +24,8 @@ function romanTime(time) {
             convertedNumber = 'L';
         } else {
             convertedNumber += 'X'.repeat(Number(number.charAt(0)));
-        } 
-            convertedNumber += rimDigits[Number(number.charAt(1))];   
+        }
+        convertedNumber += rimDigits[Number(number.charAt(1))];
 
         return convertedNumber;
     }

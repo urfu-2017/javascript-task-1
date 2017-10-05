@@ -20,17 +20,19 @@ function toRim(time) {
         rimnomber += 'X';
         n -= 10;
     }
-    if(n>0){rimnomber+=toRim2(n);
+    if (n > 0) {
+        rimnomber+=toRim2(n);
     }
     //  console.log(rimnomber);
+
     return rimnomber;
 }
-function toRim2(time){
+function toRim2(time) {
     var n=time;
     //  console.log(n);
     var rimnomber2='';
     while (n >= 9)  {
-        rimnomber2 += 'XI';
+        rimnomber2 += 'IX';
         n -= 9;
         //  console.log('9tyt')
     }
@@ -53,7 +55,11 @@ function toRim2(time){
 function isValid(time){
     //  console.log(time);
     //  console.log(time.length);
-    if (time.length === 2){
+    var tt = time.split('');
+    var t1 = tt[0]
+    var t2 = tt[1]
+    //  console.log(parseInt(t1),parseInt(t1) != NaN,parseInt(t2),!isNaN(parseInt(t2)))
+    if (time.length === 2 && !isNaN(parseInt(t1)) && !isNaN(parseInt(t2))) {
         return true;
     }
     else {

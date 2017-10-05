@@ -20,25 +20,15 @@ function romanTime(time) {
     times[1] = Number(times[1]);
     var line = '';
     test(time, times);
-    testLength(times);
     for (var e = 0; e < 3; e++) {
         line = roman(Number(times[e]), rules, line);
     }
 
     return line.substr(0, line.length - 2);
 }
-
 function test(time, times) {
-    if ((time === null) || (time === undefined)) {
-        throw new TypeError('неверное время');
-    }
-    if ((isNaN(times[0])) || (isNaN(times[1]))) {
-        throw new TypeError('неверное время');
-    }
-}
-
-function testLength(time) {
-    if ((time[0] > 23) || (time[1] > 59) || (time[0].length > 2) || (time[1].length > 2)) {
+    var flag = time.search(/\d\d[-:]\d\d/);
+    if ((flag != 0) || (times[0] > 23) || (times[1] > 59)) {
         throw new TypeError('неверное время');
     }
 }

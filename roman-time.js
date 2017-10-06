@@ -5,25 +5,27 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-const romanesEuntDomus = { 0:"N", 1:"I", 2:"II", 3:"III", 4:"IV", 5:"V", 6:"VI", 7:"VII", 8:"VIII", 9:"IX", 
-                            10:"X", 20:"XX", 30:"XXX", 40:"XL", 50:"L"};
-
 var wrongTimeError = new TypeError("Неверное время");
 
-function decToRom(decimal) {
-    var roman = "";
-    if (decimal == 0){
-        roman = romanesEuntDomus[0];
+function arabToRom(arabic) { 
+    let roman = '';
+    if (parseInt(arabic) === 0){
+        roman = 'N'
     } else {
-        var x = (decimal / 10 | 0) * 10;
-        var y = decimal % 10;
-        roman = romanesEuntDomus[x] + romanesEuntDomus[y];
+        let romanesEuntDomus = [ 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
+        var arabicnums = [50,40,10,9,5,4,1];
+        for ( let i = 0; i < arabicnums.length; i++ ){
+            while( arabic >= arabicnums[i] ){
+                roman = roman + romanesEuntDomus[i];
+                arabic -= arabicnums[i];
+            }
+        }
     }
     return roman;
 }
 
 function validTime(HH, MM){
-    if (validHours(HH) == false || validMinutes(MM) == false){
+    if (validHours(HH) == true || validMinutes(MM) == true){
         throw wrongTimeError;
     }
 }
@@ -56,7 +58,7 @@ function romanTime(time) {
     var hours = timeSplitted[0];
     var minutes = timeSplitted[1];
     validHours(hours, minutes);
-    time = decToRom(hours) + ':' + decToRom(minutes);
+    time = arabToRom(hours) + ':' + arabToRom(minutes);
     return time;
 }
 

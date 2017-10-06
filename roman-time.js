@@ -5,7 +5,7 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-var wrongTimeError = new TypeError("Неверное время");
+var wrongTimeError = new TypeError('Неверное время');
 
 function arabToRom(arabic) { 
     let roman = '';
@@ -24,31 +24,7 @@ function arabToRom(arabic) {
     return roman;
 }
 
-function validTime(HH, MM){
-    if (validHours(HH) == true || validMinutes(MM) == true){
-        throw wrongTimeError;
-    }
-}
-
-function validHours(HH){
-    var check;
-    if (isNaN(HH) || HH < 0 || HH > 23){
-        check = false;
-    } else {
-        check = true;
-    }
-    return check;
-}
-
-function validMinutes(MM){
-    var check;
-    if (isNaN(MM) || MM < 0 || MM > 59){
-        check = false;
-    } else {
-        check = true;
-    }
-    return check;
-}
+function validTime(HH, MM){}
 
 function romanTime(time) {
     var timeSplitted = time.split(':');
@@ -57,7 +33,7 @@ function romanTime(time) {
     }
     var hours = timeSplitted[0];
     var minutes = timeSplitted[1];
-    validHours(hours, minutes);
+    //validHours(hours, minutes);
     time = arabToRom(hours) + ':' + arabToRom(minutes);
     return time;
 }

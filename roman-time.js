@@ -5,36 +5,46 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-var wrongTimeError = new TypeError('Неверное время');
+let wrongTimeError = new TypeError('Неверное время');
 
-function arabToRom(arabic) { 
-    let roman = '';
-    if (parseInt(arabic) === 0){
-        roman = 'N'
-    } else {
-        let romanesEuntDomus = [ 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
-        var arabicnums = [50,40,10,9,5,4,1];
-        for ( let i = 0; i < arabicnums.length; i++ ){
-            while( arabic >= arabicnums[i] ){
-                roman = roman + romanesEuntDomus[i];
-                arabic -= arabicnums[i];
-            }
+function transform(source) {
+    let result = '';
+    let romanesEuntDomus = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+    let arabicNums = [50, 40, 10, 9, 5, 4, 1];
+    let counter = source;
+    for (let i = 0; i < arabicNums.length; i++) {
+        while (counter >= arabicNums[i]) {
+            result = result + romanesEuntDomus[i];
+            counter -= arabicNums[i];
         }
     }
+
+    return result;
+}
+
+function arabToRom(arabic) {
+    let roman = '';
+    if (parseInt(arabic) === 0) {
+        roman = 'N';
+    } else {
+        roman = transform(arabic);
+    }
+
     return roman;
 }
 
-function validTime(HH, MM){}
+function validTime(HH, MM) {}
 
 function romanTime(time) {
-    var timeSplitted = time.split(':');
-    if (time[2] !== ':' ||  time.length !== 5 || timeSplitted.length !== 2) {
+    let timeSplitted = time.split(':');
+    if (time[2] !== ':' || time.length !== 5 || timeSplitted.length !== 2) {
         throw wrongTimeError;
     }
-    var hours = timeSplitted[0];
-    var minutes = timeSplitted[1];
-    //validHours(hours, minutes);
+    let hours = timeSplitted[0];
+    let minutes = timeSplitted[1];
+    // validTime(hours, minutes);
     time = arabToRom(hours) + ':' + arabToRom(minutes);
+
     return time;
 }
 

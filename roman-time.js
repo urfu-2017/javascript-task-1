@@ -31,40 +31,21 @@ function arabToRom(arabic) {
     return roman;
 }
 
-function validHours(HH) {
-    let condition = true;
-    if (HH < 0 || HH > 23) {
-        condition = false;
-    }
-
-    return condition;
-}
-
-function validMinutes(MM) {
-    let condition = true;
-    if (MM < 0 || MM > 59) {
-        condition = false;
-    }
-
-    return condition;
-}
-
-function validTime(HH, MM) {
-    let hoursAreValid = validHours(HH);
-    let minutesAreValid = validMinutes(MM);
-    if (hoursAreValid === false || minutesAreValid === false) {
+function validTime(HHMM) {
+    let regulars = new RegExp('^((0[0-9])|(1[0-9])|(2[0-3])):[0-5][0-9]$');
+    let timeIsValid = regulars.test(HHMM);
+    if (timeIsValid === false || HHMM[2] !== ':' || HHMM.length !== 5) {
         throw new TypeError('Неверное время');
     }
+
+    return HHMM;
 }
 
 function romanTime(time) {
+    time = validTime(time);
     let timeSplitted = time.split(':');
-    if (time[2] !== ':' || time.length !== 5 || timeSplitted.length !== 2) {
-        throw new TypeError('Неверное время');
-    }
     let hours = timeSplitted[0];
     let minutes = timeSplitted[1];
-    validTime(hours, minutes);
     time = arabToRom(hours) + ':' + arabToRom(minutes);
 
     return time;

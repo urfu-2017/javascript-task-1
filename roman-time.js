@@ -33,7 +33,31 @@ function arabToRom(arabic) {
     return roman;
 }
 
-function validTime(HH, MM) {}
+function validHours(HH) {
+    let condition = true;
+    if (HH < 0 || HH > 23) {
+        condition = false;
+    }
+
+    return condition;
+}
+
+function validMinutes(MM) {
+    let condition = true;
+    if (MM < 0 || MM > 59) {
+        condition = false;
+    }
+
+    return condition;
+}
+
+function validTime(HH, MM) {
+    let hoursAreValid = validHours(HH);
+    let minutesAreValid = validMinutes(MM);
+    if (hoursAreValid === false || minutesAreValid === false) {
+        throw wrongTimeError;
+    }
+}
 
 function romanTime(time) {
     let timeSplitted = time.split(':');
@@ -42,7 +66,7 @@ function romanTime(time) {
     }
     let hours = timeSplitted[0];
     let minutes = timeSplitted[1];
-    // validTime(hours, minutes);
+    validTime(hours, minutes);
     time = arabToRom(hours) + ':' + arabToRom(minutes);
 
     return time;

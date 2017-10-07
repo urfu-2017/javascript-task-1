@@ -5,8 +5,6 @@
  * @returns {String} – время римскими цифрами (IX:V)
  */
 
-let wrongTimeError = new TypeError('Неверное время');
-
 function transform(source) {
     let result = '';
     let romanesEuntDomus = ['L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
@@ -55,14 +53,14 @@ function validTime(HH, MM) {
     let hoursAreValid = validHours(HH);
     let minutesAreValid = validMinutes(MM);
     if (hoursAreValid === false || minutesAreValid === false) {
-        throw wrongTimeError;
+        throw new TypeError('Неверное время');
     }
 }
 
 function romanTime(time) {
     let timeSplitted = time.split(':');
     if (time[2] !== ':' || time.length !== 5 || timeSplitted.length !== 2) {
-        throw wrongTimeError;
+        throw new TypeError('Неверное время');
     }
     let hours = timeSplitted[0];
     let minutes = timeSplitted[1];

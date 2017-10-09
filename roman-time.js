@@ -80,27 +80,32 @@ function сonvertNumbers(ArNumbers) {
 
         return RoNumbers[1];
     }
+    RoNumbers[0] = convertDe(RoNumbers[0]);    
+    RoNumbers = RoNumbers.join('');
 
-    switch (RoNumbers[0]) {
+    return RoNumbers;
+}
+
+function convertDe(RoNumbers) {
+    switch (RoNumbers) {
         case 1:
-            RoNumbers[0] = 'X';
+            RoNumbers = 'X';
             break;
         case 2:
-            RoNumbers[0] = 'XX';
+            RoNumbers = 'XX';
             break;
         case 3:
-            RoNumbers[0] = 'XXX';
+            RoNumbers = 'XXX';
             break;
         case 4:
-            RoNumbers[0] = 'XL';
+            RoNumbers = 'XL';
             break;
         case 5:
-            RoNumbers[0] = 'L';
+            RoNumbers = 'L';
             break;
         default:
             throw new TypeError('');
     }
-    RoNumbers = RoNumbers.join('');
 
     return RoNumbers;
 }

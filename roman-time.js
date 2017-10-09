@@ -40,7 +40,12 @@ function сonvertNumbers(ArNumbers) {
 
         return ArNumbers;
     }
-    RoNumbers[1] = convertUn(RoNumbers[1]);
+    if (Number(RoNumbers[1]) <= 4) {
+        RoNumbers[1] = convertUnFirst(RoNumbers[1]);
+    }
+    else {
+        RoNumbers[1] = convertUnSecond(RoNumbers[1]);
+    }
     if ((RoNumbers[0] === 0) && (RoNumbers[1] !== null)) {
 
         return RoNumbers[1];
@@ -51,7 +56,7 @@ function сonvertNumbers(ArNumbers) {
     return RoNumbers;
 }
 
-function convertUn(RoNumbers) {
+function convertUnFirst(RoNumbers) {
     switch (RoNumbers) {
         case 0:
             RoNumbers = 'N';
@@ -73,6 +78,13 @@ function convertUn(RoNumbers) {
             RoNumbers = 'IV';
 
             return RoNumbers;
+        default:
+            throw new TypeError('Неверно задано время');
+    }
+}
+
+function convertUnSecond(RoNumbers) {
+    switch (RoNumbers) {
         case 5:
             RoNumbers = 'V';
 

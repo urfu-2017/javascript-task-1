@@ -46,8 +46,7 @@ function сonvertNumbers(ArNumbers) {
     }
 
     else {
-        RoNumbers[1] = convertUnSecond(RoNumbers[1]);
-    }
+        RoNumbers[1] = convertUnSecond(RoNumbers[1]); }
     if ((RoNumbers[0] === 0) && (RoNumbers[1] !== null)) {
 
         return RoNumbers[1];

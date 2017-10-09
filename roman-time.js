@@ -31,9 +31,7 @@ function errorCheck(time) {
 }
 
 function сonvertNumbers(ArNumbers) {
-    var RoNumbers = ['', ''];
-    RoNumbers[1] = ArNumbers % 10;
-    RoNumbers[0] = parseInt(ArNumbers / 10);
+    var RoNumbers = [parseInt(ArNumbers / 10), ArNumbers % 10];
 
     if ((RoNumbers[0] === 0) && (RoNumbers[1] === 0)) {
         ArNumbers = 'N';

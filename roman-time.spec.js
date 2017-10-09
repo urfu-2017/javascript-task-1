@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-env mocha */
 'use strict';
 
@@ -20,4 +21,5 @@ describe('Модуль roman-time', function () {
     it('должен выбрасывать исключение TypeError для 24:00', function () {
         assert.throws(romanTime.bind(null, '24:00'), TypeError);
     });
+
 });

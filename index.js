@@ -1,12 +1,12 @@
+/* eslint-disable linebreak-style */
 'use strict';
-
-var romanTime = require('./roman-time');
+let romanTime = require('./roman-time');
 
 // Выведет 'IX:X'
 console.info(romanTime('09:10'));
 
 // Выведет 'N:N'
-console.info(romanTime('00:00'));
+console.info(romanTime('1:1'));
 
 // Выведет 'XXIII:LIX'
 console.info(romanTime('23:59'));

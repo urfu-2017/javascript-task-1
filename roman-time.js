@@ -40,13 +40,12 @@ function сonvertNumbers(ArNumbers) {
 
         return ArNumbers;
     }
-
     if (Number(RoNumbers[1]) <= 4) {
         RoNumbers[1] = convertUnFirst(RoNumbers[1]);
     }
-
-    else {
-        RoNumbers[1] = convertUnSecond(RoNumbers[1]); }
+    if (Number(RoNumbers[1] > 4)) {
+        RoNumbers[1] = convertUnSecond(RoNumbers[1]);
+    }
     if ((RoNumbers[0] === 0) && (RoNumbers[1] !== null)) {
 
         return RoNumbers[1];

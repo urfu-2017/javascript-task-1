@@ -44,6 +44,7 @@ function сonvertNumbers(ArNumbers) {
     if (Number(RoNumbers[1]) <= 4) {
         RoNumbers[1] = convertUnFirst(RoNumbers[1]);
     }
+    
     else {
         RoNumbers[1] = convertUnSecond(RoNumbers[1]);
     }

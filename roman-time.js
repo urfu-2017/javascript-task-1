@@ -21,7 +21,9 @@ function toRoman(time, number) {
 function bolMass(mas) {
     let bol = false;
     if ((mas[0] !== '') && (mas.length === 2) && (mas[1] !== '')) {
-        bol = true;
+        if ((mas[0].length <= 2) && (mas[1].length <= 2)) {
+            bol = true;
+        }
     }
 
     return bol;
@@ -44,7 +46,7 @@ function romanTime(time) {
         if (clock > 0) {
             strClock = toRoman(clock, 4);
         }
-        if (clock > 0) {
+        if (minutes > 0) {
             strMinutes = toRoman(minutes, 6);
         }
         result = strClock + ':' + strMinutes;

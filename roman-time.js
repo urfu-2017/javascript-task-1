@@ -11,26 +11,26 @@ function romanTime(time) {
     var RoNumbers = ['', ''];
 
     for (var j = 0; j < 2; j++) {
-        RoNumbers[j] = сonvertNumbers(InNumbers[j],j);   
+        RoNumbers[j] = сonvertNumbers(InNumbers[j]);
     }
 
     time = RoNumbers.join(':');
 
     return time;
 }
-// Проверяем, правильно ли задано время, если неправильно, 
+// Проверяем, правильно ли задано время, если неправильно,
 // Возвращаем TypeError с сообщением "Задано неверное время"
 function errorCheck(time) {
     var TestTime = time.split(':');
-    if ((Number(TestTime[0]) >= 0) && (Number(TestTime[0]) <= 23) && 
+    if ((Number(TestTime[0]) >= 0) && (Number(TestTime[0]) <= 23) &&
     (Number(TestTime[1]) >= 0) && (Number(TestTime[1]) <= 59)) {
 
         return time;
     }
-    throw new TypeError('Задано неверное время');    
+    throw new TypeError('Задано неверное время');
 }
 
-function сonvertNumbers(ArNumbers,j) {
+function сonvertNumbers(ArNumbers) {
     var RoNumbers = ['', ''];
     RoNumbers[1] = ArNumbers % 10;
     RoNumbers[0] = parseInt(ArNumbers / 10);
@@ -80,8 +80,8 @@ function сonvertNumbers(ArNumbers,j) {
 
         return RoNumbers[1];
     }
-    
-    switch(RoNumbers[0]) {
+
+    switch (RoNumbers[0]) {
         case 1:
             RoNumbers[0] = 'X';
             break;

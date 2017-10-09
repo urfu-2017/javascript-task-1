@@ -40,48 +40,52 @@ function сonvertNumbers(ArNumbers) {
 
         return ArNumbers;
     }
-
-    switch (RoNumbers[1]) {
-        case 0:
-            RoNumbers[1] = 'N';
-            break;
-        case 1:
-            RoNumbers[1] = 'I';
-            break;
-        case 2:
-            RoNumbers[1] = 'II';
-            break;
-        case 3:
-            RoNumbers[1] = 'III';
-            break;
-        case 4:
-            RoNumbers[1] = 'IV';
-            break;
-        case 5:
-            RoNumbers[1] = 'V';
-            break;
-        case 6:
-            RoNumbers[1] = 'VI';
-            break;
-        case 7:
-            RoNumbers[1] = 'VII';
-            break;
-        case 8:
-            RoNumbers[1] = 'VIII';
-            break;
-        case 9:
-            RoNumbers[1] = 'IX';
-            break;
-        default:
-            throw new TypeError('Неверно задано время');
-    }
-
+    RoNumbers[1] = convertUn(RoNumbers[1]);
     if ((RoNumbers[0] === 0) && (RoNumbers[1] !== null)) {
 
         return RoNumbers[1];
     }
-    RoNumbers[0] = convertDe(RoNumbers[0]);    
+    RoNumbers[0] = convertDe(RoNumbers[0]);
     RoNumbers = RoNumbers.join('');
+
+    return RoNumbers;
+}
+
+function convertUn(RoNumbers) {
+    switch (RoNumbers) {
+        case 0:
+            RoNumbers = 'N';
+            break;
+        case 1:
+            RoNumbers = 'I';
+            break;
+        case 2:
+            RoNumbers = 'II';
+            break;
+        case 3:
+            RoNumbers = 'III';
+            break;
+        case 4:
+            RoNumbers = 'IV';
+            break;
+        case 5:
+            RoNumbers = 'V';
+            break;
+        case 6:
+            RoNumbers = 'VI';
+            break;
+        case 7:
+            RoNumbers = 'VII';
+            break;
+        case 8:
+            RoNumbers = 'VIII';
+            break;
+        case 9:
+            RoNumbers = 'IX';
+            break;
+        default:
+            throw new TypeError('Неверно задано время');
+    }
 
     return RoNumbers;
 }

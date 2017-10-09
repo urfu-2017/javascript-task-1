@@ -21,6 +21,11 @@ function romanTime(time) {
 // Проверяем, правильно ли задано время, если неправильно,
 // Возвращаем TypeError с сообщением "Задано неверное время"
 function errorCheck(time) {
+
+    if (time.length !== 5) {
+        throw new TypeError('Задано неверное время');
+    }
+
     var TestTime = time.split(':');
     if ((Number(TestTime[0]) >= 0) && (Number(TestTime[0]) <= 23) &&
     (Number(TestTime[1]) >= 0) && (Number(TestTime[1]) <= 59)) {

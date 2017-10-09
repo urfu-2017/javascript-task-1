@@ -51,6 +51,10 @@ function сonvertNumbers(ArNumbers) {
         return RoNumbers[1];
     }
     RoNumbers[0] = convertDe(RoNumbers[0]);
+    if ((RoNumbers[1] === 'N') && (RoNumbers[0] !== null)) {
+    
+        return RoNumbers[0];
+    }
     RoNumbers = RoNumbers.join('');
 
     return RoNumbers;

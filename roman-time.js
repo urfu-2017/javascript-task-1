@@ -43,7 +43,7 @@ function сonvertNumbers(ArNumbers) {
     if (Number(RoNumbers[1]) <= 4) {
         RoNumbers[1] = convertUnFirst(RoNumbers[1]);
     }
-    if (Number(RoNumbers[1] > 4)) {
+    else {
         RoNumbers[1] = convertUnSecond(RoNumbers[1]);
     }
     if ((RoNumbers[0] === 0) && (RoNumbers[1] !== null)) {
@@ -52,7 +52,7 @@ function сonvertNumbers(ArNumbers) {
     }
     RoNumbers[0] = convertDe(RoNumbers[0]);
     if ((RoNumbers[1] === 'N') && (RoNumbers[0] !== null)) {
-    
+
         return RoNumbers[0];
     }
     RoNumbers = RoNumbers.join('');

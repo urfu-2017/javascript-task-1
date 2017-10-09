@@ -55,39 +55,47 @@ function convertUn(RoNumbers) {
     switch (RoNumbers) {
         case 0:
             RoNumbers = 'N';
-            break;
+
+            return RoNumbers;
         case 1:
             RoNumbers = 'I';
-            break;
+
+            return RoNumbers;
         case 2:
             RoNumbers = 'II';
-            break;
+
+            return RoNumbers;
         case 3:
             RoNumbers = 'III';
-            break;
+
+            return RoNumbers;
         case 4:
             RoNumbers = 'IV';
-            break;
+
+            return RoNumbers;
         case 5:
             RoNumbers = 'V';
-            break;
+
+            return RoNumbers;
         case 6:
             RoNumbers = 'VI';
-            break;
+
+            return RoNumbers;
         case 7:
             RoNumbers = 'VII';
-            break;
+
+            return RoNumbers;
         case 8:
             RoNumbers = 'VIII';
-            break;
+
+            return RoNumbers;
         case 9:
             RoNumbers = 'IX';
-            break;
+
+            return RoNumbers;
         default:
             throw new TypeError('Неверно задано время');
     }
-
-    return RoNumbers;
 }
 
 function convertDe(RoNumbers) {

@@ -43,10 +43,7 @@ function isValidate(h, m) {
     }
 }
 
-/**
- + * @param {String} data – часы или минуты (например, 12)
- + * @returns {Number}  - минуты (например, 12)
- */
+
 function ERTime(data) {
     var re = /^\d\d$/;
     if (!re.test(data)) {

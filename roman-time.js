@@ -29,7 +29,7 @@ function returnRomanTime(data) {
     if (data === 0) {
         return 'N';
     }
-    
+
     return HNumbers[Math.floor(data / 10)] + BNumbers[Math.floor(data % 10)];
 }
 
@@ -66,9 +66,9 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var startTime = time.split(':');
-    var hours = 0;
+    let hours = 0;
     hours = ERTime(startTime[0]);
-    var minutes = 0;
+    let minutes = 0;
     minutes = ERTime(startTime[1]);
     isValidate(hours, minutes);
     time = returnRomanTime(hours) + ':' + returnRomanTime(minutes);

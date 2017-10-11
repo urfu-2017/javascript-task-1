@@ -27,7 +27,7 @@ function returnRomanTime(data) {
         9: 'IX'
     };
     if (data === 0) {
-        return "N";
+        return 'N';
     }
     return HNumbers[Math.floor(data / 10)] + BNumbers[Math.floor(data % 10)];
 }
@@ -71,7 +71,8 @@ function romanTime(time) {
     var hours = ERTime(startTime[0]);
     var minutes = ERTime(startTime[1]);
     isValidate(hours, minutes);
-    time = returnRomanTime(hours) + ":" + returnRomanTime(minutes);
+    time = returnRomanTime(hours) + ':' + returnRomanTime(minutes);
+    
     return time;
 }
 

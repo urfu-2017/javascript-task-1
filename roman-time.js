@@ -44,7 +44,7 @@ function isValidate(h, m) {
 }
 
 
-function ERTime(data) {
+function erTime(data) {
     var re = /^\d\d$/;
     if (!re.test(data)) {
         throw new TypeError('Неверное время');
@@ -66,10 +66,8 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var startTime = time.split(':');
-    let hours = new hours;
-    hours = ERTime(startTime[0]);
-    let minutes = new minutes;
-    minutes = ERTime(startTime[1]);
+    let hours = erTime(startTime[0]);
+    let minutes = erTime(startTime[1]);
     isValidate(hours, minutes);
     time = returnRomanTime(hours) + ':' + returnRomanTime(minutes);
 

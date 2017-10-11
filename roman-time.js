@@ -66,9 +66,9 @@ function romanTime(time) {
         throw new TypeError('Неверное время');
     }
     var startTime = time.split(':');
-    let hours = 0;
+    let hours = new hours;
     hours = ERTime(startTime[0]);
-    let minutes = 0;
+    let minutes = new minutes;
     minutes = ERTime(startTime[1]);
     isValidate(hours, minutes);
     time = returnRomanTime(hours) + ':' + returnRomanTime(minutes);

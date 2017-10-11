@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @param {String} time – время в формате HH:MM (например, 09:05)
+ * @param {String} data – время в формате HH:MM (например, 09:05)
  * @returns {String} – время римскими цифрами (IX:V)
  */
 function returnRomanTime(data) {
@@ -29,6 +29,7 @@ function returnRomanTime(data) {
     if (data === 0) {
         return 'N';
     }
+    
     return HNumbers[Math.floor(data / 10)] + BNumbers[Math.floor(data % 10)];
 }
 
@@ -44,7 +45,7 @@ function isValidate(h, m) {
 
 /**
  + * @param {String} data – часы или минуты (например, 12)
- + * @returns {Number} m - минуты (например, 12)
+ + * @returns {Number}  - минуты (например, 12)
  */
 function ERTime(data) {
     var re = /^\d\d$/;
@@ -67,12 +68,12 @@ function romanTime(time) {
     if (typeof time !== 'string' && time.length !== 5) {
         throw new TypeError('Неверное время');
     }
-    var startTime = time.split(':');
-    var hours = ERTime(startTime[0]);
-    var minutes = ERTime(startTime[1]);
+    var starttime = time.split(':');
+    var hours = ERTime(starttime[0]);
+    var minutes = ERTime(starttime[1]);
     isValidate(hours, minutes);
     time = returnRomanTime(hours) + ':' + returnRomanTime(minutes);
-    
+
     return time;
 }
 

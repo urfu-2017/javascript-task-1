@@ -72,20 +72,18 @@ function romanTime(time) {
     var hours = parseInt(hoursMin[0]);
     var mins = parseInt(hoursMin[1]);
     //  console.log('h=',hours,'m',mins);
-    if (isValid(hoursMin[0]) && isValid(hoursMin[1])) {
-        if (hours < 24 && mins < 60) {
-            hours = toRim(hours);
-            mins = toRim(mins);
-            if (hours === '') {
-                hours = 'N';
-            }
-            if (mins === '') {
-                mins = 'N';
-            }
-            time = hours + ':' + mins;
-        } else {
-            throw new TypeError('Неверное время');
+    if (isValid(hoursMin[0]) && isValid(hoursMin[1]) && hours < 24 && mins < 60) {
+        hours = toRim(hours);
+        mins = toRim(mins);
+        if (hours === '') {
+            hours = 'N';
         }
+        if (mins === '') {
+            mins = 'N';
+        }
+        time = hours + ':' + mins;
+    } else {
+        throw new TypeError('Неверное время');
     }
 
     return time;

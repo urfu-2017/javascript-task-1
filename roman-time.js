@@ -69,6 +69,9 @@ function isValid(time) {
 }
 function romanTime(time) {
     var hoursMin = time.split(':');
+    if (hoursMin.length !== 2) {
+        throw new TypeError('Неверное время');
+    }
     var hours = parseInt(hoursMin[0]);
     var mins = parseInt(hoursMin[1]);
     //  console.log('h=',hours,'m',mins);
